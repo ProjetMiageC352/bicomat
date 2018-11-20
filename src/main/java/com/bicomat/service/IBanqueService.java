@@ -31,4 +31,9 @@ public interface IBanqueService {
 	 * @return la liste des banques
 	 */
 	public List<Banque> listeBanques();
+	
+	/**
+	 * Demande la création d'une banque.
+	 */
+	public void creerBanque(final String nNom, final String nAdresse);
 }

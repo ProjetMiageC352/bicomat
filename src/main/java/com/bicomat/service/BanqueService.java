@@ -56,4 +56,16 @@ public class BanqueService implements IBanqueService {
 	public List<Banque> listeBanques() {
 		return this.banqueDAO.listeBanques();
 	}
+	
+	/**
+	 * Demande la création d'une banque.
+	 */
+	@Transactional
+	public void creerBanque(final String nNom, final String nAdresse) {
+		final Banque b = new Banque();
+        b.setNom(nNom);
+        b.setAdresse(nAdresse);
+
+        this.banqueDAO.ajouterBanque(b);
+	}
 }
