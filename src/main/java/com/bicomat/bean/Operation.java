@@ -43,10 +43,15 @@ public class Operation {
 	@Column(name="o_type")
 	protected String type = "";
 	/**
-	 * Opération liée.
+	 * Id de l'opération liée.
 	 */
 	@Column(name="o_id_operation")
 	protected int idOperation = 0;
+	/**
+	 * Id du compte.
+	 */
+	@Column(name="c_id")
+	protected int idCompte = 0;
 	
 	/* **************************** */
 	/*         CONSTRUCTEURS        */
@@ -64,13 +69,16 @@ public class Operation {
      * @param montantO Montant de l'opération
      * @param typeO Type de l'opération
      * @param idOperation Id de l'opération liée
+     * @param idCompte Id du compte
      */
     public Operation(final Date dateO, final double montantO,
-    		final String typeO, final int idOperationO) {
+    		final String typeO, final int idOperationO,
+    		final int idCompteO) {
     	this.date = dateO;
     	this.montant = montantO;
     	this.type = typeO;
     	this.idOperation = idOperationO;
+    	this.idCompte = idCompteO;
     }
     /**
      * Constructeur de la classe.
@@ -80,14 +88,16 @@ public class Operation {
      * @param montantO Montant de l'opération
      * @param typeO Type de l'opération
      * @param idOperation Id de l'opération liée
+     * @param idCompte Id du compte
      */
     public Operation(final int idO, final Date dateO, final double montantO,
-    		final String typeO, final int idOperationO) {
+    		final String typeO, final int idOperationO, final int idCompteO) {
     	this.id = idO;
     	this.date = dateO;
     	this.montant = montantO;
     	this.type = typeO;
     	this.idOperation = idOperationO;
+    	this.idCompte = idCompteO;
     }
     
     /* **************************** */
@@ -134,6 +144,14 @@ public class Operation {
     public final int getIdOperation() {
         return idOperation;
     }
+    /**
+     * Getter de l'id du compte.
+     *
+     * @return idCompte
+     */
+    public final int getIdCompte() {
+        return idCompte;
+    }
     
     /* **************************** */
 	/*            SETTERS           */
@@ -178,6 +196,14 @@ public class Operation {
      */
     public final void setIdOperation(final int idOperationO) {
         this.idOperation = idOperationO;
+    }
+    /**
+     * Setter de l'id du compte.
+     *
+     * @param idCompteO Id du nouveau compte
+     */
+    public final void setIdCompte(final int idCompteO) {
+        this.idCompte = idCompteO;
     }
 	
     /* **************************** */
@@ -229,6 +255,7 @@ public class Operation {
     @Override
 	public String toString(){
 		return "id = " + id + ", date = " + date.toString() + ", montant = " + montant
-				+ " type = " + type + " id opération = " + idOperation;
+				+ " type = " + type + " id opération = " + idOperation
+				+ " id compte = " + idCompte;
 	}
 }
