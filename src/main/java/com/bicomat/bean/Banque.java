@@ -24,20 +24,18 @@ public class Banque {
 	@Id
 	@Column(name="b_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id = 0;
+	protected int id = 0;
 	/**
 	 * Nom de la banque.
 	 */
 	@Column(name="b_nom")
-	private String nom = "";
+	protected String nom = "";
 	/**
 	 * Adresse de la banque.
 	 */
 	@Column(name="b_adresse")
-	private String adresse = "";
-	
+	protected String adresse = "";
 
-	
 	/* **************************** */
 	/*         CONSTRUCTEURS        */
 	/* **************************** */
@@ -128,6 +126,10 @@ public class Banque {
         this.adresse = adresseB;
     }
 	
+    /* **************************** */
+	/*           METHODES           */
+	/* **************************** */
+    
 	@Override
 	public String toString(){
 		return "id = " + id + ", nom = " + nom + ", adresse = " + adresse;
