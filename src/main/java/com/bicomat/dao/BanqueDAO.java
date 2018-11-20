@@ -17,15 +17,12 @@ import org.springframework.stereotype.Repository;
 
 import com.bicomat.bean.Banque;
 
-/**
- * Classe BanqueDAO.
- */
 @Repository
 public class BanqueDAO implements IBanqueDAO {
-
+	
 	@PersistenceContext
     private EntityManager entityManager;
-	
+
 	/**
 	 * Ajoute une banque.
 	 *
@@ -46,11 +43,9 @@ public class BanqueDAO implements IBanqueDAO {
         final Root<Banque> lRoot = lCriteriaUpdate.from(Banque.class);
         final Path<Banque> lPath = lRoot.get("b_id");
         final Expression<Boolean> lExpression = lCriteriaBuilder.equal(lPath, b.getId());
-        
         lCriteriaUpdate.where(lExpression);
         lCriteriaUpdate.set("b_nom", b.getNom());
         lCriteriaUpdate.set("b_adresse", b.getAdresse());
-        
         final Query lQuery = entityManager.createQuery(lCriteriaUpdate);
         final int lRowCount = lQuery.executeUpdate();
 
@@ -70,7 +65,7 @@ public class BanqueDAO implements IBanqueDAO {
 		final Banque lBanque = entityManager.getReference(Banque.class, id);
         entityManager.remove(lBanque);
 	}
-	
+
 	/**
 	 * Retourne la liste des banques.
 	 *
@@ -86,4 +81,7 @@ public class BanqueDAO implements IBanqueDAO {
 
         return lTypedQuery.getResultList();
 	}
+
+	
+
 }

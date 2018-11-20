@@ -9,19 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bicomat.bean.Banque;
 import com.bicomat.dao.IBanqueDAO;
 
-/**
- * Classe BanqueService.
- */
 @Service
-public class BanqueService {
+public class BanqueService implements IBanqueService {
 	
 	@Autowired
 	private IBanqueDAO banqueDAO;
-	
+
 	public void setBanqueDAO(IBanqueDAO nBanqueDAO) {
 		this.banqueDAO = nBanqueDAO;
 	}
-	
+
 	/**
 	 * Demande l'ajout une banque.
 	 *
@@ -49,7 +46,7 @@ public class BanqueService {
 	public void supprimerBanque(int id) {
 		this.banqueDAO.supprimerBanque(id);
 	}
-	
+
 	/**
 	 * Demande la liste des banques.
 	 *

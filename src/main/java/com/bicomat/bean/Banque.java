@@ -24,15 +24,19 @@ public class Banque {
 	@Id
 	@Column(name="b_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	protected int b_id = 0;
+	private int id = 0;
 	/**
 	 * Nom de la banque.
 	 */
-	protected String b_nom = "";
+	@Column(name="b_nom")
+	private String nom = "";
 	/**
 	 * Adresse de la banque.
 	 */
-	protected String b_adresse = "";
+	@Column(name="b_adresse")
+	private String adresse = "";
+	
+
 	
 	/* **************************** */
 	/*         CONSTRUCTEURS        */
@@ -50,8 +54,8 @@ public class Banque {
      * @param adresseB Adresse de la banque
      */
     public Banque(final String nomB, final String adresseB) {
-    	this.b_nom = nomB;
-    	this.b_adresse = adresseB;
+    	this.nom = nomB;
+    	this.adresse = adresseB;
     }
     /**
      * Constructeur de la classe.
@@ -61,9 +65,9 @@ public class Banque {
      * @param adresseB Adresse de la banque
      */
     public Banque(final int idB, final String nomB, final String adresseB) {
-        this.b_id = idB;
-        this.b_nom = nomB;
-    	this.b_adresse = adresseB;
+        this.id = idB;
+        this.nom = nomB;
+    	this.adresse = adresseB;
     }
     
     /* **************************** */
@@ -73,26 +77,26 @@ public class Banque {
     /**
      * Getter de l'id.
      *
-     * @return b_id
+     * @return id
      */
     public final int getId() {
-        return b_id;
+        return id;
     }
     /**
      * Getter du nom.
      *
-     * @return b_nom
+     * @return nom
      */
     public final String getNom() {
-        return b_nom;
+        return nom;
     }
     /**
      * Getter de l'adresse.
      *
-     * @return b_adresse
+     * @return adresse
      */
     public final String getAdresse() {
-        return b_adresse;
+        return adresse;
     }
     
     /* **************************** */
@@ -105,7 +109,7 @@ public class Banque {
      * @param idB Nouvel id
      */
     public final void setId(final int idB) {
-        this.b_id = idB;
+        this.id = idB;
     }
     /**
      * Setter du nom.
@@ -113,7 +117,7 @@ public class Banque {
      * @param nomB Nouveau nom
      */
     public final void setNom(final String nomB) {
-        this.b_nom = nomB;
+        this.nom = nomB;
     }
     /**
      * Setter de l'adresse.
@@ -121,6 +125,11 @@ public class Banque {
      * @param adresseB Nouvelle adresse
      */
     public final void setAdresse(final String adresseB) {
-        this.b_adresse = adresseB;
+        this.adresse = adresseB;
     }
+	
+	@Override
+	public String toString(){
+		return "id = " + id + ", nom = " + nom + ", adresse = " + adresse;
+	}
 }
