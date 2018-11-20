@@ -211,6 +211,9 @@ public class Conseiller {
     
 	@Override
 	public String toString(){
-		return "id = " + id + ", nom = " + nom + ", prenom = " + prenom;
+		return "id = " + id + ", nom = " + nom + ", prenom = " + prenom
+				+ " login agnecy = " + loginAgency
+				+ " password agnecy = " + passwordAgency
+				+ " id banque = " + idBanque;
 	}
 }
