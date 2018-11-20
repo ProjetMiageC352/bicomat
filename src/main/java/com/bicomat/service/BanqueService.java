@@ -20,7 +20,7 @@ public class BanqueService implements IBanqueService {
 	}
 
 	/**
-	 * Demande l'ajout une banque.
+	 * Demande l'ajout d'une banque.
 	 *
 	 * @param b Banque à ajouter
 	 */

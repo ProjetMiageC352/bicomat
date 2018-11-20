@@ -81,7 +81,4 @@ public class BanqueDAO implements IBanqueDAO {
 
         return lTypedQuery.getResultList();
 	}
-
-	
-
 }

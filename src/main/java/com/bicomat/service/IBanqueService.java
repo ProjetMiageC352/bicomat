@@ -7,7 +7,7 @@ import com.bicomat.bean.Banque;
 public interface IBanqueService {
 
 	/**
-	 * Demande l'ajout une banque.
+	 * Demande l'ajout d'une banque.
 	 *
 	 * @param b Banque à ajouter
 	 */

@@ -26,7 +26,7 @@ public class BanqueController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String listPersons(ModelMap pModel) {
+	public String listeBanques(ModelMap pModel) {
 		final List<Banque> lBanques = banqueService.listeBanques();
         pModel.addAttribute("banques", lBanques);
         return "banque";
