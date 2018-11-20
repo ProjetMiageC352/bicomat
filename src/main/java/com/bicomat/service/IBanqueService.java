@@ -34,6 +34,9 @@ public interface IBanqueService {
 	
 	/**
 	 * Demande la création d'une banque.
+	 *
+	 * @param nNom Nom de la nouvelle banque
+	 * @param nAdresse Adresse de la nouvelle banque
 	 */
 	public void creerBanque(final String nNom, final String nAdresse);
 }

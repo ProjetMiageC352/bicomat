@@ -40,7 +40,7 @@ public class ConseillerService implements IConseillerService {
 	/**
 	 * Demande la suppression d'un conseiller.
 	 *
-	 * @param id Id du conseil à supprimer
+	 * @param id Id du conseiller à supprimer
 	 */
 	@Transactional
 	public void supprimerConseiller(int id) {
@@ -48,7 +48,7 @@ public class ConseillerService implements IConseillerService {
 	}
 
 	/**
-	 * Demande la liste des conseiller.
+	 * Demande la liste des conseillers.
 	 *
 	 * @return la liste des conseillers
 	 */
@@ -59,6 +59,12 @@ public class ConseillerService implements IConseillerService {
 	
 	/**
 	 * Demande la création d'un conseiller.
+	 *
+	 * @param nNom Nom du nouveau conseiller
+	 * @param nPrenom Prenom du nouveau conseiller
+	 * @param nLoginAgency Login agency du nouveau conseiller
+	 * @param nPasswordAgency Mot de passe agency du nouveau conseiller
+	 * @param nIdBanque Id de la banque du nouveau conseiller
 	 */
 	@Transactional
 	public void creerConseiller(final String nNom, final String nPrenom,

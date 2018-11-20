@@ -26,14 +26,20 @@ public interface IConseillerService {
 	public void supprimerConseiller(int id);
 	
 	/**
-	 * Demande la liste des conseiller.
+	 * Demande la liste des conseillers.
 	 *
-	 * @return la liste des conseiller
+	 * @return la liste des conseillers
 	 */
 	public List<Conseiller> listeConseillers();
 	
 	/**
 	 * Demande la création d'un conseiller.
+	 *
+	 * @param nNom Nom du nouveau conseiller
+	 * @param nPrenom Prenom du nouveau conseiller
+	 * @param nLoginAgency Login agency du nouveau conseiller
+	 * @param nPasswordAgency Mot de passe agency du nouveau conseiller
+	 * @param nIdBanque Id de la banque du nouveau conseiller
 	 */
 	public void creerConseiller(final String nNom, final String nPrenom,
 			final String nLoginAgency, final String nPasswordAgency,
