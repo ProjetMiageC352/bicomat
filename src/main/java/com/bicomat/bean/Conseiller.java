@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Classe Banque.
+ * Classe Conseiller.
  */
 @Entity
 @Table(name="conseiller")
@@ -67,7 +67,7 @@ public class Conseiller {
      * @param prenomConseiller Prénom du conseiller
      * @param loginAgencyC Login du conseiller pour le compte agency
      * @param passwordC Mot de passe du conseiller pour le compte agency
-     * @param banqueC Banque qui emploie le conseiller
+     * @param idBanqueC Id de la banque qui emploie le conseiller
      */
     public Conseiller(final String nomC, final String prenomC,
     		final String loginAgencyC, final String passwordAgencyC,
@@ -86,7 +86,7 @@ public class Conseiller {
      * @param prenomConseiller Prénom du conseiller
      * @param loginAgencyC Login du conseiller pour le compte agency
      * @param passwordC Mot de passe du conseiller pour le compte agency
-     * @param banqueC Banque qui emploie le conseiller
+     * @param idBanqueC Id de la banque qui emploie le conseiller
      */
     public Conseiller(final int idC, final String nomC, final String prenomC,
     		final String loginAgencyC, final String passwordAgencyC,
