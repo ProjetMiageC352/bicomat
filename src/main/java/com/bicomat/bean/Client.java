@@ -68,7 +68,19 @@ public class Client {
 		this.adresse_mail=adresseC;
 		this.type_client=typeC;
 	}
+	/**
+     * Constructeur de la classe.
+     */
 	
+	/**
+	 * @param nomT
+	 * @param prenomT
+	 */
+	/*public Client(String nomC,String prenomC) {
+		this.nom=nomC;
+		this.prenom=prenomC;
+		
+	}*/
 	
 	/**
      * Constructeur de la classe.
