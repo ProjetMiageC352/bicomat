@@ -25,8 +25,8 @@ public class ClientService implements IClientService {
 	 * @param c Client à ajouter
 	 */
 	@Transactional
-	public void ajouterClient(Client c) {
-		this.clientDAO.ajouterClient(c);
+	public void creerClient(Client c) {
+		this.clientDAO.creerClient(c);
 	}
 	/**
 	 * Demande la modification d'une client.
@@ -57,16 +57,5 @@ public class ClientService implements IClientService {
 		return this.clientDAO.listeClients();
 	}
 	
-	/**
-	 * Demande la création d'une client.
-	 */
-	@Transactional
-	public void creerClient(final String nNom, final String nPrenom,final String nAdresse, final String nType) {
-		final Client c = new Client();
-        c.setNom(nNom);
-        c.setPrenom(nPrenom);
-        c.setAdresse_mail(nAdresse);
-        c.setType_client(nType);
-        this.clientDAO.ajouterClient(c);
-	}
+	
 }
