@@ -8,6 +8,7 @@
         <title><spring:message code="titre"/> - <spring:message code="client.titre"/></title>
     </head>
     <body>
+    <h1><spring:message code="client.titre.creation"/></h1>
     	<form method="post"  modelAttribute="creerclient">
         <p>
             <label for="nom">Nom : </label>
