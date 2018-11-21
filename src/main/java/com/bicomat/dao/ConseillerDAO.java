@@ -68,6 +68,34 @@ public class ConseillerDAO implements IConseillerDAO {
 		final Conseiller lConseiller = entityManager.getReference(Conseiller.class, id);
         entityManager.remove(lConseiller);
 	}
+	
+	/**
+	 * Vérifie si un conseiller existe pour un login et un mot de passe.
+	 *
+	 * @param login Login à vérifier
+	 * @param password Password à vérifier
+	 * @return existe Vrai si un conseiller existe avec le login et le mot de passe
+	 */
+	public boolean existeAvecLoginPassword(String login, String password) {
+		boolean existe = false;
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaQuery<Conseiller> lCriteriaQuery = lCriteriaBuilder.createQuery(Conseiller.class);
+        final Root<Conseiller> lRoot = lCriteriaQuery.from(Conseiller.class);
+        lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.where(lCriteriaBuilder.and(
+        		lCriteriaBuilder.equal(lRoot.get("loginAgency"), login),
+        		lCriteriaBuilder.equal(lRoot.get("passwordAgency"), password)
+        		));
+
+        TypedQuery<Conseiller> query = entityManager.createQuery(lCriteriaQuery);
+        List<Conseiller> ListeConseillers = query.getResultList();
+        
+        if (!ListeConseillers.isEmpty()) {
+        	existe = true;
+        }
+        return existe;
+	}
 
 	/**
 	 * Retourne la liste des conseillers.
@@ -84,4 +112,5 @@ public class ConseillerDAO implements IConseillerDAO {
 
         return lTypedQuery.getResultList();
 	}
+	
 }

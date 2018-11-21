@@ -46,6 +46,17 @@ public class ConseillerService implements IConseillerService {
 	public void supprimerConseiller(int id) {
 		this.conseillerDAO.supprimerConseiller(id);
 	}
+	
+	/**
+	 * Demande de vérifier si un conseiller existe pour un login et un mot de passe.
+	 *
+	 * @param login Login à vérifier
+	 * @param password Password à vérifier
+	 * @return existe Vrai si un conseiller existe avec le login et le mot de passe
+	 */
+	public boolean existeAvecLoginPassword(String login, String password) {
+		return this.conseillerDAO.existeAvecLoginPassword(login, password);
+	}
 
 	/**
 	 * Demande la liste des conseillers.

@@ -26,6 +26,15 @@ public interface IConseillerDAO {
 	public void supprimerConseiller(int id);
 	
 	/**
+	 * Vérifie si un conseiller existe pour un login et un mot de passe.
+	 *
+	 * @param login Login à vérifier
+	 * @param password Password à vérifier
+	 * @return existe Vrai si un conseiller existe avec le login et le mot de passe
+	 */
+	public boolean existeAvecLoginPassword(String login, String password);
+	
+	/**
 	 * Retourne la liste des conseiller.
 	 *
 	 * @return la liste des conseillers de la table
