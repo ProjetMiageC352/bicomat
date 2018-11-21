@@ -9,26 +9,26 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bicomat.bean.Banque;
-import com.bicomat.service.IBanqueService;
+import com.bicomat.bean.Compte;
+import com.bicomat.service.ICompteService;
 
 @Controller
-@RequestMapping(value="/banques")
-public class BanqueController {
+@RequestMapping(value="/comptes")
+public class CompteController {
 	
 	@Autowired
-	private IBanqueService banqueService;
+	private ICompteService compteService;
 	
 	@Autowired(required=true)
-	@Qualifier(value="banqueService")
-	public void setBanqueService(IBanqueService bs){
-		this.banqueService = bs;
+	@Qualifier(value="compteService")
+	public void setCompteService(ICompteService cs){
+		this.compteService = cs;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String listeBanques(ModelMap pModel) {
-		final List<Banque> lBanques = banqueService.listeBanques();
-        pModel.addAttribute("banques", lBanques);
-        return "banque";
+	public String listeComptes(ModelMap pModel) {
+		final List<Compte> lComptes = compteService.listeComptes();
+        pModel.addAttribute("comptes", lComptes);
+        return "compte";
 	}	
 }

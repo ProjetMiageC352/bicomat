@@ -20,7 +20,7 @@ public class BanqueService implements IBanqueService {
 	}
 
 	/**
-	 * Demande l'ajout une banque.
+	 * Demande l'ajout d'une banque.
 	 *
 	 * @param b Banque à ajouter
 	 */
@@ -59,6 +59,9 @@ public class BanqueService implements IBanqueService {
 	
 	/**
 	 * Demande la création d'une banque.
+	 *
+	 * @param nNom Nom de la nouvelle banque
+	 * @param nAdresse Adresse de la nouvelle banque
 	 */
 	@Transactional
 	public void creerBanque(final String nNom, final String nAdresse) {
