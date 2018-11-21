@@ -28,7 +28,7 @@ public class ClientDAO implements IClientDAO {
 	 *
 	 * @param c Client à ajouter
 	 */
-	public void ajouterClient(Client c) {
+	public void creerClient(Client c) {
 		entityManager.persist(c);
 	}
 	/**
