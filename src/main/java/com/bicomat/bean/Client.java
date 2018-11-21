@@ -62,9 +62,11 @@ public class Client {
 	 * @param nomT
 	 * @param prenomT
 	 */
-	public Client(String nomT,String prenomT) {
-		this.nom=nomT;
-		this.prenom=prenomT;
+	public Client(String nomC,String prenomC,String adresseC,String typeC) {
+		this.nom=nomC;
+		this.prenom=prenomC;
+		this.adresse_mail=adresseC;
+		this.type_client=typeC;
 	}
 	
 	
