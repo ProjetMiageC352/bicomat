@@ -11,7 +11,7 @@ public interface IClientService {
 	 *
 	 * @param c Client à ajouter
 	 */
-	public void ajouterClient(Client c);
+	public void creerClient(Client c);
 	/**
 	 * Demande la modification d'une client.
 	 *
@@ -32,8 +32,5 @@ public interface IClientService {
 	 */
 	public List<Client> listeClients();
 	
-	/**
-	 * Demande la création d'une client.
-	 */
-	public void creerClient(final String nNom, final String nPrenom,final String nAdresse, final String nType);
+	
 }
