@@ -11,7 +11,7 @@ public interface IClientDAO {
 	 *
 	 * @param b Client à ajouter
 	 */
-	public void ajouterClient(Client c);
+	public void creerClient(Client c);
 	/**
 	 * Modifie une client.
 	 *
