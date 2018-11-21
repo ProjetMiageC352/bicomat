@@ -29,6 +29,20 @@ public class ClientController {
 	public String listPersons(ModelMap pModel) {
 		final List<Client> lClients = clientService.listeClients();
         pModel.addAttribute("clients", lClients);
-        return "client";
-	}	
+       
+        return "client"; //jsp de redirection 
+	}
+	
+	/*@RequestMapping( method = RequestMethod.POST)
+    public String submit( ModelMap model) {
+      Client client = new Client();
+        model.addAttribute("nom", client.getNom());
+        model.addAttribute("prenom", client.getPrenom());
+        model.addAttribute("adresse", client.getAdresse_mail());
+        model.addAttribute("type", client.getType_client());
+        clientService.creerClient(client);
+        return "formclient";
+    }*/
+	
+	
 }
