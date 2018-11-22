@@ -36,7 +36,7 @@ public class ClientDAO implements IClientDAO {
 	 *
 	 * @param c Client à modifier
 	 */
-	public void modifierClient(Client c) {
+	/*public void modifierClient(Client c) {
 		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
 
         final CriteriaUpdate<Client> lCriteriaUpdate = lCriteriaBuilder.createCriteriaUpdate(Client.class);
@@ -57,7 +57,7 @@ public class ClientDAO implements IClientDAO {
             throw new RuntimeException("Nombre d'occurences (" + lRowCount + 
                     ") modifiées différent de 1 pour " + lSql);
         }
-	}
+	}*/
 	/**
 	 * Supprime une client.
 	 *
