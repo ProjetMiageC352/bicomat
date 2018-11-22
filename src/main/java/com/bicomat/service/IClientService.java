@@ -17,7 +17,7 @@ public interface IClientService {
 	 *
 	 * @param c Client à modifier
 	 */
-	public void modifierClient(Client c);
+	//public void modifierClient(Client c);
 	/**
 	 * Demande la suppression d'une client.
 	 *
