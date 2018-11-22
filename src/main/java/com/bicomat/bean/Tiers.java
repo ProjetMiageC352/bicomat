@@ -21,10 +21,28 @@ public class Tiers  {
 	private int idT;
 	
 	/**
-	 * Numéro de compte du client
+	 * Nom du tiers
+	 */
+	@Column(name="t_nom")
+	private String nomT;
+	
+	/**
+	 * Prenom du tiers
+	 */
+	@Column(name="t_prenom")
+	private String prenomT;
+	
+	/**
+	 * Numéro de compte du tiers
 	 */
 	@Column(name="t_num_compte")
 	private int numCompte;
+	
+	/**
+	 * Id du client associé
+	 */
+	@Column(name="t_id_client")
+	private int idclientT;
 	
 	/**
 	 * Client actif?
