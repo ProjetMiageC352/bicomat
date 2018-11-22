@@ -33,7 +33,7 @@ public class Tiers  {
 	 * Numéro de compte du tiers
 	 */
 	@Column(name="t_num_compte")
-	private int numCompte;
+	private String numCompte;
 	/**
 	 * Id du client associé
 	 */
@@ -68,7 +68,7 @@ public class Tiers  {
      * @param id_clientT
      * @param actifT
      */
-    public Tiers(String nomT,String prenomT,int numCompteT, int id_clientT,boolean actifT) {
+    public Tiers(String nomT,String prenomT,String numCompteT, int id_clientT,boolean actifT) {
     	this.nom=nomT;
     	this.prenom=prenomT;
     	this.numCompte=numCompteT;
@@ -103,7 +103,7 @@ public class Tiers  {
     /**
 	 * @return the numCompte
 	 */
-	public final int getNumCompte() {
+	public final String getNumCompte() {
 		return numCompte;
 	}
 	/**
@@ -144,7 +144,7 @@ public class Tiers  {
 	/**
 	 * @param numCompte the numCompte to set
 	 */
-	public final void setNumCompte(int numCompte) {
+	public final void setNumCompte(String numCompte) {
 		this.numCompte = numCompte;
 	}
 	/**
