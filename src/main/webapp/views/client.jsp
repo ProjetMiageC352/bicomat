@@ -16,7 +16,11 @@
                     <th><spring:message code="client.colonne.nom"/></th>
                     <th><spring:message code="client.colonne.prenom"/></th>
                     <th><spring:message code="client.colonne.adresse"/></th>
-                    <th><spring:message code="client.colonne.type"/></th>
+                    <th><spring:message code="client.colonne.tel"/></th>
+                    <th><spring:message code="client.colonne.contrat"/></th>
+                    <th><spring:message code="client.colonne.conseiller"/></th>
+                    <th><spring:message code="client.colonne.login"/></th>
+                    <th><spring:message code="client.colonne.password"/></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +30,11 @@
                         <td><c:out value="${client.nom}"/></td>
                         <td><c:out value="${client.prenom}"/></td>
                         <td><c:out value="${client.adresse_mail}"/></td>
-                         <td><c:out value="${client.type_client}"/></td>
+                        <td><c:out value="${client.tel_client}"/></td>
+                        <td><c:out value="${client.num_contrat}"/></td>
+                        <td><c:out value="${client.id_conseiller}"/></td>
+                        <td><c:out value="${client.login}"/></td>
+                        <td><c:out value="${client.password}"/></td>
                     </tr>
                 </c:forEach>
             </tbody>
