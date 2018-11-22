@@ -17,7 +17,7 @@ public interface IClientDAO {
 	 *
 	 * @param b Client à modifier
 	 */
-	public void modifierClient(Client c);
+	/*public void modifierClient(Client c);
 	/**
 	 * Supprime une client.
 	 *
