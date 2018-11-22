@@ -29,7 +29,16 @@ public class TiersService implements ITiersService {
 		this.tiersDAO.creerTiers(t);
 	}
 
-
+	/**
+	 * Demande de vérifier si un Tiers existe pour un nom, prenom et numero de compte
+	 * @param nom
+	 * @param prenom
+	 * @param numcompte
+	 * @return
+	 */
+	public boolean existeAvecNomPrenomNumCompte(String nom, String prenom,String numcompte,int idclient ) {
+		return this.tiersDAO.existeAvecNomPrenomNumCompte(nom, prenom,numcompte,idclient );
+	}
 	/**
 	 * Demande la liste des tierss.
 	 *
