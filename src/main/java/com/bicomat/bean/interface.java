@@ -22,7 +22,12 @@ public class Interface {
      * 
      */
     public void FournirRenseignement() { //saisie du nom, prénom...
-        // TODO implement here
+        
+        Scanner sc = new Scanner(System.in); //récupération des différents paramètres saisis 
+        System.out.println("Veuillez saisir votre nom :");
+        String nom = sc.nextLine();
+        System.out.println("Veuillez saisir votre prénom :");
+        String type = sc.nextLine();    
     }
 
     /**
