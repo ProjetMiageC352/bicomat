@@ -248,7 +248,7 @@ public class Operation {
 	/**
 	 * 
 	 */
-	public void Créer_operation() {
+	public void Creer_operation() {
 	    // TODO implement here
 	}
     
