@@ -33,10 +33,10 @@ public class ClientService implements IClientService {
 	 *
 	 * @param b Client à modifier
 	 */
-	@Transactional
+	/*@Transactional
 	public void modifierClient(Client c) {
 		this.clientDAO.modifierClient(c);
-	}
+	}*/
 	/**
 	 * Demande la suppression d'une client.
 	 *
