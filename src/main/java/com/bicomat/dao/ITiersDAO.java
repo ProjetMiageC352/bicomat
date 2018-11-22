@@ -19,4 +19,12 @@ public interface ITiersDAO {
 	 */
 	
 	public List<Tiers> listeTiers();
+	/**
+	 * Demande de vérifier si un Tiers existe pour un nom, prenom et numero de compte
+	 * @param nom
+	 * @param prenom
+	 * @param numcompte
+	 * @return
+	 */
+	public boolean existeAvecNomPrenomNumCompte(String nom, String prenom,String numcompte, int idclient );
 }
