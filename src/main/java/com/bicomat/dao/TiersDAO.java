@@ -44,7 +44,33 @@ public class TiersDAO implements ITiersDAO {
 
         return lTypedQuery.getResultList();
 	}
-
 	
-
+	/**
+	 * Demande de vérifier si un Tiers existe pour un nom, prenom et numero de compte
+	 * @param nom
+	 * @param prenom
+	 * @param numcompte
+	 * @return
+	 */
+	public boolean existeAvecNomPrenomNumCompte(String nom, String prenom,String numcompte,int idclient ) {
+		boolean existe = false;
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+		final CriteriaQuery<Tiers> lCriteriaQuery = lCriteriaBuilder.createQuery(Tiers.class);
+		final Root<Tiers> lRoot = lCriteriaQuery.from(Tiers.class);
+		lCriteriaQuery.select(lRoot);
+		lCriteriaQuery.where(lCriteriaBuilder.and(
+        		lCriteriaBuilder.equal(lRoot.get("nom"), nom),
+        		lCriteriaBuilder.equal(lRoot.get("prenom"), prenom),
+        		lCriteriaBuilder.equal(lRoot.get("numCompte"), numcompte),
+        		lCriteriaBuilder.equal(lRoot.get("idclientT"), idclient)
+        		));
+		TypedQuery<Tiers> query = entityManager.createQuery(lCriteriaQuery);
+		List<Tiers> ListeTiers = query.getResultList();
+	
+		if (!ListeTiers.isEmpty()) {
+	    	existe = true;
+	    }
+	    return existe;
+	}
+	
 }
