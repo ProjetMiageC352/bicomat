@@ -19,7 +19,7 @@ public class Client {
 	 * Id du client
 	 */
 	@Id
-	@Column(name="c_id_client")
+	@Column(name="c_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	/** 
@@ -38,11 +38,30 @@ public class Client {
 	@Column(name="c_adresse_mail")
 	private String adresse_mail;
 	/**
-	 * Type du client
+	 * Telephone du client
 	 */
-	@Column(name="c_type_client")
-	private String type_client;
-	
+	@Column(name="c_num_tel")
+	private int tel_client;
+	/**
+	 * Numero de contrat du client
+	 */
+	@Column(name="c_num_contrat")
+	private int num_contrat;
+	 /**
+	  *  Numero de contrat du client
+	 */
+	@Column(name="c_id_conseiller")
+	private int id_conseiller;
+	 /**
+	  * login du client
+	 */
+	@Column(name="c_login")
+	private String login;
+	/**
+	  * Mot de passe du client
+	 */
+	@Column(name="c_mdp")
+	private String password;
 	
 	/* **************************** */
 	/*         CONSTRUCTEURS        */
@@ -57,49 +76,31 @@ public class Client {
 	/**
      * Constructeur de la classe.
      */
-	
 	/**
-	 * @param nomT
-	 * @param prenomT
-	 */
-	public Client(String nomC,String prenomC,String adresseC,String typeC) {
-		this.nom=nomC;
-		this.prenom=prenomC;
-		this.adresse_mail=adresseC;
-		this.type_client=typeC;
-	}
-	/**
-     * Constructeur de la classe.
-     */
-	
-	/**
-	 * @param nomT
-	 * @param prenomT
-	 */
-	/*public Client(String nomC,String prenomC) {
-		this.nom=nomC;
-		this.prenom=prenomC;
-		
-	}*/
-	
-	/**
-     * Constructeur de la classe.
-     */
-	/**
-	 * @param idC
 	 * @param nomC
 	 * @param prenomC
 	 * @param adresseC
-	 * @param typeC
+	 * @param telC
+	 * @param contratC
+	 * @param conseillerC
+	 * @param loginC
+	 * @param passwordC
 	 */
-	public Client(final int idC,final String nomC, final String prenomC,final String adresseC, final String typeC) {
-		this.id=idC;
+	public Client(String nomC,String prenomC,String adresseC,int telC,int contratC,int conseillerC, String loginC,String passwordC) {
 		this.nom=nomC;
 		this.prenom=prenomC;
 		this.adresse_mail=adresseC;
-		this.type_client=typeC;
+		this.tel_client=telC;
+		this.num_contrat=contratC;
+		this.id_conseiller=conseillerC;
+		this.login=loginC;
+		this.password=passwordC;
 	}
 	
+	
+	
+	
+
 	/* **************************** */
 	/*            GETTERS           */
 	/* **************************** */
@@ -133,17 +134,43 @@ public class Client {
 	}
 
 	/**
-	 * @return the type_client
+	 * @return the tel_client
 	 */
-	public final String getType_client() {
-		return type_client;
+	public final int getTel_client() {
+		return tel_client;
 	}
-	
+
+	/**
+	 * @return the num_contrat
+	 */
+	public final int getNum_contrat() {
+		return num_contrat;
+	}
+
+	/**
+	 * @return the id_conseiller
+	 */
+	public final int getId_conseiller() {
+		return id_conseiller;
+	}
+
+	/**
+	 * @return the login
+	 */
+	public final String getLogin() {
+		return login;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public final String getPassword() {
+		return password;
+	}
 
 	/* **************************** */
 	/*            SETTERS           */
 	/* **************************** */
-	
 	/**
 	 * @param id the id to set
 	 */
@@ -173,22 +200,48 @@ public class Client {
 	}
 
 	/**
-	 * @param type_client the type_client to set
+	 * @param tel_client the tel_client to set
 	 */
-	public final void setType_client(String type_client) {
-		this.type_client = type_client;
+	public final void setTel_client(int tel_client) {
+		this.tel_client = tel_client;
+	}
+
+	/**
+	 * @param num_contrat the num_contrat to set
+	 */
+	public final void setNum_contrat(int num_contrat) {
+		this.num_contrat = num_contrat;
+	}
+
+	/**
+	 * @param id_conseiller the id_conseiller to set
+	 */
+	public final void setId_conseiller(int id_conseiller) {
+		this.id_conseiller = id_conseiller;
+	}
+
+	/**
+	 * @param login the login to set
+	 */
+	public final void setLogin(String login) {
+		this.login = login;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public final void setPassword(String password) {
+		this.password = password;
 	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-	
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse_mail=" + adresse_mail
-				+ ", type_client=" + type_client + "]";
+				+ ", tel_client=" + tel_client + ", num_contrat=" + num_contrat + ", id_conseiller=" + id_conseiller
+				+ ", login=" + login + ", password=" + password + "]";
 	}
-
-	
-    
+  
 }
