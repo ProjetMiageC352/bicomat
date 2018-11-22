@@ -63,14 +63,15 @@ public class Interface {
     /**
      * 
      */
-    public void CalculerIntérêts() {
-        // TODO implement here
+    public double CalculerIntérêts(double emprunt, float taux_interet) {
+     double Intérêts = emprunt * taux_interet;
+     return Intérêts;
     }
-
     /**
      * 
      */
-    public void CalculerImpôts() {
+   public double CalculerImpôts(double Revenus, float taux_marginal) {
+        return Revenus*taux_marginal;
         // TODO implement here
     }
 
