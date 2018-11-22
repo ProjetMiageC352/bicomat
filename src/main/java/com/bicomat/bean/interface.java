@@ -15,7 +15,7 @@ public class Interface {
      * 
      */
     public void Attendre24h() { //le client devra attendre 24h pour l'activation de son compte
-
+    
     }
 
     /**
@@ -41,7 +41,7 @@ public class Interface {
      * 
      */
     public void AfficherListe() {
-        // TODO implement here
+    compte.ListerOper();
     }
 
     /**
@@ -92,7 +92,7 @@ public class Interface {
      * 
      */
     public void ClôturerCompte() {
-        // TODO implement here
+        // rajouter un attribut actif dans la classe compte
     }
 
     /**
@@ -114,7 +114,7 @@ public class Interface {
      * 
      */
     public void Créer_virement() {
-        // TODO implement here
+    compte.CréerOperation();
     }
 
 }
