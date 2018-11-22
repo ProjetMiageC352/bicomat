@@ -213,7 +213,7 @@ public class Operation {
     /**
 	 * 
 	 */
-	public void ListerOpération() {
+	public void ListerOperation() {
 	    // TODO implement here
 	}
 	
@@ -248,7 +248,7 @@ public class Operation {
 	/**
 	 * 
 	 */
-	public void Créer_operation() {
+	public void CrÃ©er_operation() {
 	    // TODO implement here
 	}
     

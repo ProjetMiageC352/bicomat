@@ -1,6 +1,12 @@
 package com.bicomat.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,7 +32,15 @@ public class ConseillerController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String listeConseillers(ModelMap pModel) {
+	public String listeConseillers(ModelMap pModel, HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		
+		// Redirection si le conseiller n'est pas connecté
+		HttpSession session = request.getSession();
+		if (session.getAttribute("conseiller") == null) {
+			request.getRequestDispatcher("connexion").forward(request, response);
+		}
+		
 		final List<Conseiller> lConseillers = conseillerService.listeConseillers();
         pModel.addAttribute("conseillers", lConseillers);
         return "conseiller";
