@@ -10,16 +10,31 @@
     <body>
     <h1><spring:message code="tiers.titre.creation"/></h1>
     	<form method="post"  modelAttribute="creertiers">
-        <p>
-            <label for="nom">Numéro de compte : </label>
-            <input type="text" name="num" id="num" />
-        </p>
-        <p>
-            <label for="prenom">Actif : </label>
-            <input type="checkbox" name="actif" id="actif" value="true"/>
-        </p>
+    	<table>
+    	
+    	<tr>
+            <td><label for="nom">Nom : </label></td>
+           	<td><input type="text" name="nom" id="nom" /></td>
+        </tr>
+        <tr>
+            <td><label for="nom">Prenom : </label></td>
+            <td><input type="text" name="prenom" id="prenom" /></td>
+       </tr>
+        <tr>
+            <td><label for="nom">Numéro de compte : </label></td>
+            <td><input type="text" name="num" id="num" /></td>
+        </tr>
+        <tr>
+            <td><label for="nom">Id Client : </label></td>
+            <td><input type="text" name="id_client" id="id_client" /></td>
+        </tr>
+        <tr>
+            <td><label for="prenom">Actif : </label></td>
+            <td><input type="checkbox" name="actif" id="actif" value="true"/></td>
+        </tr>
+        </table>
         
-        <input type="submit" />
+        <input type="submit" value="Envoyer"/>
     </form> 
     </body>
 </html>
