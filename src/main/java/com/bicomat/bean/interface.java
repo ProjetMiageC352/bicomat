@@ -43,9 +43,21 @@ public class Interface {
      * 
      */
     public void CréerCompte() {
-        // TODO implement here
-    }
-
+        Scanner sc = new Scanner(System.in); //récupération des différents paramètres saisis 
+        System.out.println("Veuillez saisir un id :");
+        int id = sc.nextInt();
+        System.out.println("Veuillez saisir un type :");
+        String type = sc.nextLine();
+        
+        System.out.println("Veuillez saisir l'identifiant de la banque :");
+        int idBanque = sc.nextInt();
+        
+        System.out.println("Veuillez saisir l'identifiant Client :");
+        int idClient = sc.nextInt();
+        
+        Compte compte = new Compte(id, type, idBanque, idClient); // instanciation de l'objet créé 
+        
+        
     /**
      * 
      */
