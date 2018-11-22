@@ -15,7 +15,7 @@ public class Interface {
      * 
      */
     public void Attendre24h() { //le client devra attendre 24h pour l'activation de son compte
-        // TODO implement here
+
     }
 
     /**
@@ -67,7 +67,25 @@ public class Interface {
      * 
      */
     public void CréerCompteAgency() {
-        // TODO implement here
+        Scanner sc = new Scanner(System.in); //récupération des différents paramètres saisis 
+        System.out.println("Veuillez saisir un id :");
+        int id = sc.nextInt();
+        
+        System.out.println("Veuillez saisir votre nom :");
+        String nom = sc.nextLine();
+        
+        System.out.println("Veuillez saisir votre prénom :");
+        String prénom = sc.nextLine();
+        
+        System.out.println("Veuillez saisir votre mail :");
+        String email = sc.nextLine();
+        
+      
+        System.out.println("Veuillez saisir le type :");
+        String type_client = sc.nextLine();
+        
+        Client client = new Client(nom, prénom, adresse, type); // instanciation de l'objet créé 
+        
     }
 
     /**
