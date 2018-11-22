@@ -12,7 +12,10 @@
         <table border="1">
             <thead>
                 <tr>
+                	<th><spring:message code="tiers.colonne.nom"/></th>
+                    <th><spring:message code="tiers.colonne.prenom"/></th>
                     <th><spring:message code="tiers.colonne.compte"/></th>
+                    <th><spring:message code="tiers.colonne.idclient"/></th>
                     <th><spring:message code="tiers.colonne.actif"/></th>
             
                 </tr>
@@ -20,8 +23,10 @@
             <tbody>
                 <c:forEach items="${Tiers}" var="tiers">
                     <tr>
-                       
+                    	<td><c:out value="${tiers.nom}"/></td>
+                       	<td><c:out value="${tiers.prenom}"/></td>
                         <td><c:out value="${tiers.numCompte}"/></td>
+                         <td><c:out value="${tiers.idclientT}"/></td>
                         <td><c:out value="${tiers.actif}"/></td>
                         
                     </tr>
