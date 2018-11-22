@@ -47,7 +47,10 @@ public class TiersController {
 	@RequestMapping(value="/creertiers",method = RequestMethod.POST)
 	public String addtiers(HttpServletRequest response) {
 		Tiers tiers =new Tiers();
+		tiers.setNom(response.getParameter("nom"));
+		tiers.setPrenom(response.getParameter("prenom"));
 		tiers.setNumCompte(Integer.parseInt(response.getParameter("num")));
+		tiers.setIdclientT(Integer.parseInt(response.getParameter("id_client")));
 	    if (response.getParameter("actif")=="true"){
 	    	tiers.setActif(true);
 	    }else {
