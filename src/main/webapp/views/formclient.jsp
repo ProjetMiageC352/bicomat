@@ -10,25 +10,42 @@
     <body>
     <h1><spring:message code="client.titre.creation"/></h1>
     	<form method="post"  modelAttribute="creerclient">
-        <p>
-            <label for="nom">Nom : </label>
-            <input type="text" name="nom" id="nom" />
-        </p>
-        <p>
-            <label for="prenom">Prénom : </label>
-            <input type="text" name="prenom" id="prenom" />
-        </p>
-        
-        <p>
-            <label for="adresse">adresse mail: </label>
-            <input type="text" name="adresse" id="adresse" />
-        </p>
-        
-         <p>
-            <label for="type">type de client: </label>
-            <input type="text" name="type" id="type" />
-        </p>
-        <input type="submit" />
+        <table>
+    	
+    	<tr>
+            <td><label for="nom">Nom : </label></td>
+            <td><input type="text" name="nom" id="nom" /></td>
+        </tr>
+        <tr>
+            <td><label for="prenom">Prénom : </label></td>
+            <td><input type="text" name="prenom" id="prenom" /></td>
+        </tr>
+        <tr>
+            <td><label for="adresse">Adresse mail: </label></td>
+            <td><input type="text" name="adresse" id="adresse" /></td>
+        </tr>
+        <tr>
+            <td><label for="type">Téléphone </label></td>
+            <td><input type="text" name="tel" id="tel"/></td>
+        </tr>
+        <tr>
+            <td><label for="type">Numéro de Contrat</label></td>
+            <td><input type="text" name="contrat" id="contrat"/></td>
+        </tr>
+        <tr>
+            <td><label for="type">Id du Conseiller</label></td>
+            <td><input type="text" name="conseiller" id="conseiller"/></td>
+        </tr>
+        <tr>
+            <td><label for="type">Login</label></td>
+            <td><input type="text" name="login" id="login" /></td>
+        </tr>
+        <tr>
+          <td><label for="type">Mot de passe</label></td>
+           <td><input type="text" name="password" id="password"/></td>
+        </tr>
+        </table>
+        <input type="submit" value="Envoyer"/>
     </form> 
     </body>
 </html>
