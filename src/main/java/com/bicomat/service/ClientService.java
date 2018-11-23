@@ -56,6 +56,24 @@ public class ClientService implements IClientService {
 	public List<Client> listeClients() {
 		return this.clientDAO.listeClients();
 	}
+	/**
+	 * Demande de vérifier si le client a un compte agency
+	 * @param nom
+	 * @param prenom
+	 * @return
+	 */
+	public boolean verifieclientAgency(String nom, String prenom) {
+		return this.verifieclientAgency(nom, prenom);
+	}
 	
+	/**
+	 * Demande de vérifier si un Client existe pour un nom, prenom et numero de CB
+	 * @param nom
+	 * @param prenom
+	 * @return
+	 */
+	public boolean existeAvecNomPrenomNumcarte(String nom, String prenom,String numcarte ) {
+		return this.existeAvecNomPrenomNumcarte(nom, prenom, numcarte);
+	}
 	
 }
