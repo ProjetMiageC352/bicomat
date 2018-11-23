@@ -41,7 +41,11 @@ public class CarteBancaire {
 	 */
 	@Column(name="cb_code_crypto")
 	protected String code_crypto;
-	
+	/**
+	 *Id du client
+	 */
+	@Column(name="cb_idclient")
+	protected int cb_idclient;
 	/* **************************** */
 	/*         CONSTRUCTEURS        */
 	/* **************************** */	
@@ -91,6 +95,14 @@ public class CarteBancaire {
 	}
 	
 	
+	/**
+	 * @return the cb_idclient
+	 */
+	public final int getCb_idclient() {
+		return cb_idclient;
+	}
+
+
 	/* **************************** */
 	/*            SETTERS           */
 	/* **************************** */
@@ -130,14 +142,25 @@ public class CarteBancaire {
 	}
 
 
+	/**
+	 * @param cb_idclient the cb_idclient to set
+	 */
+	public final void setCb_idclient(int cb_idclient) {
+		this.cb_idclient = cb_idclient;
+	}
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "CarteBancaire [idC=" + idC + ", num_carte=" + num_carte + ", type_carte=" + type_carte + ", echeance="
-				+ echeance + ", code_crypto=" + code_crypto + "]";
+				+ echeance + ", code_crypto=" + code_crypto + ", cb_idclient=" + cb_idclient + "]";
 	}
+
+
+	
 
 
 
