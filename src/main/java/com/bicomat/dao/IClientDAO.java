@@ -26,6 +26,20 @@ public interface IClientDAO {
 	public void supprimerClient(int id);
 	
 	/**
+	 * Demande de vérifier si un Client existe pour un nom, prenom et numero de CB
+	 * @param nom
+	 * @param prenom
+	 * @return
+	 */
+	public boolean existeAvecNomPrenomNumcarte(String nom, String prenom,String numcarte );
+	/**
+	 * Demande de vérifier si le client a un compte agency
+	 * @param nom
+	 * @param prenom
+	 * @return
+	 */
+	public boolean verifieclientAgency(String nom, String prenom) ;
+	/**
 	 * Retourne la liste des clients.
 	 *
 	 * @return la liste des clients de la table
