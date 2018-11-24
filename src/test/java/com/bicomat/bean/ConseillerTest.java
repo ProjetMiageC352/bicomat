@@ -157,7 +157,7 @@ public class ConseillerTest {
      */
     @Test
     public final void testToString() {
-        Assert.assertEquals(c.toString(), "id = 1, nom = Nom, prenom = Prenom, "
-        		+ "login agnecy = Login, password agnecy = Password, id banque = 1");
+        Assert.assertEquals(c.toString(), "Conseiller [id = 1, nom = Nom, prenom = Prenom, "
+        		+ "login agnecy = Login, password agnecy = Password, id banque = 1]");
     }
 }

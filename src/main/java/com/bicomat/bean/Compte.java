@@ -237,9 +237,9 @@ public class Compte {
     
     @Override
 	public String toString(){
-		return "id = " + id + ", type = " + type + ", découvert = " + decouvert
+		return "Compte [id = " + id + ", type = " + type + ", découvert = " + decouvert
 				+ ", solde = " + solde
 				+ ", id banque = " + idBanque
-				+ ", id client = " + idClient;
+				+ ", id client = " + idClient + "]";
 	}
 }

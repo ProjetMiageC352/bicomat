@@ -254,8 +254,8 @@ public class Operation {
     
     @Override
 	public String toString(){
-		return "id = " + id + ", date = " + date.toString() + ", montant = " + montant
+		return "Operation [id = " + id + ", date = " + date.toString() + ", montant = " + montant
 				+ ", type = " + type + ", id opération = " + idOperation
-				+ ", id compte = " + idCompte;
+				+ ", id compte = " + idCompte + "]";
 	}
 }

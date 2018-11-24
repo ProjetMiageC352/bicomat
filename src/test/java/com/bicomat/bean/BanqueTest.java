@@ -106,6 +106,6 @@ public class BanqueTest {
      */
     @Test
     public final void testToString() {
-        Assert.assertEquals(b.toString(), "id = 1, nom = Nom, adresse = Adresse");
+        Assert.assertEquals(b.toString(), "Banque [id = 1, nom = Nom, adresse = Adresse]");
     }
 }

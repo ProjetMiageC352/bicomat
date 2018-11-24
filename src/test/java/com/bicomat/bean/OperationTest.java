@@ -159,7 +159,7 @@ public class OperationTest {
      */
     @Test
     public final void testToString() {
-        Assert.assertEquals(o.toString(), "id = 1, date = 2018-01-01, montant = 100.0, "
-        		+ "type = Type, id opération = 1, id compte = 1");
+        Assert.assertEquals(o.toString(), "Operation [id = 1, date = 2018-01-01, "
+        		+ "montant = 100.0, type = Type, id opération = 1, id compte = 1]");
     }
 }

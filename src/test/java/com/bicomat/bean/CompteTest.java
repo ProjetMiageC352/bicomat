@@ -157,7 +157,7 @@ public class CompteTest {
      */
     @Test
     public final void testToString() {
-    	Assert.assertEquals(c.toString(), "id = 1, type = Type, découvert = true, "
-        		+ "solde = 100.0, id banque = 1, id client = 1");
+    	Assert.assertEquals(c.toString(), "Compte [id = 1, type = Type, découvert = true, "
+        		+ "solde = 100.0, id banque = 1, id client = 1]");
     }
 }
