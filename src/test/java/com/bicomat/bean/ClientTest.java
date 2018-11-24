@@ -119,7 +119,7 @@ public class ClientTest {
         Assert.assertEquals(c.getId(), 1);
     }
     /**
-     * Test de setNom(String nom).
+     * Test de setNom(String nomC).
      */
     @Test
     public final void testSetNom() {
@@ -129,7 +129,7 @@ public class ClientTest {
         Assert.assertEquals(c.getNom(), "Nom");
     }
     /**
-     * Test de setPrenom(String prenom).
+     * Test de setPrenom(String prenomC).
      */
     @Test
     public final void testSetPrenom() {
@@ -139,7 +139,7 @@ public class ClientTest {
         Assert.assertEquals(c.getPrenom(), "Prenom");
     }
     /**
-     * Test de setAdresse_mail(String adresse_mail).
+     * Test de setAdresse_mail(String adresse_mailC).
      */
     @Test
     public final void testSetAdresse_mail() {
@@ -149,7 +149,7 @@ public class ClientTest {
         Assert.assertEquals(c.getAdresse_mail(), "Adresse");
     }
     /**
-     * Test de setTel_client(int tel_client).
+     * Test de setTel_client(int tel_clientC).
      */
     @Test
     public final void testSetTel_client() {
@@ -159,7 +159,7 @@ public class ClientTest {
         Assert.assertEquals(c.getTel_client(), 0606060606);
     }
     /**
-     * Test de setNum_contrat(int num_contrat).
+     * Test de setNum_contrat(int num_contratC).
      */
     @Test
     public final void testSetNum_contrat() {
@@ -169,7 +169,7 @@ public class ClientTest {
         Assert.assertEquals(c.getNum_contrat(), 1);
     }
     /**
-     * Test de setId_conseiller(int id_conseiller).
+     * Test de setId_conseiller(int id_conseillerC).
      */
     @Test
     public final void testSetId_conseiller() {
@@ -179,7 +179,7 @@ public class ClientTest {
         Assert.assertEquals(c.getId_conseiller(), 1);
     }
     /**
-     * Test de setLogin(String login).
+     * Test de setLogin(String loginC).
      */
     @Test
     public final void testSetLogin() {
@@ -189,7 +189,7 @@ public class ClientTest {
         Assert.assertEquals(c.getLogin(), "Login");
     }
     /**
-     * Test de setPassword(String password).
+     * Test de setPassword(String passwordC).
      */
     @Test
     public final void testPassword() {
@@ -206,10 +206,10 @@ public class ClientTest {
     /**
      * Test de toString().
      */
-    @Test
+    /*@Test
     public final void testToString() {
-    	/*Assert.assertEquals(c.toString(), "Client [id=1, nom=Nom, prenom=Prenom, "
+    	Assert.assertEquals(c.toString(), "Client [id=1, nom=Nom, prenom=Prenom, "
     			+ "adresse_mail=Adresse, tel_client=606060606, num_contrat=1, "
-    			+ "id_conseiller=1, login=Login, password=Password]");*/
-    }
+    			+ "id_conseiller=1, login=Login, password=Password]");
+    }*/
 }

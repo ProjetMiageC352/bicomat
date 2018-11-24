@@ -191,66 +191,66 @@ public class Client {
 	/*            SETTERS           */
 	/* **************************** */
 	/**
-	 * @param id the id to set
+	 * @param idC the id to set
 	 */
-	public final void setId(int id) {
-		this.id = id;
+	public final void setId(int idC) {
+		this.id = idC;
 	}
 
 	/**
 	 * @param nom the nom to set
 	 */
-	public final void setNom(String nom) {
-		this.nom = nom;
+	public final void setNom(String nomC) {
+		this.nom = nomC;
 	}
 
 	/**
 	 * @param prenom the prenom to set
 	 */
-	public final void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public final void setPrenom(String prenomC) {
+		this.prenom = prenomC;
 	}
 
 	/**
 	 * @param adresse_mail the adresse_mail to set
 	 */
-	public final void setAdresse_mail(String adresse_mail) {
-		this.adresse_mail = adresse_mail;
+	public final void setAdresse_mail(String adresse_mailC) {
+		this.adresse_mail = adresse_mailC;
 	}
 
 	/**
 	 * @param tel_client the tel_client to set
 	 */
-	public final void setTel_client(int tel_client) {
-		this.tel_client = tel_client;
+	public final void setTel_client(int tel_clientC) {
+		this.tel_client = tel_clientC;
 	}
 
 	/**
 	 * @param num_contrat the num_contrat to set
 	 */
-	public final void setNum_contrat(int num_contrat) {
-		this.num_contrat = num_contrat;
+	public final void setNum_contrat(int num_contratC) {
+		this.num_contrat = num_contratC;
 	}
 
 	/**
 	 * @param id_conseiller the id_conseiller to set
 	 */
-	public final void setId_conseiller(int id_conseiller) {
-		this.id_conseiller = id_conseiller;
+	public final void setId_conseiller(int id_conseillerC) {
+		this.id_conseiller = id_conseillerC;
 	}
 
 	/**
 	 * @param login the login to set
 	 */
-	public final void setLogin(String login) {
-		this.login = login;
+	public final void setLogin(String loginC) {
+		this.login = loginC;
 	}
 
 	/**
 	 * @param password the password to set
 	 */
-	public final void setPassword(String password) {
-		this.password = password;
+	public final void setPassword(String passwordC) {
+		this.password = passwordC;
 	}
 
 	/* (non-Javadoc)
