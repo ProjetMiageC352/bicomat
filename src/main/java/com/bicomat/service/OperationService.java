@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bicomat.bean.Compte;
 import com.bicomat.bean.Operation;
 import com.bicomat.dao.IOperationDAO;
 
@@ -56,6 +57,18 @@ public class OperationService implements IOperationService {
 	@Transactional(readOnly=true)
 	public List<Operation> listeOperations() {
 		return this.operationDAO.listeOperations();
+	}
+	/**
+	 * Demande la liste des opérations en fonction de dates pour un compte.
+	 * 
+	 * @param date1 Date de début du relevé
+	 * @param date2 Date de fin du relevé
+	 * @param compte Compte pour le relevé
+	 * @return la liste des opérations
+	 */
+	@Transactional(readOnly=true)
+	public List<Operation> listeOperationsParDatesCompte(Date date1, Date date2, Compte compte) {
+		return this.operationDAO.listeOperationsParDatesCompte(date1,date2, compte);
 	}
 	
 	/**

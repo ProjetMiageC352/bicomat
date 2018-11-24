@@ -210,22 +210,17 @@ public class Compte {
     /**
      * 
      */
-    public void CreerCompte() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
     public void ListeOper() {
         // TODO implement here
     }
 
     /**
+     * Lie une opération au compte.
      * 
+     * @param o Opération à lier au compte
      */
-    public void LierOpCpte() {
-        // TODO implement here
+    public void lierOpCpte(final Operation o) {
+        
     }
 
     /**

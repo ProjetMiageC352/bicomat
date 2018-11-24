@@ -209,13 +209,6 @@ public class Operation {
     /* **************************** */
 	/*           METHODES           */
 	/* **************************** */
-    
-    /**
-	 * 
-	 */
-	public void ListerOperation() {
-	    // TODO implement here
-	}
 	
 	/**
 	 * 
@@ -227,28 +220,7 @@ public class Operation {
 	/**
 	 * 
 	 */
-	public void Date() {
-	    // TODO implement here
-	}
-	
-	/**
-	 * 
-	 */
-	public void Montant() {
-	    // TODO implement here
-	}
-	
-	/**
-	 * 
-	 */
 	public void VerserSolde() {
-	    // TODO implement here
-	}
-	
-	/**
-	 * 
-	 */
-	public void Creer_operation() {
 	    // TODO implement here
 	}
     

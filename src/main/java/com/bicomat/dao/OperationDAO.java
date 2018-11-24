@@ -1,5 +1,6 @@
 package com.bicomat.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
+import com.bicomat.bean.Compte;
 import com.bicomat.bean.Operation;
 
 @Repository
@@ -80,6 +82,29 @@ public class OperationDAO implements IOperationDAO {
         final CriteriaQuery<Operation> lCriteriaQuery = lCriteriaBuilder.createQuery(Operation.class);
         final Root<Operation> lRoot = lCriteriaQuery.from(Operation.class);
         lCriteriaQuery.select(lRoot);
+        final TypedQuery<Operation> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
+
+        return lTypedQuery.getResultList();
+	}
+	/**
+	 * Retourne la liste des opérations en fonction de dates pour un compte.
+	 *
+	 * @param date1 Date de début du relevé
+	 * @param date2 Date de fin du relevé
+	 * @param compte Compte pour le relevé
+	 * @return la liste des opérations
+	 */
+	public List<Operation> listeOperationsParDatesCompte(Date date1, Date date2, Compte compte) {
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaQuery<Operation> lCriteriaQuery = lCriteriaBuilder.createQuery(Operation.class);
+        final Root<Operation> lRoot = lCriteriaQuery.from(Operation.class);
+        lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.where(lCriteriaBuilder.and(
+        		lCriteriaBuilder.between(lRoot.get("date").as(Date.class), date1, date2),
+        		lCriteriaBuilder.equal(lRoot.get("idCompte"), compte.getId())
+        		));
+        
         final TypedQuery<Operation> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
 
         return lTypedQuery.getResultList();

@@ -3,6 +3,7 @@ package com.bicomat.service;
 import java.sql.Date;
 import java.util.List;
 
+import com.bicomat.bean.Compte;
 import com.bicomat.bean.Operation;
 
 public interface IOperationService {
@@ -32,6 +33,15 @@ public interface IOperationService {
 	 * @return la liste des opérations
 	 */
 	public List<Operation> listeOperations();
+	/**
+	 * Demande la liste des opérations en fonction de dates pour un compte.
+	 * 
+	 * @param date1 Date de début du relevé
+	 * @param date2 Date de fin du relevé
+	 * @param compte Compte pour le relevé
+	 * @return la liste des opérations
+	 */
+	public List<Operation> listeOperationsParDatesCompte(Date date1, Date date2, Compte compte);
 	
 	/**
 	 * Demande la création d'une opération.
