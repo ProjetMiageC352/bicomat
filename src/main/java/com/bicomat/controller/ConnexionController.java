@@ -29,14 +29,12 @@ public class ConnexionController {
 	public String afficherFormulaire(ModelMap pModel,
 			HttpServletRequest request) {
 		
+		String vue = "connexion";
 		HttpSession session = request.getSession();
-		String etatConnexion = "non connecté";
 		if (session.getAttribute("conseiller") != null) {
-			etatConnexion = "connecté " + session.getAttribute("conseiller");
+			vue = "accueil";
 		}
-		pModel.addAttribute("etatConnexion", etatConnexion);
-		
-		return "connexion";
+		return vue;
 	}
 	
 	@RequestMapping(value="/connexion", method = RequestMethod.POST)
@@ -45,18 +43,15 @@ public class ConnexionController {
 			@RequestParam("login") String login,
 			@RequestParam("password") String password) {
 		
+		String vue = "connexion";
 		HttpSession session = request.getSession();
 		if (conseillerService.existeAvecLoginPassword(login, password)) {
 			session.setAttribute("conseiller", login);
 		}
-		
-		String etatConnexion = "non connecté";
 		if (session.getAttribute("conseiller") != null) {
-			etatConnexion = "connecté " + session.getAttribute("conseiller");
+			vue = "accueil";
 		}
-		pModel.addAttribute("etatConnexion", etatConnexion);
-		
-		return "connexion";
+		return vue;
 	}
 	
 	@RequestMapping(value="/deconnexion", method = RequestMethod.GET)
@@ -64,13 +59,6 @@ public class ConnexionController {
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.setAttribute("conseiller", null);
-		
-		String etatConnexion = "non connecté";
-		if (session.getAttribute("conseiller") != null) {
-			etatConnexion = "connecté " + session.getAttribute("conseiller");
-		}
-		pModel.addAttribute("etatConnexion", etatConnexion);
-		
 		return "connexion";
 	}
 }
