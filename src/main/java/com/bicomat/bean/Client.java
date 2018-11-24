@@ -48,7 +48,7 @@ public class Client {
 	@Column(name="c_num_contrat")
 	private int num_contrat;
 	 /**
-	  *  Numero de contrat du client
+	  *  Id du conseiller du client
 	 */
 	@Column(name="c_id_conseiller")
 	private int id_conseiller;
@@ -68,15 +68,13 @@ public class Client {
 	/* **************************** */
 	
 	/**
-     * Constructeur par défaut de la classe.
+     * Constructeur par dÃ©faut de la classe.
      */
 	public Client() {
 	}
-	
 	/**
      * Constructeur de la classe.
-     */
-	/**
+     * 
 	 * @param nomC
 	 * @param prenomC
 	 * @param adresseC
@@ -96,11 +94,32 @@ public class Client {
 		this.login=loginC;
 		this.password=passwordC;
 	}
+	/**
+     * Constructeur de la classe.
+     * 
+	 * @param idC
+	 * @param nomC
+	 * @param prenomC
+	 * @param adresseC
+	 * @param telC
+	 * @param contratC
+	 * @param conseillerC
+	 * @param loginC
+	 * @param passwordC
+	 */
+	public Client(int idC, String nomC, String prenomC, String adresseC, int telC,
+			int contratC, int conseillerC, String loginC, String passwordC) {
+		this.id = idC;
+		this.nom=nomC;
+		this.prenom=prenomC;
+		this.adresse_mail=adresseC;
+		this.tel_client=telC;
+		this.num_contrat=contratC;
+		this.id_conseiller=conseillerC;
+		this.login=loginC;
+		this.password=passwordC;
+	}
 	
-	
-	
-	
-
 	/* **************************** */
 	/*            GETTERS           */
 	/* **************************** */

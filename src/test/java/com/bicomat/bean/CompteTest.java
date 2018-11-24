@@ -127,7 +127,7 @@ public class CompteTest {
         c.setSolde(100);
         Assert.assertEquals(c.getSolde(), 100, 0);
     }
-   /**
+    /**
      * Test de setIdBanque(int idBanqueC).
      */
     @Test

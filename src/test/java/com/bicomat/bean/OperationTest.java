@@ -6,8 +6,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.bicomat.bean.Operation;
-
 /**
  * Tests unitaires pour la classe Operation.
  */

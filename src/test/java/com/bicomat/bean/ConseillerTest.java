@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.bicomat.bean.Conseiller;
-
 /**
  * Tests unitaires pour la classe Conseiller.
  */
