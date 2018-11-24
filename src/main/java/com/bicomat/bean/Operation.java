@@ -162,8 +162,8 @@ public class Operation {
      *
      * @param idC Nouvel id
      */
-    public final void setId(final int idC) {
-        this.id = idC;
+    public final void setId(final int idO) {
+        this.id = idO;
     }
     /**
      * Setter de la date.
@@ -255,7 +255,7 @@ public class Operation {
     @Override
 	public String toString(){
 		return "id = " + id + ", date = " + date.toString() + ", montant = " + montant
-				+ " type = " + type + " id opération = " + idOperation
-				+ " id compte = " + idCompte;
+				+ ", type = " + type + ", id opération = " + idOperation
+				+ ", id compte = " + idCompte;
 	}
 }
