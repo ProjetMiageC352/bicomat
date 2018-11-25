@@ -41,7 +41,7 @@ public class Client {
 	 * Telephone du client
 	 */
 	@Column(name="c_num_tel")
-	private int tel_client;
+	private String tel_client;
 	/**
 	 * Numero de contrat du client
 	 */
@@ -84,7 +84,7 @@ public class Client {
 	 * @param loginC
 	 * @param passwordC
 	 */
-	public Client(String nomC,String prenomC,String adresseC,int telC,int contratC,int conseillerC, String loginC,String passwordC) {
+	public Client(String nomC,String prenomC,String adresseC,String telC,int contratC,int conseillerC, String loginC,String passwordC) {
 		this.nom=nomC;
 		this.prenom=prenomC;
 		this.adresse_mail=adresseC;
@@ -107,7 +107,7 @@ public class Client {
 	 * @param loginC
 	 * @param passwordC
 	 */
-	public Client(int idC, String nomC, String prenomC, String adresseC, int telC,
+	public Client(int idC, String nomC, String prenomC, String adresseC, String telC,
 			int contratC, int conseillerC, String loginC, String passwordC) {
 		this.id = idC;
 		this.nom=nomC;
@@ -155,7 +155,7 @@ public class Client {
 	/**
 	 * @return the tel_client
 	 */
-	public final int getTel_client() {
+	public final String getTel_client() {
 		return tel_client;
 	}
 
@@ -221,7 +221,7 @@ public class Client {
 	/**
 	 * @param tel_client the tel_client to set
 	 */
-	public final void setTel_client(int tel_clientC) {
+	public final void setTel_client(String tel_clientC) {
 		this.tel_client = tel_clientC;
 	}
 
