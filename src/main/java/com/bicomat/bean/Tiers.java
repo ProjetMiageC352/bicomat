@@ -1,6 +1,8 @@
 package com.bicomat.bean;
 
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,8 +44,8 @@ public class Tiers  {
 	/**
 	 * Client actif?
 	 */
-	@Column(name="t_actif")
-	private boolean actif;
+	@Column(name="	t_date_creation")
+	private Date date_creation;
 
 	/* **************************** */
 	/*         CONSTRUCTEURS        */
@@ -62,14 +64,14 @@ public class Tiers  {
      * @param prenomT
      * @param numCompteT
      * @param id_clientT
-     * @param actifT
+     * @param dateT
      */
-    public Tiers(String nomT,String prenomT,String numCompteT, int id_clientT,boolean actifT) {
+    public Tiers(String nomT,String prenomT,String numCompteT, int id_clientT,Date dateT) {
     	this.nom=nomT;
     	this.prenom=prenomT;
     	this.numCompte=numCompteT;
     	this.idclientT=id_clientT;
-    	this.actif=actifT;
+    	this.date_creation=dateT;
     }
     /**
      * Constructeur de la classe.
@@ -79,18 +81,20 @@ public class Tiers  {
      * @param prenomT
      * @param numCompteT
      * @param id_clientT
-     * @param actifT
+     * @param dateT
      */
     public Tiers(int idT, String nomT, String prenomT, String numCompteT,
-    		int id_clientT, boolean actifT) {
+    		int id_clientT, Date dateT) {
     	this.id = idT;
     	this.nom = nomT;
     	this.prenom = prenomT;
     	this.numCompte = numCompteT;
     	this.idclientT = id_clientT;
-    	this.actif = actifT;
+    	this.date_creation = dateT;
     }
     
+	
+	
 	/* **************************** */
 	/*            GETTERS           */
 	/* **************************** */
@@ -125,10 +129,10 @@ public class Tiers  {
 		return idclientT;
 	}
 	/**
-	 * @return the actif
+	 * @return the date_creation
 	 */
-	public final boolean isActif() {
-		return actif;
+	public final Date getDate_creation() {
+		return date_creation;
 	}
 	
 	/* **************************** */
@@ -166,10 +170,10 @@ public class Tiers  {
 		this.idclientT = idclientT;
 	}
 	/**
-	 * @param actif the actif to set
+	 * @param date_creation the date_creation to set
 	 */
-	public final void setActif(boolean actif) {
-		this.actif = actif;
+	public final void setDate_creation(Date date_creation) {
+		this.date_creation = date_creation;
 	}
 
 	/* (non-Javadoc)
@@ -178,6 +182,6 @@ public class Tiers  {
 	@Override
 	public String toString() {
 		return "Tiers [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", numCompte=" + numCompte
-				+ ", idclientT=" + idclientT + ", actif=" + actif + "]";
+				+ ", idclientT=" + idclientT + ", date_creation=" + date_creation + "]";
 	}   
 }
