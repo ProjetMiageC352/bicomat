@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ include file="_shared/header.jsp" %>
+<%@ include file="_shared/menu.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,17 +15,17 @@
     <body>
         <form method="post" action="creertiers">
         
-            <fieldset>
+            
             
                 <legend><h1> <div class="col-sm-1"></div>Créer un tiers</h1></legend>
                 <div class="col-sm-1"></div>
                 <p class="badge badge-secondary" >Renseigner les champs suivants</p>
-                
+               <fieldset> 
                 <div class="form-group row">
                 <div class="col-sm-1"></div>
                 <label class="col-sm-1 col-form-label" >Nom</label>
                 <div class="col-sm-5">
-                <input  id="nom" name="nom" type="text" class="form-control" placeholder="Nom" aria-describedby="basic-addon1" />
+                <input  required id="nom" name="nom" type="text" class="form-control" placeholder="Nom" aria-describedby="basic-addon1" />
                 <span class="erreur">${form.erreurs['nom']}</span>
                 </div>
                 </div>
@@ -32,7 +34,7 @@
            		 <div class="col-sm-1"></div>
            		 <label class="col-sm-1 col-form-label" >Prenom</label>
            		 <div class="col-sm-5">
-                <input  class="form-control" placeholder="Prenom" aria-describedby="basic-addon1" id="prenom" name="prenom"  />
+                <input required class="form-control" placeholder="Prenom" aria-describedby="basic-addon1" id="prenom" name="prenom"  />
                 <span class="erreur">${form.erreurs['prenom']}</span>
                 </div>
                 </div>
@@ -40,7 +42,7 @@
                 <div class="col-sm-1"></div>
            		 <label class="col-sm-1 col-form-label" >Numéro de compte</label>
            		  <div class="col-sm-5">
-                <input class="form-control" placeholder="Numéro de compte" aria-describedby="basic-addon1" id="num" name="num"  />
+                <input required class="form-control" placeholder="Numéro de compte" aria-describedby="basic-addon1" id="num" name="num"  />
                 <span class="erreur">${form.erreurs['num']}</span>
                 </div>
                 </div>
@@ -48,7 +50,7 @@
                 <div class="col-sm-1"></div>
            		 <label class="col-sm-1 col-form-label" >Id du client</label>
            		 <div class="col-sm-5">
-	            <input class="form-control" placeholder="Id du client" aria-describedby="basic-addon1" type="text" name="id_client" id="id_client" />
+	            <input required class="form-control" placeholder="Id du client" aria-describedby="basic-addon1" type="text" name="id_client" id="id_client" />
 	        	
 	        	</div>
                 </div>
@@ -57,7 +59,9 @@
 	            <label  class="col-sm-1 col-form-label" >Actif : </label>
 	            
 	           <div class="col-sm-5">
-	            <select class="form-control" name="actif" id="actif" placeholder="Choisir">
+	            <select required class="form-control" name="actif" id="actif" placeholder="Choisir">
+	            <option disabled selected >Choisir</option>
+	            
 	            	<option value="true">Oui</option>
 	            	<option value="false">Non</option>
 	            	
