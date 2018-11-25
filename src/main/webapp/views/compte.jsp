@@ -1,26 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false"
-    pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-
 <%@ include file="_shared/header.jsp" %>
-    
-<h1><spring:message code="compte.titre"/></h1>
-<table border="1">
-    <thead>
-        <tr>
-            <th><spring:message code="compte.colonne.identifiant"/></th>
-            <th><spring:message code="compte.colonne.type"/></th>
-            <th><spring:message code="compte.colonne.decouvert"/></th>
-            <th><spring:message code="compte.colonne.solde"/></th>
+ <%@ include file="_shared/menu.jsp" %>   
+ <legend><h1><div class="col-sm-1"></div><spring:message code="compte.titre"/></h1></legend>
+<div class="col-sm-1"></div>
+
+<table class="table table-bordered" style="width:80%;">
+    <thead >
+        <tr >
+            <th scope="col"><spring:message code="compte.colonne.identifiant"/></th>
+            <th scope="col"><spring:message code="compte.colonne.type"/></th>
+            <th scope="col"><spring:message code="compte.colonne.decouvert"/></th>
+            <th scope="col"><spring:message code="compte.colonne.solde"/></th>
         </tr>
     </thead>
     <tbody>
         <c:forEach items="${comptes}" var="compte">
             <tr>
-                <td><c:out value="${compte.id}"/></td>
+                <th scope="row"><c:out value="${compte.id}"/></th>
                 <td><c:out value="${compte.type}"/></td>
-                <td><c:out value="${compte.decouvert}"/></td>
+                <td><c:out value="${compte.decouvert==true ? 'Oui': 'Non'}"/></td>
                 <td><c:out value="${compte.solde}"/></td>
             </tr>
         </c:forEach>
