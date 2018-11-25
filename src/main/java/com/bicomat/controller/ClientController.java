@@ -50,7 +50,7 @@ public class ClientController {
      client.setNom(response.getParameter("nom"));
      client.setPrenom(response.getParameter("prenom"));
      client.setAdresse_mail(response.getParameter("adresse"));
-     client.setTel_client(Integer.parseInt(response.getParameter("tel")));
+     client.setTel_client(response.getParameter("tel"));
      client.setNum_contrat(Integer.parseInt(response.getParameter("contrat")));
      client.setId_conseiller(Integer.parseInt(response.getParameter("conseiller")));
      client.setNum_contrat(Integer.parseInt(response.getParameter("contrat")));
