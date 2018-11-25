@@ -11,7 +11,7 @@
                     <th scope="col"><spring:message code="tiers.colonne.prenom"/></th>
                     <th scope="col"><spring:message code="tiers.colonne.compte"/></th>
                     <th scope="col"><spring:message code="tiers.colonne.idclient"/></th>
-                    <th scope="col"><spring:message code="tiers.colonne.actif"/></th>
+                    
             
                 </tr>
             </thead>
@@ -22,7 +22,7 @@
                        	<td><c:out value="${tiers.prenom}"/></td>
                         <td><c:out value="${tiers.numCompte}"/></td>
                          <td><c:out value="${tiers.idclientT}"/></td>
-                        <td><c:out value="${tiers.actif == true? 'Oui': 'Non'}"/></td>
+                       
                         
                     </tr>
                 </c:forEach>
