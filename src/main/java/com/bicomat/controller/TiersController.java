@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,7 +34,13 @@ public class TiersController {
 	}
 	
 	@RequestMapping(value="/tiers",method = RequestMethod.GET)
-	public String listPersons(ModelMap pModel) {
+	public String listPersons(ModelMap pModel,HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// Redirection si le conseiller n'est pas connectÃ©
+				HttpSession session = request.getSession();
+				if (session.getAttribute("conseiller") == null) {
+					request.getRequestDispatcher("connexion").forward(request, response);
+				}
 		final List<Tiers> lTierss = tiersService.listeTiers();
         pModel.addAttribute("Tiers", lTierss);
        
@@ -55,11 +62,7 @@ public class TiersController {
 		tiers.setPrenom(response.getParameter("prenom"));
 		tiers.setNumCompte(response.getParameter("num"));
 		tiers.setIdclientT(Integer.parseInt(response.getParameter("id_client")));
-	    if (response.getParameter("actif")=="true"){
-	    	tiers.setActif(true);
-	    }else {
-	    	tiers.setActif(false);
-	    }
+	   
 	    tiersService.creerTiers(tiers);
 		
        
@@ -99,11 +102,7 @@ public class TiersController {
 		tiers.setPrenom(prenomT);
 		tiers.setNumCompte(numT);
 		tiers.setIdclientT(Integer.parseInt(idClient));
-	    if (actifC==true){
-	    	tiers.setActif(true);
-	    }else {
-	    	tiers.setActif(false);
-	    }
+	    
 		tiersService.creerTiers(tiers);
 		String etatTiers="Le tiers a bien été créé";
 		pModel.addAttribute("etatTiers", etatTiers);
