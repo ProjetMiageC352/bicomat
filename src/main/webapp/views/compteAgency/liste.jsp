@@ -16,6 +16,7 @@
         <th><spring:message code="compteAgency.colonne.identifiant"/></th>
         <th><spring:message code="compteAgency.colonne.nom"/></th>
         <th><spring:message code="compteAgency.colonne.prenom"/></th>
+        <th><spring:message code="compteAgency.colonne.num_contrat"/></th>
         <th><spring:message code="compteAgency.colonne.login"/></th>
         <th><spring:message code="compteAgency.colonne.action"/></th>
     </tr>
@@ -26,10 +27,11 @@
             <td><c:out value="${client.id}"/></td>
             <td><c:out value="${client.nom}"/></td>
             <td><c:out value="${client.prenom}"/></td>
+            <td><c:out value="${client.num_contrat}"/></td>
             <td><c:out value="${client.login}"/></td>
             <td>
             <c:if test = "${client.login == ''}">
-		    	<a href="compteAgency/creer"><spring:message code="compteAgency.lien.modification"/></a>
+		    	<a href="compteAgency/creer/<c:out value="${client.nom}"/>/<c:out value="${client.prenom}"/>/<c:out value="${client.num_contrat}"/>"><spring:message code="compteAgency.lien.modification"/></a>
 		    </c:if>
             </td>
         </tr>

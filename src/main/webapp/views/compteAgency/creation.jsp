@@ -8,49 +8,51 @@
 
 <h1><spring:message code="compteAgency.creation.titre"/></h1>
 
-<form method="post" action="creertiers">
+<form method="post" action="/bicomat/compteAgency/creer">
 	<p class="badge badge-secondary">Renseigner les champs suivants</p>
 	<fieldset> 
  		<div class="form-group row">
-			<label class="col-sm-1 col-form-label" >Nom</label>
+			<label class="col-sm-1 col-form-label"><spring:message code="compteAgency.form.nom" /></label>
  			<div class="col-sm-5">
- 				<input required id="nom" name="nom" type="text" class="form-control" placeholder="Nom" aria-describedby="basic-addon1" />
-				<span class="erreur">${form.erreurs['nom']}</span>
+ 				<input required id="nom" name="nom" type="text" class="form-control" placeholder="<spring:message code="compteAgency.form.nom" />"
+ 					<c:if test = "${nom != ''}">
+				    	value="<c:out value="${nom}"/>"
+				    </c:if>
+ 					aria-describedby="basic-addon1" />
   			</div>
   		</div>
 
 		<div class="form-group row">
-			<label class="col-sm-1 col-form-label" >Prenom</label>
+			<label class="col-sm-1 col-form-label"><spring:message code="compteAgency.form.prenom" /></label>
 			<div class="col-sm-5">
-  				<input required class="form-control" placeholder="Prenom" aria-describedby="basic-addon1" id="prenom" name="prenom"  />
-  				<span class="erreur">${form.erreurs['prenom']}</span>
+  				<input required id="prenom" name="prenom" type="text" class="form-control" placeholder="<spring:message code="compteAgency.form.prenom" />"
+  					<c:if test = "${prenom != ''}">
+				    	value="<c:out value="${prenom}"/>"
+				   	</c:if>
+				    aria-describedby="basic-addon1"  />
   			</div>
   		</div>
   		
  		<div class="form-group row">
-  			<label class="col-sm-1 col-form-label" >Numéro de compte</label>
+  			<label class="col-sm-1 col-form-label"><spring:message code="compteAgency.form.num_contrat" /></label>
  			<div class="col-sm-5">
-  				<input required class="form-control" placeholder="Numéro de compte" aria-describedby="basic-addon1" id="num" name="num"  />
-  				<span class="erreur">${form.erreurs['num']}</span>
+  				<input required id="num_contrat" name="num_contrat" type="number" class="form-control" placeholder="<spring:message code="compteAgency.form.num_contrat" />"
+  					<c:if test = "${num_contrat != ''}">
+				    	value="<c:out value="${num_contrat}"/>"
+				   	</c:if>
+  					aria-describedby="basic-addon1" />
         	</div>
         </div>
         
         <div class="form-group row">
-   		 	<label class="col-sm-1 col-form-label" >Id du client</label>
-   		 	<div class="col-sm-5">
-     			<input required class="form-control" placeholder="Id du client" aria-describedby="basic-addon1" type="text" name="id_client" id="id_client" />
- 			</div>
-        </div>
-        
-        <div class="form-group row">
-        	<label  class="col-sm-1 col-form-label" >Actif : </label>
-     		<div class="col-sm-5">
-     			<select required class="form-control" name="actif" id="actif">
-     				<option disabled selected >Choisir</option>
-     				<option value="true">Oui</option>
-			     	<option value="false">Non</option>
-     			</select>
-    		</div>
+  			<label class="col-sm-1 col-form-label"><spring:message code="compteAgency.form.password" /></label>
+ 			<div class="col-sm-5">
+  				<input required id="password" name="password" type="text" class="form-control" placeholder="<spring:message code="compteAgency.form.password" />"
+  					<c:if test = "${password != ''}">
+				    	value="<c:out value="${password}"/>"
+				   	</c:if>
+  					aria-describedby="basic-addon1" />
+        	</div>
         </div>
      
 		<div class="col-sm-3">
