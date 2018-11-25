@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bicomat.bean.Client;
 import com.bicomat.service.IClientService;
 
+
+
 @Controller
 @RequestMapping(value="/compteAgency")
 public class CompteAgencyController {
