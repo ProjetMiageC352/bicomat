@@ -1,5 +1,7 @@
 package com.bicomat.bean;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,12 +37,7 @@ public class CarteBancaire {
 	 * Echéance de la carte
 	 */
 	@Column(name="cb_echeance")
-	protected int echeance;
-	/**
-	 * Code crypter de la carte
-	 */
-	@Column(name="cb_code_crypto")
-	protected String code_crypto;
+	protected Date echeance;
 	/**
 	 *Id du client
 	 */
@@ -62,15 +59,13 @@ public class CarteBancaire {
      * @param numCB Numerao de la carte
      * @param typeCB Type de la carte
      * @param echeanceCB Echeance de la carte
-     * @param codeCB Code crypto de la carte
      * @param idC Id du client propriétaire
      */
-    public CarteBancaire(final String numCB, final String typeCB, final int echeanceCB,
-    		final String codeCB, final int idClientCB) {
+    public CarteBancaire(final String numCB, final String typeCB, final Date echeanceCB,
+    		 final int idClientCB) {
         this.num_carte = numCB;
     	this.type_carte = typeCB;
     	this.echeance = echeanceCB;
-    	this.code_crypto = codeCB;
     	this.cb_idclient = idClientCB;
     }
 	/**
@@ -80,16 +75,14 @@ public class CarteBancaire {
      * @param numCB Numerao de la carte
      * @param typeCB Type de la carte
      * @param echeanceCB Echeance de la carte
-     * @param codeCB Code crypto de la carte
      * @param idC Id du client propriétaire
      */
     public CarteBancaire(final int idCB, final String numCB, final String typeCB,
-    		final int echeanceCB, final String codeCB, final int idClientCB) {
+    		final Date echeanceCB,  final int idClientCB) {
         this.idC = idCB;
         this.num_carte = numCB;
     	this.type_carte = typeCB;
     	this.echeance = echeanceCB;
-    	this.code_crypto = codeCB;
     	this.cb_idclient = idClientCB;
     }	
 	
@@ -120,16 +113,10 @@ public class CarteBancaire {
 	/**
 	 * @return the echeance
 	 */
-	public final int getEcheance() {
+	public final Date getEcheance() {
 		return echeance;
 	}
 	
-	/**
-	 * @return the code_crypto
-	 */
-	public final String getCode_crypto() {
-		return code_crypto;
-	}
 	
 	
 	/**
@@ -167,17 +154,11 @@ public class CarteBancaire {
 	/**
 	 * @param echeance the echeance to set
 	 */
-	public final void setEcheance(int echeance) {
+	public final void setEcheance(Date echeance) {
 		this.echeance = echeance;
 	}
 	
-	/**
-	 * @param code_crypto the code_crypto to set
-	 */
-	public final void setCode_crypto(String code_crypto) {
-		this.code_crypto = code_crypto;
-	}
-
+	
 
 	/**
 	 * @param cb_idclient the cb_idclient to set
@@ -193,6 +174,6 @@ public class CarteBancaire {
 	@Override
 	public String toString() {
 		return "CarteBancaire [idC=" + idC + ", num_carte=" + num_carte + ", type_carte=" + type_carte + ", echeance="
-				+ echeance + ", code_crypto=" + code_crypto + ", cb_idclient=" + cb_idclient + "]";
+				+ echeance + ", cb_idclient=" + cb_idclient + "]";
 	}
 }
