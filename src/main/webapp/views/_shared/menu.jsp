@@ -24,11 +24,11 @@
         		<a class="dropdown-toggle" data-toggle="dropdown" >Tiers<span class="caret"></span></a>
         		<ul class="dropdown-menu">
         			<li><a href="tiers">Liste des tiers</a></li>
-        			<li><a href="creertiers" >Créer un tiers</a></li>
+        			<li><a href="creertiers" >CrÃ©er un tiers</a></li>
         		</ul>
         	</li>
         	<li class="dropdown">
-        		<a class="dropdown-toggle" data-toggle="dropdown" href="">Déconnexion</a>
-        	</li>
-       </ul>	
+        		<a class="dropdown-toggle" data-toggle="dropdown" href="">Dï¿½Ã©
+       </ul>
+       </div>	
 </nav>
