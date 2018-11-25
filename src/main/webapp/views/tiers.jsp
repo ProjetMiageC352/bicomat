@@ -1,37 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false"
-    pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<!DOCTYPE html>
-<html>
-	<head>
-        <title><spring:message code="titre"/> - <spring:message code="tiers.titre"/></title>
-    </head>
-    <body>
-    	<h1><spring:message code="tiers.titre"/></h1>
-        <table border="1">
+
+<%@ include file="_shared/header.jsp" %>
+ <%@ include file="_shared/menu.jsp" %>   
+    
+    	<legend><h1><div class="col-sm-1"></div><spring:message code="tiers.titre"/></h1></legend>
+    	<div class="col-sm-1"></div>
+        <table class="table table-bordered" style="width:80%;">
             <thead>
                 <tr>
-                	<th><spring:message code="tiers.colonne.nom"/></th>
-                    <th><spring:message code="tiers.colonne.prenom"/></th>
-                    <th><spring:message code="tiers.colonne.compte"/></th>
-                    <th><spring:message code="tiers.colonne.idclient"/></th>
-                    <th><spring:message code="tiers.colonne.actif"/></th>
+                	<th scope="col"><spring:message code="tiers.colonne.nom"/></th>
+                    <th scope="col"><spring:message code="tiers.colonne.prenom"/></th>
+                    <th scope="col"><spring:message code="tiers.colonne.compte"/></th>
+                    <th scope="col"><spring:message code="tiers.colonne.idclient"/></th>
+                    <th scope="col"><spring:message code="tiers.colonne.actif"/></th>
             
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${Tiers}" var="tiers">
                     <tr>
-                    	<td><c:out value="${tiers.nom}"/></td>
+                    	<th scope="row"><c:out value="${tiers.nom}"/></th>
                        	<td><c:out value="${tiers.prenom}"/></td>
                         <td><c:out value="${tiers.numCompte}"/></td>
                          <td><c:out value="${tiers.idclientT}"/></td>
-                        <td><c:out value="${tiers.actif}"/></td>
+                        <td><c:out value="${tiers.actif == true? 'Oui': 'Non'}"/></td>
                         
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
-    </body>
-</html>
+   <%@ include file="_shared/footer.jsp" %>
