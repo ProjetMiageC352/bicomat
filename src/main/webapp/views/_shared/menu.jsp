@@ -1,6 +1,5 @@
 <nav class="navbar navbar-default">
 	<div class="container-fluid">  
-	
 		
 		<div class="navbar-header col-12 col-sm-1 col-lg-2">
 		<a class="navbar-brand   " href="#">Accueil</a>
