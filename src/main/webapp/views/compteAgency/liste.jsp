@@ -31,7 +31,7 @@
             <td><c:out value="${client.login}"/></td>
             <td>
             <c:if test = "${client.login == ''}">
-		    	<a href="compteAgency/creer"><spring:message code="compteAgency.lien.modification"/></a>
+		    	<a href="compteAgency/creer/<c:out value="${client.nom}"/>/<c:out value="${client.prenom}"/>/<c:out value="${client.num_contrat}"/>"><spring:message code="compteAgency.lien.modification"/></a>
 		    </c:if>
             </td>
         </tr>
