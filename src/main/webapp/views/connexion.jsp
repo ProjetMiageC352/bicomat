@@ -4,24 +4,33 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <%@ include file="_shared/header.jsp" %>
+<%@ include file="_shared/menu.jsp" %>
 
 <form method="post" action="connexion">
     <fieldset>
-        <legend>Connexion</legend>
-        <p>Vous pouvez vous connecter via ce formulaire.</p>
-
-        <label for="login"><spring:message code="connexion.form.libelle.login"/></label>
-        <input id="login" name="login" size="20" maxlength="60" />
+        <legend><h1> <div class="col-sm-1"></div>Connexion</h1></legend>
+        <div class="col-sm-1"></div>
+        <p class="badge badge-secondary">Vous pouvez vous connecter via ce formulaire.</p>
+<div class="form-group row">
+                <div class="col-sm-1"></div>
+        <label class="col-sm-1 col-form-label"  for="login"><spring:message code="connexion.form.libelle.login"/></label>
+        <div class="col-sm-3">
+        <input required id="login" name="login" class="form-control" placeholder="Login" aria-describedby="basic-addon1" />
         <span class="erreur">${form.erreurs['login']}</span>
-        <br />
-
-        <label for="password"><spring:message code="connexion.form.libelle.password"/></label>
-        <input type="password" id="password" name="password" value="" size="20" maxlength="20" />
+        </div>
+                </div>
+ <div class="form-group row">
+           		 <div class="col-sm-1"></div>
+        <label class="col-sm-1 col-form-label" for="password"><spring:message code="connexion.form.libelle.password"/></label>
+       <div class="col-sm-3">
+        <input required class="form-control" type="password" id="password" name="password" aria-describedby="basic-addon1" placeholder="Password" />
         <span class="erreur">${form.erreurs['password']}</span>
-        <br />
+         </div>
+         </div>
 
-        <input type="submit" value="Connexion" />
-        <br />
+        <div class="col-sm-3"></div>
+                <input  type="submit" value="Valider" class="btn btn-primary" />
+                <input  type="reset" value="Annuler" class="btn btn-primary" />
     </fieldset>
 </form>
 
