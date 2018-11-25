@@ -60,6 +60,8 @@ public class CompteAgencyController {
 			request.getRequestDispatcher("connexion").forward(request, response);
 		}
 		
+		pModel.addAttribute("password", 1000 + (int) (Math.random() * 10000));
+		
         return "compteAgency/creation";
 	}
 	
@@ -81,6 +83,7 @@ public class CompteAgencyController {
 		pModel.addAttribute("nom", nom);
 		pModel.addAttribute("prenom", prenom);
 		pModel.addAttribute("num", num);
+		pModel.addAttribute("password", 1000 + (int) (Math.random() * 10000));
 		
         return "compteAgency/creation";
 	}

@@ -43,6 +43,17 @@
   					aria-describedby="basic-addon1" />
         	</div>
         </div>
+        
+        <div class="form-group row">
+  			<label class="col-sm-1 col-form-label"><spring:message code="compteAgency.form.password" /></label>
+ 			<div class="col-sm-5">
+  				<input required id="password" name="password" type="text" class="form-control" placeholder="<spring:message code="compteAgency.form.password" />"
+  					<c:if test = "${password != ''}">
+				    	value="<c:out value="${password}"/>"
+				   	</c:if>
+  					aria-describedby="basic-addon1" />
+        	</div>
+        </div>
      
 		<div class="col-sm-3">
 	        <input  type="submit" value="Valider" class="btn btn-primary" />
