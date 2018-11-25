@@ -1,3 +1,4 @@
+
 <%@ include file="_shared/header.jsp" %>
  <%@ include file="_shared/menu.jsp" %>   
  <legend><h1><div class="col-sm-1"></div><spring:message code="compte.titre"/></h1></legend>
@@ -15,7 +16,7 @@
     <tbody>
         <c:forEach items="${comptes}" var="compte">
             <tr>
-                <th scope="row"><c:out value="${compte.id}"/></th>
+                <td ><c:out value="${compte.id}"/></td>
                 <td><c:out value="${compte.type}"/></td>
                 <td><c:out value="${compte.decouvert==true ? 'Oui': 'Non'}"/></td>
                 <td><c:out value="${compte.solde}"/></td>
