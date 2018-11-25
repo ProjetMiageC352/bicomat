@@ -210,22 +210,17 @@ public class Compte {
     /**
      * 
      */
-    public void CreerCompte() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
     public void ListeOper() {
         // TODO implement here
     }
 
     /**
+     * Lie une opération au compte.
      * 
+     * @param o Opération à lier au compte
      */
-    public void LierOpCpte() {
-        // TODO implement here
+    public void lierOpCpte(final Operation o) {
+        
     }
 
     /**
@@ -237,9 +232,9 @@ public class Compte {
     
     @Override
 	public String toString(){
-		return "id = " + id + ", type = " + type + ", découvert = " + decouvert
-				+ " solde = " + solde
-				+ " id banque = " + idBanque
-				+ " id client = " + idClient;
+		return "Compte [id = " + id + ", type = " + type + ", découvert = " + decouvert
+				+ ", solde = " + solde
+				+ ", id banque = " + idBanque
+				+ ", id client = " + idClient + "]";
 	}
 }

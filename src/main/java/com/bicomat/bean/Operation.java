@@ -162,8 +162,8 @@ public class Operation {
      *
      * @param idC Nouvel id
      */
-    public final void setId(final int idC) {
-        this.id = idC;
+    public final void setId(final int idO) {
+        this.id = idO;
     }
     /**
      * Setter de la date.
@@ -209,13 +209,6 @@ public class Operation {
     /* **************************** */
 	/*           METHODES           */
 	/* **************************** */
-    
-    /**
-	 * 
-	 */
-	public void ListerOperation() {
-	    // TODO implement here
-	}
 	
 	/**
 	 * 
@@ -227,35 +220,14 @@ public class Operation {
 	/**
 	 * 
 	 */
-	public void Date() {
-	    // TODO implement here
-	}
-	
-	/**
-	 * 
-	 */
-	public void Montant() {
-	    // TODO implement here
-	}
-	
-	/**
-	 * 
-	 */
 	public void VerserSolde() {
-	    // TODO implement here
-	}
-	
-	/**
-	 * 
-	 */
-	public void Creer_operation() {
 	    // TODO implement here
 	}
     
     @Override
 	public String toString(){
-		return "id = " + id + ", date = " + date.toString() + ", montant = " + montant
-				+ " type = " + type + " id opération = " + idOperation
-				+ " id compte = " + idCompte;
+		return "Operation [id = " + id + ", date = " + date.toString() + ", montant = " + montant
+				+ ", type = " + type + ", id opération = " + idOperation
+				+ ", id compte = " + idCompte + "]";
 	}
 }

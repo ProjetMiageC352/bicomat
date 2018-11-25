@@ -30,12 +30,12 @@ public class Tiers  {
 	@Column(name="t_prenom")
 	private String prenom;
 	/**
-	 * Numéro de compte du tiers
+	 * Numï¿½ro de compte du tiers
 	 */
 	@Column(name="t_num_compte")
 	private String numCompte;
 	/**
-	 * Id du client associé
+	 * Id du client associï¿½
 	 */
 	@Column(name="t_id_client")
 	private int idclientT;
@@ -49,19 +49,15 @@ public class Tiers  {
 	/*         CONSTRUCTEURS        */
 	/* **************************** */	
 	
-	
 	/**
      * Default constructor
      */
     public Tiers() {
     	
     }
-
     /**
      * Constructeur de la classe.
-     */
-	
-    /**
+     * 
      * @param nomT
      * @param prenomT
      * @param numCompteT
@@ -75,10 +71,26 @@ public class Tiers  {
     	this.idclientT=id_clientT;
     	this.actif=actifT;
     }
+    /**
+     * Constructeur de la classe.
+     * 
+     * @param idT
+     * @param nomT
+     * @param prenomT
+     * @param numCompteT
+     * @param id_clientT
+     * @param actifT
+     */
+    public Tiers(int idT, String nomT, String prenomT, String numCompteT,
+    		int id_clientT, boolean actifT) {
+    	this.id = idT;
+    	this.nom = nomT;
+    	this.prenom = prenomT;
+    	this.numCompte = numCompteT;
+    	this.idclientT = id_clientT;
+    	this.actif = actifT;
+    }
     
-   
-    
-	
 	/* **************************** */
 	/*            GETTERS           */
 	/* **************************** */
@@ -123,10 +135,10 @@ public class Tiers  {
 	/*            SETTERS           */
 	/* **************************** */
 	/**
-	 * @param id the id to set
+	 * @param idT the id to set
 	 */
-	public final void setId(int id) {
-		this.id = id;
+	public final void setId(int idT) {
+		this.id = idT;
 	}
 	/**
 	 * @param nomT the nomT to set
@@ -142,10 +154,10 @@ public class Tiers  {
 		this.prenom = prenomT;
 	}
 	/**
-	 * @param numCompte the numCompte to set
+	 * @param numCompteT the numCompte to set
 	 */
-	public final void setNumCompte(String numCompte) {
-		this.numCompte = numCompte;
+	public final void setNumCompte(String numCompteT) {
+		this.numCompte = numCompteT;
 	}
 	/**
 	 * @param idclientT the idclientT to set

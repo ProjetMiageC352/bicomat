@@ -22,7 +22,7 @@ public class CarteBancaire {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected int idC;
 	/**
-	 * Num�ro de la carte
+	 * Numéro de la carte
 	 */
 	@Column(name="cb_num_carte")
 	protected String num_carte;
@@ -32,7 +32,7 @@ public class CarteBancaire {
 	@Column(name="cb_type_carte")
 	protected String type_carte;
 	/**
-	 * Ech�ance de la carte
+	 * Echéance de la carte
 	 */
 	@Column(name="cb_echeance")
 	protected int echeance;
@@ -46,15 +46,52 @@ public class CarteBancaire {
 	 */
 	@Column(name="cb_idclient")
 	protected int cb_idclient;
+	
 	/* **************************** */
 	/*         CONSTRUCTEURS        */
 	/* **************************** */	
+	
 	/**
 	 * Default constructor
 	 */
 	public CarteBancaire () {
 	}
-	
+	/**
+     * Constructeur de la classe.
+     *
+     * @param numCB Numerao de la carte
+     * @param typeCB Type de la carte
+     * @param echeanceCB Echeance de la carte
+     * @param codeCB Code crypto de la carte
+     * @param idC Id du client propriétaire
+     */
+    public CarteBancaire(final String numCB, final String typeCB, final int echeanceCB,
+    		final String codeCB, final int idClientCB) {
+        this.num_carte = numCB;
+    	this.type_carte = typeCB;
+    	this.echeance = echeanceCB;
+    	this.code_crypto = codeCB;
+    	this.cb_idclient = idClientCB;
+    }
+	/**
+     * Constructeur de la classe.
+     *
+     * @param idCB Id de la carte
+     * @param numCB Numerao de la carte
+     * @param typeCB Type de la carte
+     * @param echeanceCB Echeance de la carte
+     * @param codeCB Code crypto de la carte
+     * @param idC Id du client propriétaire
+     */
+    public CarteBancaire(final int idCB, final String numCB, final String typeCB,
+    		final int echeanceCB, final String codeCB, final int idClientCB) {
+        this.idC = idCB;
+        this.num_carte = numCB;
+    	this.type_carte = typeCB;
+    	this.echeance = echeanceCB;
+    	this.code_crypto = codeCB;
+    	this.cb_idclient = idClientCB;
+    }	
 	
 	/* **************************** */
 	/*            GETTERS           */
@@ -158,10 +195,4 @@ public class CarteBancaire {
 		return "CarteBancaire [idC=" + idC + ", num_carte=" + num_carte + ", type_carte=" + type_carte + ", echeance="
 				+ echeance + ", code_crypto=" + code_crypto + ", cb_idclient=" + cb_idclient + "]";
 	}
-
-
-	
-
-
-
 }

@@ -132,6 +132,6 @@ public class Banque {
     
 	@Override
 	public String toString(){
-		return "id = " + id + ", nom = " + nom + ", adresse = " + adresse;
+		return "Banque [id = " + id + ", nom = " + nom + ", adresse = " + adresse + "]";
 	}
 }
