@@ -36,9 +36,9 @@
  		<div class="form-group row">
   			<label class="col-sm-1 col-form-label"><spring:message code="compteAgency.form.num_contrat" /></label>
  			<div class="col-sm-5">
-  				<input required id="num" name="num" type="number" class="form-control" placeholder="<spring:message code="compteAgency.form.num_contrat" />"
-  					<c:if test = "${num != ''}">
-				    	value="<c:out value="${num}"/>"
+  				<input required id="num_contrat" name="num_contrat" type="number" class="form-control" placeholder="<spring:message code="compteAgency.form.num_contrat" />"
+  					<c:if test = "${num_contrat != ''}">
+				    	value="<c:out value="${num_contrat}"/>"
 				   	</c:if>
   					aria-describedby="basic-addon1" />
         	</div>

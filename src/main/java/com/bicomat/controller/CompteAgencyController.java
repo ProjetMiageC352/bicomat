@@ -66,11 +66,11 @@ public class CompteAgencyController {
 	}
 	
 	// Affichage du formulaire de création de compte Agency pour un client
-	@RequestMapping(value="/creer/{nom}/{prenom}/{num}", method = RequestMethod.GET)
+	@RequestMapping(value="/creer/{nom}/{prenom}/{num_contrat}", method = RequestMethod.GET)
 	public String creerCompteAgencyPourClient(ModelMap pModel,
 			@PathVariable(value="nom") final String nom,
 			@PathVariable(value="prenom") final String prenom,
-			@PathVariable(value="num") final String num,
+			@PathVariable(value="num_contrat") final String num_contrat,
 			HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
@@ -82,9 +82,34 @@ public class CompteAgencyController {
 		
 		pModel.addAttribute("nom", nom);
 		pModel.addAttribute("prenom", prenom);
-		pModel.addAttribute("num", num);
+		pModel.addAttribute("num_contrat", num_contrat);
 		pModel.addAttribute("password", 1000 + (int) (Math.random() * 10000));
 		
         return "compteAgency/creation";
+	}
+	
+	// Validation de la création du compte Agency
+	@RequestMapping(value="/creer", method = RequestMethod.POST)
+	public String validationCreationCompteAgency(ModelMap pModel,
+			HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		
+		// Redirection si le conseiller n'est pas connecté
+		HttpSession session = request.getSession();
+		if (session.getAttribute("conseiller") == null) {
+			request.getRequestDispatcher("connexion").forward(request, response);
+		}
+		
+		// Si le client existe
+		if (clientService.existeAvecNomPrenomNumContrat(request.getParameter("nom"),
+				request.getParameter("prenom"),
+				Integer.parseInt(request.getParameter("num_contrat")))) {
+			// Si le client n'a pas de compte agency
+			if (true) {
+				return "accueil";
+			}
+		}
+		
+		return "compteAgency/creation";
 	}
 }

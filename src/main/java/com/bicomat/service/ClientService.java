@@ -48,14 +48,27 @@ public class ClientService implements IClientService {
 	}
 
 	/**
-	 * Demande la liste des clients.
-	 *
-	 * @return la liste des clients
+	 * Demande de vérifier si un Client existe pour un nom, prenom et numero de CB
+	 * @param nom
+	 * @param prenom
+	 * @return
 	 */
-	@Transactional(readOnly=true)
-	public List<Client> listeClients() {
-		return this.clientDAO.listeClients();
+	/*public boolean existeAvecNomPrenomNumcarte(String nom, String prenom,String numcarte ) {
+		return this.existeAvecNomPrenomNumcarte(nom, prenom, numcarte);
+	}*/
+	/**
+	 * Demande de vérifier si un client existe pour un nom, prénom et numero de contrat
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @param num_contrat
+	 * 
+	 * @return vrai si le client existe
+	 */
+	public boolean existeAvecNomPrenomNumContrat(String nom, String prenom, int num_contrat) {
+		return this.clientDAO.existeAvecNomPrenomNumContrat(nom, prenom, num_contrat);
 	}
+	
 	/**
 	 * Demande de vérifier si le client a un compte agency
 	 * @param nom
@@ -67,13 +80,12 @@ public class ClientService implements IClientService {
 	}
 	
 	/**
-	 * Demande de vérifier si un Client existe pour un nom, prenom et numero de CB
-	 * @param nom
-	 * @param prenom
-	 * @return
+	 * Demande la liste des clients.
+	 *
+	 * @return la liste des clients
 	 */
-	public boolean existeAvecNomPrenomNumcarte(String nom, String prenom,String numcarte ) {
-		return this.existeAvecNomPrenomNumcarte(nom, prenom, numcarte);
+	@Transactional(readOnly=true)
+	public List<Client> listeClients() {
+		return this.clientDAO.listeClients();
 	}
-	
 }

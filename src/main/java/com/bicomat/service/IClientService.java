@@ -26,25 +26,34 @@ public interface IClientService {
 	public void supprimerClient(int id);
 	
 	/**
-	 * Demande la liste des clients.
-	 *
-	 * @return la liste des clients
-	 */
-	public List<Client> listeClients();
-	
-	/**
 	 * Demande de vérifier si un Client existe pour un nom, prenom et numero de CB
 	 * @param nom
 	 * @param prenom
 	 * @return
 	 */
-	public boolean existeAvecNomPrenomNumcarte(String nom, String prenom,String numcarte );
-	
+	//public boolean existeAvecNomPrenomNumcarte(String nom, String prenom,String numcarte );
+	/**
+	 * Demande de vérifier si un client existe pour un nom, prénom et numero de contrat
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @param num_contrat
+	 * 
+	 * @return vrai si le client existe
+	 */
+	public boolean existeAvecNomPrenomNumContrat(String nom, String prenom, int num_contrat);
 	/**
 	 * Demande de vérifier si le client a un compte agency
 	 * @param nom
 	 * @param prenom
 	 * @return
 	 */
-	public boolean verifieclientAgency(String nom, String prenom) ;
+	public boolean verifieclientAgency(String nom, String prenom);
+	
+	/**
+	 * Demande la liste des clients.
+	 *
+	 * @return la liste des clients
+	 */
+	public List<Client> listeClients();
 }
