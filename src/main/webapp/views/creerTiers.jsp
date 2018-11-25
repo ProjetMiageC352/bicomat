@@ -12,6 +12,7 @@
     </head>
     <body>
         <form method="post" action="creertiers">
+        
             <fieldset>
             
                 <legend><h1> <div class="col-sm-1"></div>Créer un tiers</h1></legend>
