@@ -4,7 +4,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <%@ include file="_shared/header.jsp" %>
-<%@ include file="_shared/menu.jsp" %>
 
 <form method="post" action="connexion">
     <fieldset>
