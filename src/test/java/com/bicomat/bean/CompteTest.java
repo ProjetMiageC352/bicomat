@@ -19,7 +19,7 @@ public class CompteTest {
      */
     @BeforeClass
     public static void setUpBeforeClass() {
-        c = new Compte(1, "Type", true, 100, 1, 1);
+        c = new Compte(1, "Type", true, 100, true, 1, 1);
     }
     
     /* **************************** */
@@ -32,8 +32,8 @@ public class CompteTest {
     @Test
     public final void testConstructeur() {
         Assert.assertNotNull(new Compte());
-        Assert.assertNotNull(new Compte("Type", true, 100, 1, 1));
-        Assert.assertNotNull(new Compte(1, "Type", true, 100, 1, 1));
+        Assert.assertNotNull(new Compte("Type", true, 100, true, 1, 1));
+        Assert.assertNotNull(new Compte(1, "Type", true, 100, true, 1, 1));
     }
     
     /* **************************** */
@@ -67,6 +67,13 @@ public class CompteTest {
     @Test
     public final void testGetSolde() {
         Assert.assertEquals(c.getSolde(), 100, 0);
+    }
+    /**
+     * Test de getActif().
+     */
+    @Test
+    public final void testGetActif() {
+        Assert.assertTrue(c.getActif());
     }
     /**
      * Test de getIdBanque().
@@ -127,6 +134,16 @@ public class CompteTest {
         c.setSolde(100);
         Assert.assertEquals(c.getSolde(), 100, 0);
     }
+    /**
+     * Test de setActif( boolean actifC).
+     */
+    @Test
+    public final void testSetActif() {
+        c.setActif(false);
+        Assert.assertFalse(c.getActif());
+        c.setActif(true);
+        Assert.assertTrue(c.getActif());
+    }    
     /**
      * Test de setIdBanque(int idBanqueC).
      */
