@@ -70,7 +70,17 @@ public class OperationService implements IOperationService {
 	public List<Operation> listeOperationsParDatesCompte(Date date1, Date date2, Compte compte) {
 		return this.operationDAO.listeOperationsParDatesCompte(date1,date2, compte);
 	}
+	/**
+	 * Demande la liste des opérations  pour un compte.
+	 * 
 	
+	 * @param compte Compte pour le relevé
+	 * @return la liste des opérations
+	 */
+	@Transactional(readOnly=true)
+	public List<Operation> listeOperationsParCompte( int idcompte) {
+		return this.operationDAO.listeOperationsParCompte( idcompte);
+	}
 	/**
 	 * Demande la création d'une opération.
 	 *
