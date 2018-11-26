@@ -104,7 +104,7 @@ public class TiersController {
 		tiers.setIdclientT(Integer.parseInt(idClient));
 	    
 		tiersService.creerTiers(tiers);
-		String etatTiers="Le tiers a bien ï¿½tï¿½ crï¿½ï¿½";
+		String etatTiers="Le tiers a bien été créé";
 		pModel.addAttribute("etatTiers", etatTiers);
 		return "tiers/creerTiers";
 		}
