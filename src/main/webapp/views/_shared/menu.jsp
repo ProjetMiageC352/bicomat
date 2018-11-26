@@ -28,8 +28,8 @@
         	<li class="dropdown">
         		<a class="dropdown-toggle" data-toggle="dropdown" >Tiers<span class="caret"></span></a>
         		<ul class="dropdown-menu">
-        			<li><a href="tiers">Liste des tiers</a></li>
-        			<li><a href="creertiers" >Créer un tiers</a></li>
+        			<li><a href="/bicomat/tiers">Liste des tiers</a></li>
+        			<li><a href="/bicomat/creertiers" >Créer un tiers</a></li>
         		</ul>
         	</li>
         	<li>
