@@ -17,7 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bicomat.bean.Client;
+import com.bicomat.bean.Compte;
+import com.bicomat.bean.Tiers;
 import com.bicomat.service.IClientService;
+import com.bicomat.service.ICompteService;
+import com.bicomat.service.ITiersService;
 
 @Controller
 @RequestMapping(value="/virement")
@@ -31,6 +35,25 @@ public class VirementController {
 	public void setclientService(IClientService cs){
 		this.clientService = cs;
 	}
+	
+	@Autowired
+	private ICompteService compteService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="compteService")
+	public void setCompteService(ICompteService cs){
+		this.compteService = cs;
+	}
+	
+	@Autowired
+	private ITiersService tiersService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="tiersService")
+	public void setTiersService(ITiersService ts){
+		this.tiersService = ts;
+	}
+	
 	
 	// Affichage de la liste des clients
 	@RequestMapping(method = RequestMethod.GET)
@@ -49,34 +72,10 @@ public class VirementController {
         return "virement/liste";
 	}
 	
-	
-	
-	
-	
-	
-	
-	// Affichage du formulaire de création de compte Agency
-	@RequestMapping(value="/creer", method = RequestMethod.GET)
-	public String creerCompteAgency(ModelMap pModel, HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		
-		// Redirection si le conseiller n'est pas connecté
-		HttpSession session = request.getSession();
-		if (session.getAttribute("conseiller") == null) {
-			request.getRequestDispatcher("connexion").forward(request, response);
-		}
-		
-		pModel.addAttribute("password", 1000 + (int) (Math.random() * 10000));
-		
-        return "compteAgency/creation";
-	}
-	
-	// Affichage du formulaire de création de compte Agency pour un client
-	@RequestMapping(value="/creer/{nom}/{prenom}/{num_contrat}", method = RequestMethod.GET)
-	public String creerCompteAgencyPourClient(ModelMap pModel,
-			@PathVariable(value="nom") final String nom,
-			@PathVariable(value="prenom") final String prenom,
-			@PathVariable(value="num_contrat") final String num_contrat,
+	// Affichage du formulaire de virement pour un client
+	@RequestMapping(value="/creer/{id}", method = RequestMethod.GET)
+	public String creerVirementPourClient(ModelMap pModel,
+			@PathVariable(value="id") final String id,
 			HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
@@ -86,17 +85,19 @@ public class VirementController {
 			request.getRequestDispatcher("connexion").forward(request, response);
 		}
 		
-		pModel.addAttribute("nom", nom);
-		pModel.addAttribute("prenom", prenom);
-		pModel.addAttribute("num_contrat", num_contrat);
-		pModel.addAttribute("password", 1000 + (int) (Math.random() * 10000));
+		final List<Compte> lComptes = compteService.listeComptesparclient(Integer.parseInt(id));
+        pModel.addAttribute("comptes", lComptes);
+        
+        final List<Tiers> lTiers = tiersService.listeTiersActifsPourClient(Integer.parseInt(id));
+        pModel.addAttribute("tiers", lTiers);
 		
-        return "compteAgency/creation";
+        return "virement/virement";
 	}
 	
-	// Validation de la création du compte Agency
-	@RequestMapping(value="/creer", method = RequestMethod.POST)
-	public String validationCreationCompteAgency(ModelMap pModel,
+	// Validation du virement
+	@RequestMapping(value="/creer/{id}", method = RequestMethod.POST)
+	public String validationVirement(ModelMap pModel,
+			@PathVariable(value="id") final String id,
 			HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
@@ -106,35 +107,47 @@ public class VirementController {
 			request.getRequestDispatcher("connexion").forward(request, response);
 		}
 		
-		// Si le client existe
-		if (clientService.existeAvecNomPrenomNumContrat(request.getParameter("nom"),
-				request.getParameter("prenom"),
-				Integer.parseInt(request.getParameter("num_contrat")))) {
+		pModel.addAttribute("id", id);
+		final List<Compte> lComptes = compteService.listeComptesparclient(Integer.parseInt(id));
+        pModel.addAttribute("comptes", lComptes);
+        final List<Tiers> lTiers = tiersService.listeTiersActifsPourClient(Integer.parseInt(id));
+        pModel.addAttribute("tiers", lTiers);
+		
+		// Virement interne
+		if (request.getParameter("virementInterne") != null) {
+			Compte compteSource = compteService.getCompteAvecId(Integer.parseInt(request.getParameter("cpteSource")));
+			Compte compteDestinataire = compteService.getCompteAvecId(Integer.parseInt(request.getParameter("cpteDestination")));
+			int montant = Integer.parseInt(request.getParameter("montant"));
 			
-			Client client = clientService.getClientAvecNomPrenomNumContrat(
-					request.getParameter("nom"),
-					request.getParameter("prenom"),
-					Integer.parseInt(request.getParameter("num_contrat")));
-			
-			// Si le client n'a pas de compte agency
-			if (!client.aCompteAgency()) {
-				client.setLogin(client.getNom() + client.getId());
-				client.setPassword(request.getParameter("password"));
-				clientService.modifierClient(client);
-				
-				final List<Client> lClients = clientService.listeClients();
-		        pModel.addAttribute("clients", lClients);
-		        
-				return "compteAgency/liste";
+			// Si compte source = compte destinataire
+			if (compteSource.getId() == compteDestinataire.getId()) {
+				pModel.addAttribute("erreur", "Virement non effectué. Le compte source et le compte destinataire sont identiques.");
 			}
 			else {
-				pModel.addAttribute("erreur", "Création annulée. Le client possède déjà un compte Agency.");
+				// Si solde insuffisant
+				if (compteSource.getSolde() < montant) {
+					pModel.addAttribute("erreur", "Virement non effectué. Le solde est insuffisant.");
+				}
+				else {
+					// TODO création des opérations
+				}
 			}
 		}
-		else {
-			pModel.addAttribute("erreur", "Création annulée. Le client n'existe pas.");
+		
+		// Virement tiers
+		if (request.getParameter("virementTiers") != null) {
+			Compte compteSourceT = compteService.getCompteAvecId(Integer.parseInt(request.getParameter("cpteSourceTiers")));
+			int montantT = Integer.parseInt(request.getParameter("montantTiers"));
+			
+			// Si solde insuffisant
+			if (compteSourceT.getSolde() < montantT) {
+				pModel.addAttribute("erreur", "Virement non effectué. Le solde est insuffisant.");
+			}
+			else {
+				// TODO création de l'opération
+			}
 		}
 		
-		return "compteAgency/creation";
+		return "virement/virement";
 	}
 }
