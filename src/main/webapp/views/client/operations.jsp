@@ -23,7 +23,7 @@
                     <tr>      
                         <td><c:out value="${operation.date}"/></td>                        
                         <td><c:out value="${comptes.type}"/></td>
-                        <td><c:out value="${operation.montant}"/></td>                    
+                        <td><c:out value="${operation.montant}"/> €</td>                    
                     </tr>
                 </c:forEach>
             </tbody>
