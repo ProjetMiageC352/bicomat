@@ -49,7 +49,7 @@ public class OperationDAO implements IOperationDAO {
         lCriteriaUpdate.set("o_date", o.getDate());
         lCriteriaUpdate.set("o_montant", o.getMontant());
         lCriteriaUpdate.set("o_type", o.getType());
-        lCriteriaUpdate.set("o_id_operation", o.getIdOperation());
+        //lCriteriaUpdate.set("o_id_operation", o.getIdOperation());
         lCriteriaUpdate.set("c_id", o.getIdCompte());
         final Query lQuery = entityManager.createQuery(lCriteriaUpdate);
         final int lRowCount = lQuery.executeUpdate();
