@@ -42,15 +42,15 @@ public class OperationController {
 						@PathVariable(value="prenom") final String prenom,
 						@PathVariable(value="type") final String type_compte,
 						@PathVariable(value="id") final int id_compte,
-						@PathVariable(value="solde") final int solde_compte,
+						@PathVariable(value="solde") final double solde_compte,
 						HttpServletRequest request,
 						HttpServletResponse response) throws ServletException, IOException {
 					
-					/*// Redirection si le conseiller n'est pas connecté
+					// Redirection si le conseiller n'est pas connecté
 					HttpSession session = request.getSession();
 					if (session.getAttribute("conseiller") == null) {
 						request.getRequestDispatcher("connexion").forward(request, response);
-					}*/
+					}
 					
 					final List<Operation> lOperation = operationService.listeOperationsParCompte(id_compte);
 					pModel.addAttribute("nom", nom);
