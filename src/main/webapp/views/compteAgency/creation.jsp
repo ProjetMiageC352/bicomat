@@ -8,6 +8,10 @@
 
 <h1><spring:message code="compteAgency.creation.titre"/></h1>
 
+<c:if test = "${erreur != ''}">
+	<p><c:out value="${erreur}"/></p>
+</c:if>
+
 <form method="post" action="/bicomat/compteAgency/creer">
 	<p class="badge badge-secondary">Renseigner les champs suivants</p>
 	<fieldset> 

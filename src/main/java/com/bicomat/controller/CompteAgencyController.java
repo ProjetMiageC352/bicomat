@@ -104,10 +104,26 @@ public class CompteAgencyController {
 		if (clientService.existeAvecNomPrenomNumContrat(request.getParameter("nom"),
 				request.getParameter("prenom"),
 				Integer.parseInt(request.getParameter("num_contrat")))) {
+			
+			Client client = clientService.getClientAvecNomPrenomNumContrat(
+					request.getParameter("nom"),
+					request.getParameter("prenom"),
+					Integer.parseInt(request.getParameter("num_contrat")));
+			
 			// Si le client n'a pas de compte agency
-			if (true) {
-				return "accueil";
+			if (!client.aCompteAgency()) {
+				client.setLogin(client.getNom() + client.getId());
+				client.setPassword(request.getParameter("password"));
+				clientService.modifierClient(client);
+				
+				return "compteAgency";
 			}
+			else {
+				pModel.addAttribute("erreur", "Création annulée. Le client possède déjà un compte Agency.");
+			}
+		}
+		else {
+			pModel.addAttribute("erreur", "Création annulée. Le client n'existe pas.");
 		}
 		
 		return "compteAgency/creation";
