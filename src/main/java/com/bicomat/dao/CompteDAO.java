@@ -15,7 +15,6 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
-import com.bicomat.bean.Client;
 import com.bicomat.bean.Compte;
 
 @Repository
