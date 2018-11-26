@@ -84,8 +84,9 @@ public class ClientDAO implements IClientDAO {
         final CriteriaQuery<Client> lCriteriaQuery = lCriteriaBuilder.createQuery(Client.class);
         final Root<Client> lRoot = lCriteriaQuery.from(Client.class);
         lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.orderBy(lCriteriaBuilder.asc(lRoot.get("nom")));
+        
         final TypedQuery<Client> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
-
         return lTypedQuery.getResultList();
 	}
 	/**

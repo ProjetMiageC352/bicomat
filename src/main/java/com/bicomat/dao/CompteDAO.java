@@ -41,14 +41,15 @@ public class CompteDAO implements ICompteDAO {
 
         final CriteriaUpdate<Compte> lCriteriaUpdate = lCriteriaBuilder.createCriteriaUpdate(Compte.class);
         final Root<Compte> lRoot = lCriteriaUpdate.from(Compte.class);
-        final Path<Compte> lPath = lRoot.get("c_id");
+        final Path<Compte> lPath = lRoot.get("id");
         final Expression<Boolean> lExpression = lCriteriaBuilder.equal(lPath, c.getId());
         lCriteriaUpdate.where(lExpression);
-        lCriteriaUpdate.set("c_type", c.getType());
-        lCriteriaUpdate.set("c_decouvert", c.getDecouvert());
-        lCriteriaUpdate.set("c_solde", c.getSolde());
-        lCriteriaUpdate.set("b_id", c.getIdBanque());
-        lCriteriaUpdate.set("c_id_client", c.getIdClient());
+        lCriteriaUpdate.set("type", c.getType());
+        lCriteriaUpdate.set("decouvert", c.getDecouvert());
+        lCriteriaUpdate.set("solde", c.getSolde());
+        lCriteriaUpdate.set("actif", c.getActif());
+        lCriteriaUpdate.set("idBanque", c.getIdBanque());
+        lCriteriaUpdate.set("idClient", c.getIdClient());
         final Query lQuery = entityManager.createQuery(lCriteriaUpdate);
         final int lRowCount = lQuery.executeUpdate();
 
@@ -81,7 +82,6 @@ public class CompteDAO implements ICompteDAO {
         final Root<Compte> lRoot = lCriteriaQuery.from(Compte.class);
         lCriteriaQuery.select(lRoot);
         final TypedQuery<Compte> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
-
         return lTypedQuery.getResultList();
 	}
 }
