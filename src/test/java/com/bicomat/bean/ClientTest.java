@@ -19,7 +19,7 @@ public class ClientTest {
      */
     @BeforeClass
     public static void setUpBeforeClass() {
-        c = new Client(1, "Nom", "Prenom", "Adresse", 0606060606, 1, 1, "Login", "Password");
+        c = new Client(1, "Nom", "Prenom", "Adresse", "0606060606", 1, 1, "Login", "Password");
     }
     
     /* **************************** */
@@ -32,8 +32,8 @@ public class ClientTest {
     @Test
     public final void testConstructeur() {
         Assert.assertNotNull(new Client());
-        Assert.assertNotNull(new Client("Nom", "Prenom", "Adresse", 0606060606, 1, 1, "Login", "Password"));
-        Assert.assertNotNull(new Client(1, "Nom", "Prenom", "Adresse", 0606060606, 1, 1, "Login", "Password"));
+        Assert.assertNotNull(new Client("Nom", "Prenom", "Adresse", "0606060606", 1, 1, "Login", "Password"));
+        Assert.assertNotNull(new Client(1, "Nom", "Prenom", "Adresse", "0606060606", 1, 1, "Login", "Password"));
     }
     
     /* **************************** */
@@ -73,7 +73,7 @@ public class ClientTest {
      */
     @Test
     public final void testGetTel_client() {
-        Assert.assertEquals(c.getTel_client(), 0606060606);
+        Assert.assertEquals(c.getTel_client(), "0606060606");
     }
     /**
      * Test de getNum_contrat().
@@ -149,14 +149,14 @@ public class ClientTest {
         Assert.assertEquals(c.getAdresse_mail(), "Adresse");
     }
     /**
-     * Test de setTel_client(int tel_clientC).
+     * Test de setTel_client(String tel_clientC).
      */
     @Test
     public final void testSetTel_client() {
-        c.setTel_client(0101010101);
-        Assert.assertEquals(c.getTel_client(), 0101010101);
-        c.setTel_client(0606060606);
-        Assert.assertEquals(c.getTel_client(), 0606060606);
+        c.setTel_client("0101010101");
+        Assert.assertEquals(c.getTel_client(), "0101010101");
+        c.setTel_client("0606060606");
+        Assert.assertEquals(c.getTel_client(), "0606060606");
     }
     /**
      * Test de setNum_contrat(int num_contratC).
@@ -206,10 +206,10 @@ public class ClientTest {
     /**
      * Test de toString().
      */
-    /*@Test
+    @Test
     public final void testToString() {
     	Assert.assertEquals(c.toString(), "Client [id=1, nom=Nom, prenom=Prenom, "
-    			+ "adresse_mail=Adresse, tel_client=606060606, num_contrat=1, "
+    			+ "adresse_mail=Adresse, tel_client=0606060606, num_contrat=1, "
     			+ "id_conseiller=1, login=Login, password=Password]");
-    }*/
+    }
 }
