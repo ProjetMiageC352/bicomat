@@ -56,7 +56,14 @@ public class CompteService implements ICompteService {
 	public List<Compte> listeComptes() {
 		return this.compteDAO.listeComptes();
 	}
-	
+	/**
+	 * Demande la liste des comptespar client.
+	 *
+	 * @return la liste des comptes
+	 */
+	public List<Compte> listeComptesparclient(int id){
+		return this.compteDAO.listeComptesparclient(id);
+	}
 	/**
 	 * Demande la création d'un compte.
 	 *
