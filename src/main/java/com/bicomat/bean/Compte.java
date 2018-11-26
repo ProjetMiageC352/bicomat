@@ -207,29 +207,6 @@ public class Compte {
 	/*           METHODES           */
 	/* **************************** */
     
-    /**
-     * 
-     */
-    public void ListeOper() {
-        // TODO implement here
-    }
-
-    /**
-     * Lie une opération au compte.
-     * 
-     * @param o Opération à lier au compte
-     */
-    public void lierOpCpte(final Operation o) {
-        
-    }
-
-    /**
-     * 
-     */
-    public void LierOperClient() {
-        // TODO implement here
-    }
-    
     @Override
 	public String toString(){
 		return "Compte [id = " + id + ", type = " + type + ", découvert = " + decouvert

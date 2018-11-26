@@ -210,21 +210,7 @@ public class Operation {
 	/*           METHODES           */
 	/* **************************** */
 	
-	/**
-	 * 
-	 */
-	public void EffectuerVersement() {
-	    // TODO implement here
-	}
-	
-	/**
-	 * 
-	 */
-	public void VerserSolde() {
-	    // TODO implement here
-	}
-    
-    @Override
+	@Override
 	public String toString(){
 		return "Operation [id = " + id + ", date = " + date.toString() + ", montant = " + montant
 				+ ", type = " + type + ", id opération = " + idOperation
