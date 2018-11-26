@@ -47,8 +47,8 @@ public class Operation {
 	/**
 	 * Id de l'opération liée.
 	 */
-	@Column(name="o_id_operation")
-	protected int idOperation = 0;
+	//@Column(name="o_id_operation")
+	//protected int idOperation = 0;
 	/**
 	 * Id du compte.
 	 */
@@ -70,16 +70,14 @@ public class Operation {
      * @param dateO Date de l'opération
      * @param montantO Montant de l'opération
      * @param typeO Type de l'opération
-     * @param idOperation Id de l'opération liée
      * @param idCompte Id du compte
      */
     public Operation(final Date dateO, final double montantO,
-    		final String typeO, final int idOperationO,
-    		final int idCompteO) {
+    		final String typeO, final int idCompteO) {
     	this.date = dateO;
     	this.montant = montantO;
     	this.type = typeO;
-    	this.idOperation = idOperationO;
+    	//this.idOperation = idOperationO;
     	this.idCompte = idCompteO;
     }
     /**
@@ -89,16 +87,15 @@ public class Operation {
      * @param dateO Date de l'opération
      * @param montantO Montant de l'opération
      * @param typeO Type de l'opération
-     * @param idOperation Id de l'opération liée
      * @param idCompte Id du compte
      */
     public Operation(final int idO, final Date dateO, final double montantO,
-    		final String typeO, final int idOperationO, final int idCompteO) {
+    		final String typeO, final int idCompteO) {
     	this.id = idO;
     	this.date = dateO;
     	this.montant = montantO;
     	this.type = typeO;
-    	this.idOperation = idOperationO;
+    	//this.idOperation = idOperationO;
     	this.idCompte = idCompteO;
     }
     
@@ -143,9 +140,9 @@ public class Operation {
      *
      * @return idOperation
      */
-    public final int getIdOperation() {
+    /*public final int getIdOperation() {
         return idOperation;
-    }
+    }*/
     /**
      * Getter de l'id du compte.
      *
@@ -196,9 +193,9 @@ public class Operation {
      *
      * @param idOperationO Id de la nouvelle opération liée
      */
-    public final void setIdOperation(final int idOperationO) {
+    /*public final void setIdOperation(final int idOperationO) {
         this.idOperation = idOperationO;
-    }
+    }*/
     /**
      * Setter de l'id du compte.
      *
@@ -215,7 +212,6 @@ public class Operation {
 	@Override
 	public String toString(){
 		return "Operation [id = " + id + ", date = " + date.toString() + ", montant = " + montant
-				+ ", type = " + type + ", id opération = " + idOperation
-				+ ", id compte = " + idCompte + "]";
+				+ ", type = " + type + ", id compte = " + idCompte + "]";
 	}
 }

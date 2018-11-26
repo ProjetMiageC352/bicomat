@@ -21,7 +21,7 @@ public class OperationTest {
      */
     @BeforeClass
     public static void setUpBeforeClass() {
-        o = new Operation(1, Date.valueOf("2018-01-01"), 100, "Type", 1, 1);
+        o = new Operation(1, Date.valueOf("2018-01-01"), 100, "Type", 1);
     }
     
     /* **************************** */
@@ -34,8 +34,8 @@ public class OperationTest {
     @Test
     public final void testConstructeur() {
         Assert.assertNotNull(new Operation());
-        Assert.assertNotNull(new Operation(Date.valueOf("2018-01-01"), 100, "Type", 1, 1));
-        Assert.assertNotNull(new Operation(1, Date.valueOf("2018-01-01"), 100, "Type", 1, 1));
+        Assert.assertNotNull(new Operation(Date.valueOf("2018-01-01"), 100, "Type", 1));
+        Assert.assertNotNull(new Operation(1, Date.valueOf("2018-01-01"), 100, "Type", 1));
     }
     
     /* **************************** */
@@ -73,10 +73,10 @@ public class OperationTest {
     /**
      * Test de getIdOperation().
      */
-    @Test
+    /*@Test
     public final void testGetIdOperation() {
         Assert.assertEquals(o.getIdOperation(), 1);
-    }
+    }*/
     /**
      * Test de getIdCompte().
      */
@@ -129,16 +129,16 @@ public class OperationTest {
         o.setType("Type");
         Assert.assertEquals(o.getType(), "Type");
     }
-   /**
+    /**
      * Test de setIdOperation(int idOperationO).
      */
-    @Test
+    /*@Test
     public final void testSetIdOperation() {
         o.setIdOperation(2);
         Assert.assertEquals(o.getIdOperation(), 2);
         o.setIdOperation(1);
         Assert.assertEquals(o.getIdOperation(), 1);
-    }
+    }*/
     /**
      * Test de setIdCompte(int idCompteO).
      */
@@ -160,6 +160,6 @@ public class OperationTest {
     @Test
     public final void testToString() {
         Assert.assertEquals(o.toString(), "Operation [id = 1, date = 2018-01-01, "
-        		+ "montant = 100.0, type = Type, id opération = 1, id compte = 1]");
+        		+ "montant = 100.0, type = Type, id compte = 1]");
     }
 }
