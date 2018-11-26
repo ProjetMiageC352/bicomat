@@ -10,7 +10,7 @@
 
 <h1><spring:message code="compteAgency.liste.titre"/></h1>
 
-<table border="1">
+<table class="table table-bordered">
 <thead>
     <tr>
         <th><spring:message code="compteAgency.colonne.identifiant"/></th>

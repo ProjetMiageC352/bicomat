@@ -7,9 +7,9 @@
 
 <form method="post" action="connexion">
     <fieldset>
-        <legend><h1> <div class="col-sm-1"></div>Connexion</h1></legend>
+        <legend><h1> <div class="col-sm-1"></div><spring:message code="connexion.titre"/></h1></legend>
         <div class="col-sm-1"></div>
-        <p class="badge badge-secondary">Vous pouvez vous connecter via ce formulaire.</p>
+        <p class="badge badge-secondary"><spring:message code="connexion.form.message"/></p>
 <div class="form-group row">
                 <div class="col-sm-1"></div>
         <label class="col-sm-1 col-form-label"  for="login"><spring:message code="connexion.form.libelle.login"/></label>

@@ -1,8 +1,8 @@
 
-<%@ include file="_shared/header.jsp" %>
- <%@ include file="_shared/menu.jsp" %>  
+<%@ include file="../_shared/header.jsp" %>
+<%@ include file="../_shared/menu.jsp" %>  
   
- <legend><h1><div class="col-sm-1"></div><spring:message code="compte.titre"/></h1></legend>
+ <legend><h1><spring:message code="compte.titre"/></h1></legend>
 <div class="col-sm-1"></div>
 
 <table class="table table-bordered" style="width:80%;">
@@ -26,4 +26,4 @@
     </tbody>
 </table>
 
-<%@ include file="_shared/footer.jsp" %>
+<%@ include file="../_shared/footer.jsp" %>
