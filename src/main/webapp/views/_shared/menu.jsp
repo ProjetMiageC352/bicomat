@@ -13,7 +13,7 @@
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" >Comptes Agency<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-				 	<li><a href="compteAgency" >Liste des comptes agency</a></li>
+				 	<li><a href="/bicomat/compteAgency">Liste des comptes agency</a></li>
           			<li><a href="/bicomat/compteAgency/creer">Creer un compte agency</a></li>
    
         		</ul>
