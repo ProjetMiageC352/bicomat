@@ -23,20 +23,20 @@
 		    </tr>
 		</thead>
 		<tbody>
-	    <c:forEach items="${clients}" var="client">
-	        <tr>
-	            <td><c:out value="${client.id}"/></td>
-	            <td><c:out value="${client.nom}"/></td>
-	            <td><c:out value="${client.prenom}"/></td>
-	            <td><c:out value="${client.num_contrat}"/></td>
-	            <td><c:out value="${client.login}"/></td>
-	            <td>
-	            <c:if test = "${client.login == ''}">
-			    	<a href="compteAgency/creer/<c:out value="${client.nom}"/>/<c:out value="${client.prenom}"/>/<c:out value="${client.num_contrat}"/>"><spring:message code="compteAgency.lien.modification"/></a>
-			    </c:if>
-	            </td>
-	        </tr>
-	    </c:forEach>
+		    <c:forEach items="${clients}" var="client">
+		        <tr>
+		            <td><c:out value="${client.id}"/></td>
+		            <td><c:out value="${client.nom}"/></td>
+		            <td><c:out value="${client.prenom}"/></td>
+		            <td><c:out value="${client.num_contrat}"/></td>
+		            <td><c:out value="${client.login}"/></td>
+		            <td>
+		            <c:if test = "${client.login == ''}">
+				    	<a href="compteAgency/creer/<c:out value="${client.nom}"/>/<c:out value="${client.prenom}"/>/<c:out value="${client.num_contrat}"/>"><spring:message code="compteAgency.lien.modification"/></a>
+				    </c:if>
+		            </td>
+		        </tr>
+		    </c:forEach>
 	    </tbody>
 	</table>
 </div>
