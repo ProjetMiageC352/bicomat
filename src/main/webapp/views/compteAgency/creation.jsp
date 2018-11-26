@@ -9,7 +9,7 @@
 <h1><spring:message code="compteAgency.creation.titre"/></h1>
 
 <c:if test = "${erreur != ''}">
-	<p><c:out value="${erreur}"/></p>
+	<p class="alert alert-danger"><c:out value="${erreur}"/></p>
 </c:if>
 
 <form method="post" action="/bicomat/compteAgency/creer">
