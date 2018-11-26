@@ -17,7 +17,7 @@ public interface IClientDAO {
 	 *
 	 * @param b Client à modifier
 	 */
-	//public void modifierClient(Client c);
+	public void modifierClient(Client c);
 	/**
 	 * Supprime un client.
 	 *
@@ -31,6 +31,15 @@ public interface IClientDAO {
 	 * @return la liste des clients de la table
 	 */
 	public List<Client> listeClients();
+	/**
+	 * Retourne un client pour un nom, prénom et numero de contrat.
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @param num_contrat
+	 * @return le client
+	 */
+	public Client getClientAvecNomPrenomNumContrat(String nom, String prenom, int num_contrat);
 	
 	/**
 	 * Vérifie si un client existe pour un nom, prenom et numero de CB

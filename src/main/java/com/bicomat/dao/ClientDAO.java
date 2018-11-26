@@ -4,16 +4,18 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
 import com.bicomat.bean.Client;
-import com.bicomat.bean.Conseiller;
-import com.bicomat.bean.CarteBancaire;
 
 @Repository
 public class ClientDAO implements IClientDAO {
@@ -35,18 +37,22 @@ public class ClientDAO implements IClientDAO {
 	 *
 	 * @param c Client à modifier
 	 */
-	/*public void modifierClient(Client c) {
+	public void modifierClient(Client c) {
 		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
 
         final CriteriaUpdate<Client> lCriteriaUpdate = lCriteriaBuilder.createCriteriaUpdate(Client.class);
         final Root<Client> lRoot = lCriteriaUpdate.from(Client.class);
-        final Path<Client> lPath = lRoot.get("c_id_client");
+        final Path<Client> lPath = lRoot.get("id");
         final Expression<Boolean> lExpression = lCriteriaBuilder.equal(lPath, c.getId());
         lCriteriaUpdate.where(lExpression);
-        lCriteriaUpdate.set("c_nom", c.getNom());
-        lCriteriaUpdate.set("c_prenom", c.getPrenom());
-        lCriteriaUpdate.set("c_adresse_mail", c.getAdresse_mail());
-        lCriteriaUpdate.set("c_type_client", c.getType_client());
+        lCriteriaUpdate.set("nom", c.getNom());
+        lCriteriaUpdate.set("prenom", c.getPrenom());
+        lCriteriaUpdate.set("adresse_mail", c.getAdresse_mail());
+        lCriteriaUpdate.set("tel_client", c.getTel_client());
+        lCriteriaUpdate.set("num_contrat", c.getNum_contrat());
+        lCriteriaUpdate.set("id_conseiller", c.getId_conseiller());
+        lCriteriaUpdate.set("login", c.getLogin());
+        lCriteriaUpdate.set("password", c.getPassword());
         final Query lQuery = entityManager.createQuery(lCriteriaUpdate);
         final int lRowCount = lQuery.executeUpdate();
 
@@ -56,7 +62,7 @@ public class ClientDAO implements IClientDAO {
             throw new RuntimeException("Nombre d'occurences (" + lRowCount + 
                     ") modifiées différent de 1 pour " + lSql);
         }
-	}*/
+	}
 	/**
 	 * Supprime un client.
 	 *
@@ -81,6 +87,35 @@ public class ClientDAO implements IClientDAO {
         final TypedQuery<Client> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
 
         return lTypedQuery.getResultList();
+	}
+	/**
+	 * Retourne un client pour un nom, prénom et numero de contrat.
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @param num_contrat
+	 * @return le client
+	 */
+	public Client getClientAvecNomPrenomNumContrat(String nom, String prenom, int num_contrat) {
+		Client client = new Client();
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaQuery<Client> lCriteriaQuery = lCriteriaBuilder.createQuery(Client.class);
+        final Root<Client> lRoot = lCriteriaQuery.from(Client.class);
+        lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.where(lCriteriaBuilder.and(
+        		lCriteriaBuilder.equal(lRoot.get("nom"), nom),
+        		lCriteriaBuilder.equal(lRoot.get("prenom"), prenom),
+        		lCriteriaBuilder.equal(lRoot.get("num_contrat"), num_contrat)
+        		));
+
+        TypedQuery<Client> query = entityManager.createQuery(lCriteriaQuery);
+        List<Client> ListeClients = query.getResultList();
+        
+        if (!ListeClients.isEmpty()) {
+        	client = ListeClients.get(0);
+        }
+        return client;
 	}
 
 	/**
