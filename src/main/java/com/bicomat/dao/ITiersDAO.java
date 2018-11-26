@@ -13,12 +13,17 @@ public interface ITiersDAO {
 	 */
 	public void creerTiers(Tiers t);
 	/**
-	 * Modifie une tiers.
+	 * Demande la liste des tiers.
 	 *
-	 * @param b Tiers à modifier
+	 * @return la liste des tiers
 	 */
-	
 	public List<Tiers> listeTiers();
+	/**
+	 * Retourne la liste des tiers actifs pour un client.
+	 *
+	 * @return la liste des tiers
+	 */
+	public List<Tiers> listeTiersActifsPourClient(int id);
 	/**
 	 * Demande de vérifier si un Tiers existe pour un nom, prenom et numero de compte
 	 * @param nom

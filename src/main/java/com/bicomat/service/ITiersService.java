@@ -19,6 +19,12 @@ public interface ITiersService {
 	 * @return la liste des tiers
 	 */
 	public List<Tiers> listeTiers();
+	/**
+	 * Demande la liste des tiers actifs pour un client.
+	 *
+	 * @return la liste des tiers
+	 */
+	public List<Tiers> listeTiersActifsPourClient(int id);
 	
 	/**
 	 * Demande de vérifier si un Tiers existe pour un nom, prenom et numero de compte

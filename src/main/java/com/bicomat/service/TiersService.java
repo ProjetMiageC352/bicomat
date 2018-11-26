@@ -40,14 +40,22 @@ public class TiersService implements ITiersService {
 		return this.tiersDAO.existeAvecNomPrenomNumCompte(nom, prenom,numcompte,idclient );
 	}
 	/**
-	 * Demande la liste des tierss.
+	 * Demande la liste des tiers.
 	 *
-	 * @return la liste des tierss
+	 * @return la liste des tiers
 	 */
 	@Transactional(readOnly=true)
 	public List<Tiers> listeTiers() {
 		return this.tiersDAO.listeTiers();
 	}
-	
+	/**
+	 * Demande la liste des tiers actifs pour un client.
+	 *
+	 * @return la liste des tiers
+	 */
+	@Transactional
+	public List<Tiers> listeTiersActifsPourClient(int id) {
+		return this.tiersDAO.listeTiersActifsPourClient(id);
+	}
 	
 }

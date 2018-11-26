@@ -1,5 +1,7 @@
 package com.bicomat.dao;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -30,9 +32,9 @@ public class TiersDAO implements ITiersDAO {
 	
 
 	/**
-	 * Retourne la liste des tierss.
+	 * Retourne la liste des tiers.
 	 *
-	 * @return la liste des tierss de la table
+	 * @return la liste des tiers de la table
 	 */
 	public List<Tiers> listeTiers() {
 		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
@@ -43,6 +45,27 @@ public class TiersDAO implements ITiersDAO {
         final TypedQuery<Tiers> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
 
         return lTypedQuery.getResultList();
+	}
+	/**
+	 * Retourne la liste des tiers actifs pour un client.
+	 *
+	 * @return la liste des tiers
+	 */
+	public List<Tiers> listeTiersActifsPourClient(int id) {
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaQuery<Tiers> lCriteriaQuery = lCriteriaBuilder.createQuery(Tiers.class);
+        final Root<Tiers> lRoot = lCriteriaQuery.from(Tiers.class);
+        lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.where(lCriteriaBuilder.and(
+        		lCriteriaBuilder.equal(lRoot.get("idclientT"), id),
+        		lCriteriaBuilder.lessThanOrEqualTo(
+        				lRoot.get("date_creation").as(Date.class),
+        				Date.valueOf(LocalDate.now().minusDays(1))
+        		)));
+
+        TypedQuery<Tiers> query = entityManager.createQuery(lCriteriaQuery);
+        return query.getResultList();
 	}
 	
 	/**
