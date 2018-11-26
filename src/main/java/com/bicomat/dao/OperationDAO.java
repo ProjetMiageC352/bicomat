@@ -109,4 +109,26 @@ public class OperationDAO implements IOperationDAO {
 
         return lTypedQuery.getResultList();
 	}
+	
+	/**
+	 * Retourne la liste des opérations en fonction de dates pour un compte.
+	 *
+	
+	 * @param compte Compte pour le relevé
+	 * @return la liste des opérations
+	 */
+	public List<Operation> listeOperationsParCompte( int idcompte) {
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaQuery<Operation> lCriteriaQuery = lCriteriaBuilder.createQuery(Operation.class);
+        final Root<Operation> lRoot = lCriteriaQuery.from(Operation.class);
+        lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.where(lCriteriaBuilder.and(
+        		lCriteriaBuilder.equal(lRoot.get("idCompte"), idcompte)
+        		));
+        
+        final TypedQuery<Operation> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
+
+        return lTypedQuery.getResultList();
+	}
 }

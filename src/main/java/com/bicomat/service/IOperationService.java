@@ -44,6 +44,15 @@ public interface IOperationService {
 	public List<Operation> listeOperationsParDatesCompte(Date date1, Date date2, Compte compte);
 	
 	/**
+	 * Demande la liste des opérations  pour un compte.
+	 * 
+	 * @param date1 Date de début du relevé
+	 * @param date2 Date de fin du relevé
+	 * @param compte Compte pour le relevé
+	 * @return la liste des opérations
+	 */
+	public List<Operation> listeOperationsParCompte( int idcompte);
+	/**
 	 * Demande la création d'une opération.
 	 *
 	 * @param nDate Date de la nouvelle opération

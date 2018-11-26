@@ -42,4 +42,12 @@ public interface IOperationDAO {
 	 * @return la liste des opérations
 	 */
 	public List<Operation> listeOperationsParDatesCompte(Date date1, Date date2, Compte compte);
+	/**
+	 * Retourne la liste des opérations en fonction  pour un compte.
+	 *
+	
+	 * @param compte Compte pour le relevé
+	 * @return la liste des opérations
+	 */
+	public List<Operation> listeOperationsParCompte( int idcompte);
 }
