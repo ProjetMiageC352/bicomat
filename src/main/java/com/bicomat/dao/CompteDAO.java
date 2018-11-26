@@ -15,6 +15,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
+import com.bicomat.bean.Client;
 import com.bicomat.bean.Compte;
 
 @Repository
@@ -83,6 +84,29 @@ public class CompteDAO implements ICompteDAO {
         lCriteriaQuery.select(lRoot);
         final TypedQuery<Compte> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
         return lTypedQuery.getResultList();
+	}
+	/**
+	 * Retourne un compte pour un id.
+	 * 
+	 * @param id
+	 * @return le compte
+	 */
+	public Compte getCompteAvecId(int id) {
+		Compte compte = new Compte();
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaQuery<Compte> lCriteriaQuery = lCriteriaBuilder.createQuery(Compte.class);
+        final Root<Compte> lRoot = lCriteriaQuery.from(Compte.class);
+        lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.where(lCriteriaBuilder.equal(lRoot.get("id"), id));
+
+        TypedQuery<Compte> query = entityManager.createQuery(lCriteriaQuery);
+        List<Compte> ListeComptes = query.getResultList();
+        
+        if (!ListeComptes.isEmpty()) {
+        	compte = ListeComptes.get(0);
+        }
+        return compte;
 	}
 	/**
 	 * Retourne la liste des comptes en fonction de l'id.

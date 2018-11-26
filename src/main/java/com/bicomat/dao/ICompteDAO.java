@@ -32,6 +32,13 @@ public interface ICompteDAO {
 	 */
 	public List<Compte> listeComptes();
 	/**
+	 * Retourne un compte pour un id.
+	 * 
+	 * @param id
+	 * @return le compte
+	 */
+	public Compte getCompteAvecId(int id);
+	/**
 	 * Demande la liste des comptespar client.
 	 *
 	 * @return la liste des comptes
