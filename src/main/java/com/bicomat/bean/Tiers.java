@@ -1,7 +1,7 @@
 package com.bicomat.bean;
 
-
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.junit.Test;
+
+import com.mysql.jdbc.Util;
 
 @Entity
 @Table(name="tiers")
@@ -175,7 +179,29 @@ public class Tiers  {
 	public final void setDate_creation(Date date_creation) {
 		this.date_creation = date_creation;
 	}
+	
+	/* **************************** */
+	/*           METHODES           */
+	/* **************************** */
 
+	/**
+     * Teste si le tiers est actif.
+     * 
+     * @return vrai si le tiers à été créé il y a plus d'un jour
+     */
+    @Test
+    public final boolean isActif() {
+    	boolean actif = true;
+    	
+    	LocalDate lDateJour = LocalDate.now();
+    	LocalDate lDateActivation = date_creation.toLocalDate().plusDays(1);
+        if(lDateJour.isBefore(lDateActivation)) {
+        	actif = false;
+        }
+        
+        return actif;
+    }
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

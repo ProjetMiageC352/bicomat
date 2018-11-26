@@ -33,10 +33,10 @@ public class ClientService implements IClientService {
 	 *
 	 * @param b Client à modifier
 	 */
-	/*@Transactional
+	@Transactional
 	public void modifierClient(Client c) {
 		this.clientDAO.modifierClient(c);
-	}*/
+	}
 	/**
 	 * Demande la suppression d'une client.
 	 *
@@ -87,5 +87,17 @@ public class ClientService implements IClientService {
 	@Transactional(readOnly=true)
 	public List<Client> listeClients() {
 		return this.clientDAO.listeClients();
+	}
+	/**
+	 * Demande de retourner un client pour un nom, prénom et numero de contrat.
+	 * 
+	 * @param nom
+	 * @param prenom
+	 * @param num_contrat
+	 * @return le client
+	 */
+	@Transactional
+	public Client getClientAvecNomPrenomNumContrat(String nom, String prenom, int num_contrat) {
+		return this.clientDAO.getClientAvecNomPrenomNumContrat(nom, prenom, num_contrat);
 	}
 }

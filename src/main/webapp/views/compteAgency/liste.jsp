@@ -6,7 +6,7 @@
 <%@ include file="../_shared/header.jsp" %>
 <%@ include file="../_shared/menu.jsp" %>
 
-<a href="compteAgency/creer"><spring:message code="compteAgency.lien.creation"/></a>
+<a href="/bicomat/compteAgency/creer"><spring:message code="compteAgency.lien.creation"/></a>
 
 <h1><spring:message code="compteAgency.liste.titre"/></h1>
 

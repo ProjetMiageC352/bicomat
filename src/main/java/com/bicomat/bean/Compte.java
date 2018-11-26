@@ -41,6 +41,11 @@ public class Compte {
 	@Column(name="c_solde")
 	protected double solde = 0;
 	/**
+	 * Compte actif ou cloturé.
+	 */
+	@Column(name="c_actif")
+	protected boolean actif = true;
+	/**
 	 * Id de la banque de rattachement.
 	 */
 	@Column(name="b_id")
@@ -66,14 +71,17 @@ public class Compte {
      * @param typeC Type de compte
      * @param decouvertC Découvert autorisé pour le compte
      * @param soldeC Solde du compte
+     * @param actifC Compte actif ou clôturé
      * @param idBanqueC Id de la banque qui gère le compte
      * @param idClientC Id du client qui possède le compte
      */
     public Compte(final String typeC, final boolean decouvertC,
-    		final double soldeC, final int idBanqueC, final int idClientC) {
+    		final double soldeC, final boolean actifC, final int idBanqueC,
+    		final int idClientC) {
     	this.type = typeC;
     	this.decouvert = decouvertC;
     	this.solde = soldeC;
+    	this.actif = actifC;
     	this.idBanque = idBanqueC;
     	this.idClient = idClientC;
     }
@@ -84,15 +92,18 @@ public class Compte {
      * @param typeC Type de compte
      * @param decouvertC Découvert autorisé pour le compte
      * @param soldeC Solde du compte
+     * @param actifC Compte actif ou clôturé
      * @param idBanqueC Id de la banque qui gère le compte
      * @param idClientC Id du client qui possède le compte
      */
     public Compte(final int idC, final String typeC, final boolean decouvertC,
-    		final double soldeC, final int idBanqueC, final int idClientC) {
+    		final double soldeC, final boolean actifC, final int idBanqueC,
+    		final int idClientC) {
     	this.id = idC;
     	this.type = typeC;
     	this.decouvert = decouvertC;
     	this.solde = soldeC;
+    	this.actif = actifC;
     	this.idBanque = idBanqueC;
     	this.idClient = idClientC;
     }
@@ -132,6 +143,14 @@ public class Compte {
      */
     public final double getSolde() {
         return solde;
+    }
+    /**
+     * Getter de l'état du compte : actif ou clôturé.
+     *
+     * @return actif
+     */
+    public final boolean getActif() {
+        return actif;
     }
     /**
      * Getter de l'id de la banque.
@@ -187,6 +206,14 @@ public class Compte {
         this.solde = soldeC;
     }
     /**
+     * Setter de l'état du compte : actif ou clôturé.
+     *
+     * @param actifC Nouvel état
+     */
+    public final void setActif(final boolean actifC) {
+        this.actif = actifC;
+    }
+    /**
      * Setter de l'id de la banque.
      *
      * @param idBanqueC Nouvel id de la banque
@@ -206,29 +233,6 @@ public class Compte {
     /* **************************** */
 	/*           METHODES           */
 	/* **************************** */
-    
-    /**
-     * 
-     */
-    public void ListeOper() {
-        // TODO implement here
-    }
-
-    /**
-     * Lie une opération au compte.
-     * 
-     * @param o Opération à lier au compte
-     */
-    public void lierOpCpte(final Operation o) {
-        
-    }
-
-    /**
-     * 
-     */
-    public void LierOperClient() {
-        // TODO implement here
-    }
     
     @Override
 	public String toString(){
