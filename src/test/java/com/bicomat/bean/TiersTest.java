@@ -1,5 +1,7 @@
 package com.bicomat.bean;
 
+import java.sql.Date;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,7 +21,7 @@ public class TiersTest {
      */
     @BeforeClass
     public static void setUpBeforeClass() {
-        t = new Tiers(1, "Nom", "Prenom", "0001", 1, true);
+        t = new Tiers(1, "Nom", "Prenom", "0001", 1, Date.valueOf("2018-01-01"));
     }
     
     /* **************************** */
@@ -32,8 +34,8 @@ public class TiersTest {
     @Test
     public final void testConstructeur() {
         Assert.assertNotNull(new Tiers());
-        Assert.assertNotNull(new Tiers("Nom", "Prenom", "0001", 1, true));
-        Assert.assertNotNull(new Tiers(1, "Nom", "Prenom", "0001", 1, true));
+        Assert.assertNotNull(new Tiers("Nom", "Prenom", "0001", 1, Date.valueOf("2018-01-01")));
+        Assert.assertNotNull(new Tiers(1, "Nom", "Prenom", "0001", 1, Date.valueOf("2018-01-01")));
     }
     
     /* **************************** */
@@ -76,11 +78,11 @@ public class TiersTest {
         Assert.assertEquals(t.getIdclientT(), 1);
     }
     /**
-     * Test de isActif().
+     * Test de getDate_creation().
      */
     @Test
-    public final void testIsActif() {
-        Assert.assertTrue(t.isActif());
+    public final void testGetDate_creation() {
+        Assert.assertEquals(t.getDate_creation(), Date.valueOf("2018-01-01"));
     }
     
     /* **************************** */
@@ -138,14 +140,14 @@ public class TiersTest {
         Assert.assertEquals(t.getIdclientT(), 1);
     }
     /**
-     * Test de setActif(boolean actif).
+     * Test de setDate_creation(Date date_creation).
      */
     @Test
-    public final void testSetActif() {
-        t.setActif(false);
-        Assert.assertFalse(t.isActif());
-        t.setActif(true);
-        Assert.assertTrue(t.isActif());
+    public final void testSetDate_creation() {
+        t.setDate_creation(Date.valueOf("2017-01-01"));
+        Assert.assertEquals(t.getDate_creation(), Date.valueOf("2017-01-01"));
+        t.setDate_creation(Date.valueOf("2018-01-01"));
+        Assert.assertEquals(t.getDate_creation(), Date.valueOf("2018-01-01"));
     }
     
     /* **************************** */
@@ -153,11 +155,21 @@ public class TiersTest {
 	/* **************************** */
     
     /**
+     * Test de isActif().
+     */
+    @Test
+    public final void testIsActif() {
+        t.setDate_creation(Date.valueOf("3018-01-01"));
+        Assert.assertFalse(t.isActif());
+        t.setDate_creation(Date.valueOf("2018-01-01"));
+        Assert.assertTrue(t.isActif());
+    }
+    /**
      * Test de toString().
      */
     @Test
     public final void testToString() {
     	Assert.assertEquals(t.toString(), "Tiers [id=1, nom=Nom, prenom=Prenom, "
-    			+ "numCompte=0001, idclientT=1, actif=true]");
+    			+ "numCompte=0001, idclientT=1, date_creation=2018-01-01]");
     }
 }
