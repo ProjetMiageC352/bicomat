@@ -44,7 +44,7 @@ public class TiersController {
 		final List<Tiers> lTierss = tiersService.listeTiers();
         pModel.addAttribute("Tiers", lTierss);
        
-        return "tiers"; //jsp de redirection 
+        return "tiers/tiers"; //jsp de redirection 
 	}
 	
 	@RequestMapping(value="/ajouttiers",method = RequestMethod.GET)
@@ -52,7 +52,7 @@ public class TiersController {
 		
         Model.addAttribute("creertiers", new Tiers());
        
-        return "formtiers"; //jsp de redirection 
+        return "tiers/formtiers"; //jsp de redirection 
 	}
 	
 	@RequestMapping(value="/ajouttiers",method = RequestMethod.POST)
@@ -66,7 +66,7 @@ public class TiersController {
 	    tiersService.creerTiers(tiers);
 		
        
-        return "formtiers"; //jsp de redirection 
+        return "tiers/formtiers"; //jsp de redirection 
 	}
 	
 	@RequestMapping(value="/creertiers", method = RequestMethod.GET)
@@ -79,7 +79,7 @@ public class TiersController {
 				if (session.getAttribute("conseiller") == null) {
 					request.getRequestDispatcher("connexion").forward(request, response);
 				}*/
-		return "creerTiers";
+		return "tiers/creerTiers";
 	}
 	
 	@RequestMapping(value="/creertiers", method = RequestMethod.POST)
@@ -92,9 +92,9 @@ public class TiersController {
 			){
 		
 		if (tiersService.existeAvecNomPrenomNumCompte(nomT, prenomT,numT,Integer.parseInt(idClient))) {
-			String etatTiers="Ce tiers est déjà rattaché à votre compte";
+			String etatTiers="Ce tiers est dï¿½jï¿½ rattachï¿½ ï¿½ votre compte";
 			pModel.addAttribute("etatTiers",etatTiers);
-			return "creerTiers";
+			return "tiers/creerTiers";
 		}else {
 		
 		Tiers tiers=new Tiers();
@@ -104,9 +104,9 @@ public class TiersController {
 		tiers.setIdclientT(Integer.parseInt(idClient));
 	    
 		tiersService.creerTiers(tiers);
-		String etatTiers="Le tiers a bien été créé";
+		String etatTiers="Le tiers a bien ï¿½tï¿½ crï¿½ï¿½";
 		pModel.addAttribute("etatTiers", etatTiers);
-		return "creerTiers";
+		return "tiers/creerTiers";
 		}
 	}
 }

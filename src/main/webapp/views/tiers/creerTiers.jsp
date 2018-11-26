@@ -1,12 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<%@ include file="_shared/header.jsp" %>
-<%@ include file="_shared/menu.jsp" %>
+<%@ include file="../_shared/header.jsp" %>
+<%@ include file="../_shared/menu.jsp" %>
  
         <form method="post" action="creertiers">
         
             
             
-                <legend><h1> <div class="col-sm-1"></div>Créer un tiers</h1></legend>
+                <legend><h1> <div class="col-sm-1"></div>CrÃ©er un tiers</h1></legend>
                 <div class="col-sm-1"></div>
                 <p class="badge badge-secondary" >Renseigner les champs suivants</p>
                <fieldset> 
@@ -29,9 +33,9 @@
                 </div>
                 <div class="form-group row">
                 <div class="col-sm-1"></div>
-           		 <label class="col-sm-1 col-form-label" >Numéro de compte</label>
+           		 <label class="col-sm-1 col-form-label" >NumÃ©ro de compte</label>
            		  <div class="col-sm-5">
-                <input required class="form-control" placeholder="Numéro de compte" aria-describedby="basic-addon1" id="num" name="num"  />
+                <input required class="form-control" placeholder="NumÃ©ro de compte" aria-describedby="basic-addon1" id="num" name="num"  />
                 
                 </div>
                 </div>
@@ -55,4 +59,5 @@
         </form>
         
         <p><c:out value="${etatTiers}"/></p>
-    
+
+<%@ include file="../_shared/footer.jsp" %>

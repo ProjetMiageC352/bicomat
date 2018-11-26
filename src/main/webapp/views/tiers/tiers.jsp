@@ -1,6 +1,6 @@
 
-<%@ include file="_shared/header.jsp" %>
- <%@ include file="_shared/menu.jsp" %>   
+<%@ include file="../_shared/header.jsp" %>
+ <%@ include file="../_shared/menu.jsp" %>   
     
     	<legend><h1><div class="col-sm-1"></div><spring:message code="tiers.titre"/></h1></legend>
     	<div class="col-sm-1"></div>
@@ -28,4 +28,4 @@
                 </c:forEach>
             </tbody>
         </table>
-   <%@ include file="_shared/footer.jsp" %>
+   <%@ include file="../_shared/footer.jsp" %>
