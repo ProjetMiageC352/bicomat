@@ -8,7 +8,7 @@
 
 <h1><spring:message code="compteAgency.creation.titre"/></h1>
 
-<c:if test = "${erreur != ''}">
+<c:if test = "${not empty erreur}">
 	<p class="alert alert-danger"><c:out value="${erreur}"/></p>
 </c:if>
 
