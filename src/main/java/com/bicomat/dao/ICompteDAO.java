@@ -31,4 +31,10 @@ public interface ICompteDAO {
 	 * @return la liste des comptes de la table
 	 */
 	public List<Compte> listeComptes();
+	/**
+	 * Demande la liste des comptespar client.
+	 *
+	 * @return la liste des comptes
+	 */
+	public List<Compte> listeComptesparclient(int id);
 }
