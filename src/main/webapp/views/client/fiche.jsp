@@ -2,33 +2,36 @@
 <%@ include file="../_shared/menu.jsp" %>
 
 <legend><div class="col-sm-1"></div><h3><c:if test = "${nom != ''}"><c:out value="${nom}"/> </c:if><c:if test = "${prenom != ''}"><c:out value="${prenom}"/> </c:if></h3>
-<div class="col-sm-1"></div><h4>NumÃ©ro de contrat: <c:if test = "${num_contrat != ''}"><c:out value="${num_contrat}"/> </c:if></h4></legend>
+<div class="col-sm-1"></div><h4>Numéro de contrat: <c:if test = "${num_contrat != ''}"><c:out value="${num_contrat}"/> </c:if></h4></legend>
 
- <div class="col-sm-1"></div> <table  class="table table-bordered" style="width:80%;">
+ 
+ <div class="col-sm-1"></div><h5 >Liste des comptes</h5>
+ <div class="col-sm-1"></div>
+ <table  class="table table-bordered" style="width:80%;">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Type</th>
-                    <th scope="col">DÃ©couvert</th>
+                    <th scope="col">Découvert</th>
                     <th scope="col">Solde</th>
                     <th scope="col">Actif</th>
-                    <th  width="50px"></th>
-                    <th width="50px" ></th>
+                    <th  colspan="2" style="text-align:center;" >Actions </th>         
                 </tr>
             </thead>
-
-
-<tbody>
+			<tbody>
                 <c:forEach items="${comptes}" var="comptes">
-                    <tr>
-                        <th scope="row"><c:out value="${comptes.id}"/></th>
+                    <tr>      
                         <td><c:out value="${comptes.type}"/></td>
                         <td><c:out value="${comptes.decouvert==true ? 'Oui': 'Non'}"/></td>
                         <td><c:out value="${comptes.solde}"/></td>
                         <td><c:out value="${comptes.actif==true ? 'Oui': 'Non'}"/></td>
-                        <td>OpÃ©rations</td>
-                        <td>Fermer</td>
-                        
+                        <td width="80px"><a href="/bicomat/client/operation/<c:out value="${nom}"/>/<c:out value="${prenom}"/>/<c:out value="${comptes.type}"/>/<c:out value="${comptes.id}"/>/<c:out value="${comptes.solde}"/>"">Opérations</a></td>
+                        <td width="80px">
+                        <a href="">
+                        <c:if test = "${comptes.type != 'Courant'}">
+				    	Cloturer
+				    	</c:if>
+				    	</a>
+				    	</td>                        
                     </tr>
                 </c:forEach>
             </tbody>
