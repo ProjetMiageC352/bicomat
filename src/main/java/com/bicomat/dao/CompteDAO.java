@@ -84,4 +84,21 @@ public class CompteDAO implements ICompteDAO {
         final TypedQuery<Compte> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
         return lTypedQuery.getResultList();
 	}
+	/**
+	 * Retourne la liste des comptes en fonction de l'id.
+	 *
+	 * @return la liste des comptes de la table
+	 */
+	public List<Compte> listeComptesparclient(int id) {
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaQuery<Compte> lCriteriaQuery = lCriteriaBuilder.createQuery(Compte.class);
+        final Root<Compte> lRoot = lCriteriaQuery.from(Compte.class);
+        lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.where(lCriteriaBuilder.and(
+        		lCriteriaBuilder.equal(lRoot.get("idClient"), id)
+        		));
+        final TypedQuery<Compte> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
+        return lTypedQuery.getResultList();
+	}
 }
