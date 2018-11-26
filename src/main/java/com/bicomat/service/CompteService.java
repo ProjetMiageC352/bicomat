@@ -65,6 +65,15 @@ public class CompteService implements ICompteService {
 		return this.compteDAO.listeComptesparclient(id);
 	}
 	/**
+	 * Demande de retourner un compte pour un id.
+	 * 
+	 * @param id
+	 * @return le compte
+	 */
+	public Compte getCompteAvecId(int id) {
+		return this.compteDAO.getCompteAvecId(id);
+	}
+	/**
 	 * Demande la création d'un compte.
 	 *
 	 * @param nType Type du nouveau compte

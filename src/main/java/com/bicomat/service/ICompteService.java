@@ -38,6 +38,13 @@ public interface ICompteService {
 	 */
 	public List<Compte> listeComptesparclient(int id);
 	/**
+	 * Demande de retourner un compte pour un id.
+	 * 
+	 * @param id
+	 * @return le compte
+	 */
+	public Compte getCompteAvecId(int id);
+	/**
 	 * Demande la création d'un compte.
 	 *
 	 * @param nType Type du nouveau compte
