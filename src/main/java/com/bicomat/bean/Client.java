@@ -252,6 +252,23 @@ public class Client {
 	public final void setPassword(String passwordC) {
 		this.password = passwordC;
 	}
+	
+	/* **************************** */
+	/*           METHODES           */
+	/* **************************** */
+	
+	/**
+     * Vérifie si le client a un compte agency.
+     *
+     * @return vrai si le compte agency existe
+     */
+    public final boolean aCompteAgency() {
+        boolean compte = true;
+    	if((this.getLogin() == "") || (this.getLogin().isEmpty())) {
+    		compte = false;
+    	}
+    	return compte;
+    }
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

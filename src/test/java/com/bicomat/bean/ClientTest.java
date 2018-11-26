@@ -204,6 +204,17 @@ public class ClientTest {
 	/* **************************** */
     
     /**
+     * Test de aCompteAgency().
+     */
+    @Test
+    public final void testACompteAgency() {
+        c.setLogin("");
+        Assert.assertFalse(c.aCompteAgency());
+        c.setLogin("Login");
+        Assert.assertTrue(c.aCompteAgency());
+    }
+    
+    /**
      * Test de toString().
      */
     @Test
