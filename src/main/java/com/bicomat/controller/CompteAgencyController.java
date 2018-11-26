@@ -116,7 +116,10 @@ public class CompteAgencyController {
 				client.setPassword(request.getParameter("password"));
 				clientService.modifierClient(client);
 				
-				return "compteAgency";
+				final List<Client> lClients = clientService.listeClients();
+		        pModel.addAttribute("clients", lClients);
+		        
+				return "compteAgency/liste";
 			}
 			else {
 				pModel.addAttribute("erreur", "Création annulée. Le client possède déjà un compte Agency.");
