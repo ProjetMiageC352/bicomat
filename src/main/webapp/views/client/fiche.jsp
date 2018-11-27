@@ -43,5 +43,5 @@
                 </c:forEach>
             </tbody>
 </table>
- <div class="col-sm-1"></div><h5 ><a href="#">Creer un compte</a></h5>
+ <div class="col-sm-1"></div><h5 ><a href="/bicomat/compteBancaire/creercompteBancaire/<c:out value="${nom}"/>&<c:out value="${prenom}"/>&<c:out value="${num_contrat}"/>&<c:out value="${id}"/>">Creer un compte</a></h5>
 <%@ include file="../_shared/footer.jsp" %>
