@@ -45,6 +45,24 @@ public interface ICompteService {
 	 */
 	public Compte getCompteAvecId(int id);
 	/**
+	 * Retourne un compte courant pour un id_client.
+	 * 
+	 * @param id_client
+	 * @return le compte_courant
+	 */
+	public Compte getCompteIdCompteCourant(int id_client);
+	/**
+	 * Cloturer un compte.
+	 *
+	 * @param c Compte à modifier
+	 */
+	/**
+	 *Retourne la liste des comptes ouverts en fonction de l'id.
+	 *
+	 * @return la liste des comptes de la table
+	 */
+	public List<Compte> listeComptesOuvertparclient(int id);
+	/**
 	 * Demande la création d'un compte.
 	 *
 	 * @param nType Type du nouveau compte
