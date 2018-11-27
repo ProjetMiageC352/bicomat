@@ -35,24 +35,29 @@ public class FicheClientController {
 	}
 	
 	// Affichage du formulaire de création de compte Agency pour un client
-				@RequestMapping(value="/client/fiche/{nom}/{prenom}/{num_contrat}/{id}", method = RequestMethod.GET)
+				@RequestMapping(value="/client/fiche/{nom}&{prenom}&{num_contrat}&{id}&{mail}&{tel}&{login}", method = RequestMethod.GET)
 				public String affichelistecompteparclient(ModelMap pModel,
 						@PathVariable(value="nom") final String nom,
 						@PathVariable(value="prenom") final String prenom,
 						@PathVariable(value="num_contrat") final String num_contrat,
 						@PathVariable(value="id") final int id_client,
+						@PathVariable(value="mail") final String mail,
+						@PathVariable(value="tel") final String tel,
+						@PathVariable(value="login") final String login,
 						HttpServletRequest request,
 						HttpServletResponse response) throws ServletException, IOException {
 					
-					/*// Redirection si le conseiller n'est pas connecté
+					// Redirection si le conseiller n'est pas connecté
 					HttpSession session = request.getSession();
 					if (session.getAttribute("conseiller") == null) {
 						request.getRequestDispatcher("connexion").forward(request, response);
-					}*/
+					}
 					pModel.addAttribute("nom", nom);
 					pModel.addAttribute("prenom", prenom);
 					pModel.addAttribute("num_contrat", num_contrat);
-					
+					pModel.addAttribute("mail", mail);
+					pModel.addAttribute("tel", tel);
+					pModel.addAttribute("login", login);
 					final List<Compte> lCcompte = compteService.listeComptesOuvertparclient(id_client);
 			        pModel.addAttribute("comptes", lCcompte);
 					
