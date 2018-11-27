@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.junit.Test;
+
 
 import com.mysql.jdbc.Util;
 
@@ -189,7 +189,7 @@ public class Tiers  {
      * 
      * @return vrai si le tiers à été créé il y a plus d'un jour
      */
-    @Test
+    
     public final boolean isActif() {
     	boolean actif = true;
     	
