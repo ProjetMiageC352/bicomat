@@ -31,13 +31,33 @@ public interface ICompteDAO {
 	 * @return la liste des comptes de la table
 	 */
 	public List<Compte> listeComptes();
+	
 	/**
+	 * Cloturer un compte.
+	 *
+	 * @param c Compte à modifier
+	 */
+	/**
+	 *Retourne la liste des comptes ouverts en fonction de l'id.
+	 *
+	 * @return la liste des comptes de la table
+	 */
+	public List<Compte> listeComptesOuvertparclient(int id);
+	
+	 /**
 	 * Retourne un compte pour un id.
 	 * 
 	 * @param id
 	 * @return le compte
 	 */
 	public Compte getCompteAvecId(int id);
+	/**
+	 * Retourne un compte courant pour un id_client.
+	 * 
+	 * @param id_client
+	 * @return le compte_courant
+	 */
+	public Compte getCompteIdCompteCourant(int id_client);
 	/**
 	 * Demande la liste des comptespar client.
 	 *
