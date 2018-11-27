@@ -58,6 +58,7 @@ public class FicheClientController {
 					pModel.addAttribute("mail", mail);
 					pModel.addAttribute("tel", tel);
 					pModel.addAttribute("login", login);
+					pModel.addAttribute("id", id_client);
 					final List<Compte> lCcompte = compteService.listeComptesOuvertparclient(id_client);
 			        pModel.addAttribute("comptes", lCcompte);
 					
