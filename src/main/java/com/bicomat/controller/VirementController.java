@@ -136,7 +136,29 @@ public class VirementController {
 					pModel.addAttribute("erreur", "Virement non effectué. Le solde est insuffisant.");
 				}
 				else {
-					// TODO création des opérations
+					// Enregistrement de l'opération pour le compte source
+					Operation os = new Operation();
+					os.setDate(Date.valueOf(LocalDate.now()));
+					os.setMontant(0-montant);
+					os.setType("Virement vers " + compteDestinataire.getType() + " (" + compteDestinataire.getId() + ")");
+					os.setIdCompte(compteSource.getId());
+					operationService.ajouterOperation(os);
+					
+					// Mise à jour du solde pour le compte source
+					compteSource.setSolde(compteSource.getSolde()-montant);
+					compteService.modifierCompte(compteSource);
+					
+					// Enregistrement de l'opération pour le compte destinataire
+					Operation od = new Operation();
+					od.setDate(Date.valueOf(LocalDate.now()));
+					od.setMontant(montant);
+					od.setType("Virement depuis " + compteSource.getType() + " (" + compteSource.getId() + ")");
+					od.setIdCompte(compteDestinataire.getId());
+					operationService.ajouterOperation(od);
+					
+					// Mise à jour du solde pour le compte destinataire
+					compteDestinataire.setSolde(compteDestinataire.getSolde()+montant);
+					compteService.modifierCompte(compteDestinataire);
 				}
 			}
 		}
@@ -161,6 +183,8 @@ public class VirementController {
 				operationService.ajouterOperation(o);
 				
 				// Mise à jour du solde
+				compteSourceT.setSolde(compteSourceT.getSolde()-montantT);
+				compteService.modifierCompte(compteSourceT);
 			}
 		}
 		
