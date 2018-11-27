@@ -74,6 +74,29 @@ public class CompteService implements ICompteService {
 		return this.compteDAO.getCompteAvecId(id);
 	}
 	/**
+	 * Cloturer un compte.
+	 *
+	 * @param c Compte à modifier
+	 */
+	/**
+	 *Retourne la liste des comptes ouverts en fonction de l'id.
+	 *
+	 * @return la liste des comptes de la table
+	 */
+	public List<Compte> listeComptesOuvertparclient(int id){
+		return this.compteDAO.listeComptesOuvertparclient(id);
+	}
+	
+	/**
+	 * Retourne un compte courant pour un id_client.
+	 * 
+	 * @param id_client
+	 * @return le compte_courant
+	 */
+	public Compte getCompteIdCompteCourant(int id_client) {
+		return this.compteDAO.getCompteIdCompteCourant(id_client);
+	}
+	/**
 	 * Demande la création d'un compte.
 	 *
 	 * @param nType Type du nouveau compte
