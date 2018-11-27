@@ -32,7 +32,7 @@
                         <td><c:out value="${client.id_conseiller}"/></td>
                         <td><c:out value="${client.login!='' ? 'Oui': 'Non'}"/></td>
                         
-                        <td><a href="./client/fiche/<c:out value="${client.nom}"/>/<c:out value="${client.prenom}"/>/<c:out value="${client.num_contrat}"/>/<c:out value="${client.id}"/>">Ouvrir</a></td>
+                        <td><a href="./client/fiche/<c:out value="${client.nom}"/>&<c:out value="${client.prenom}"/>&<c:out value="${client.num_contrat}"/>&<c:out value="${client.id}"/>&<c:out value="${client.adresse_mail}"/>&<c:out value="${client.tel_client}"/>&<c:out value="${client.login}"/>">Ouvrir</a></td>
                         
                     </tr>
                 </c:forEach>
