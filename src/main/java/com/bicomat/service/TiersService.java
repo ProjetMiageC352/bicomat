@@ -57,5 +57,14 @@ public class TiersService implements ITiersService {
 	public List<Tiers> listeTiersActifsPourClient(int id) {
 		return this.tiersDAO.listeTiersActifsPourClient(id);
 	}
+	/**
+	 * Demande de retourner un tiers pour un id.
+	 * 
+	 * @param id
+	 * @return le tiers
+	 */
+	public Tiers getTiersAvecId(int id) {
+		return this.tiersDAO.getTiersAvecId(id);
+	}
 	
 }

@@ -25,6 +25,13 @@ public interface ITiersDAO {
 	 */
 	public List<Tiers> listeTiersActifsPourClient(int id);
 	/**
+	 * Retourne un tiers pour un id.
+	 * 
+	 * @param id
+	 * @return le tiers
+	 */
+	public Tiers getTiersAvecId(int id);
+	/**
 	 * Demande de vérifier si un Tiers existe pour un nom, prenom et numero de compte
 	 * @param nom
 	 * @param prenom

@@ -67,6 +67,29 @@ public class TiersDAO implements ITiersDAO {
         TypedQuery<Tiers> query = entityManager.createQuery(lCriteriaQuery);
         return query.getResultList();
 	}
+	/**
+	 * Retourne un tiers pour un id.
+	 * 
+	 * @param id
+	 * @return le tiers
+	 */
+	public Tiers getTiersAvecId(int id) {
+		Tiers tiers = new Tiers();
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaQuery<Tiers> lCriteriaQuery = lCriteriaBuilder.createQuery(Tiers.class);
+        final Root<Tiers> lRoot = lCriteriaQuery.from(Tiers.class);
+        lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.where(lCriteriaBuilder.equal(lRoot.get("id"), id));
+
+        TypedQuery<Tiers> query = entityManager.createQuery(lCriteriaQuery);
+        List<Tiers> ListeTiers = query.getResultList();
+        
+        if (!ListeTiers.isEmpty()) {
+        	tiers = ListeTiers.get(0);
+        }
+        return tiers;
+	}
 	
 	/**
 	 * Demande de vérifier si un Tiers existe pour un nom, prenom et numero de compte

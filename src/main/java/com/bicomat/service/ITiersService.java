@@ -25,6 +25,13 @@ public interface ITiersService {
 	 * @return la liste des tiers
 	 */
 	public List<Tiers> listeTiersActifsPourClient(int id);
+	/**
+	 * Demande de retourner un tiers pour un id.
+	 * 
+	 * @param id
+	 * @return le tiers
+	 */
+	public Tiers getTiersAvecId(int id);
 	
 	/**
 	 * Demande de vérifier si un Tiers existe pour un nom, prenom et numero de compte
