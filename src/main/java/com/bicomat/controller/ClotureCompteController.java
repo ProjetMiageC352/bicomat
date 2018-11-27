@@ -2,7 +2,8 @@ package com.bicomat.controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -27,24 +28,37 @@ import com.bicomat.service.ICompteService;
 import com.bicomat.service.IOperationService;
 
 @Controller
-
+@RequestMapping(value="/compteBancaire")
 public class ClotureCompteController {
+	
+	
+	
+	
 	
 	@Autowired
 	private IOperationService operationService;
-	
+	private ICompteService compteService;
 	@Autowired(required=true)
 	@Qualifier(value="operationService")
-	public void setOperationService(IOperationService cs){
-		this.operationService = cs;
+	public void setOperationService(IOperationService os){
+		this.operationService = os;
+	}
+	@Autowired(required=true)
+	@Qualifier(value="compteService")
+	public void setCompteService(ICompteService cs){
+		this.compteService = cs;
 	}
 	
 	// Affichage du formulaire de création de compte Agency pour un client
-				@RequestMapping(value="/compteBancaire/cloture/{id}/{solde}/{type}", method = RequestMethod.GET)
+				@RequestMapping(value="/cloture/{id}&{solde}&{type}&{idclient}&{nom}&{prenom}&{num_contrat}", method = RequestMethod.GET)
 				public String affichepagecloture(ModelMap pModel,
 						@PathVariable(value="id") final int id_compte,
 						@PathVariable(value="solde") final double solde,
 						@PathVariable(value="type") final String type_compte,
+						@PathVariable(value="idclient") final int id_client,
+						@PathVariable(value="nom") final String nom_client,
+						@PathVariable(value="prenom") final String prenom_client,
+						@PathVariable(value="num_contrat") final int num_contrat_client,
 						HttpServletRequest request,
 						HttpServletResponse response) throws ServletException, IOException {
 					
@@ -56,35 +70,72 @@ public class ClotureCompteController {
 					pModel.addAttribute("id", id_compte);
 					pModel.addAttribute("solde", solde);
 					pModel.addAttribute("type", type_compte);
+					pModel.addAttribute("id_client", id_client);
+					pModel.addAttribute("nom", nom_client);
+					pModel.addAttribute("prenom", prenom_client);
+					pModel.addAttribute("num_contrat", num_contrat_client);
 					
-					
-					
-			        return "compteBancaire/cloture";
+			        return "/compteBancaire/cloture";
 				}
 				
 				// Affichage du formulaire de création de compte Agency pour un client
-				@RequestMapping(value="/compteBancaire/cloture", method = RequestMethod.POST)
+				@RequestMapping(value="/cloture", method = RequestMethod.POST)
 				public String cloturecompte(ModelMap pModel,
-						@RequestParam("id_compte") int id,
+						@RequestParam("id_compte") int id_compte_cloturer,
 						@RequestParam("montant") double montant_solde,
 						@RequestParam("type") String type_compte,
-						HttpServletRequest request
+						@RequestParam("id_client") int client,
+						@RequestParam("nom") String nom,
+						@RequestParam("prenom") String prenom,
+						@RequestParam("num_contrat") int num_contrat,
+						HttpServletRequest request,
+						HttpServletResponse response
 						) throws ServletException, IOException {
 					
-					/*// Redirection si le conseiller n'est pas connecté
+					// Redirection si le conseiller n'est pas connecté
 					HttpSession session = request.getSession();
 					if (session.getAttribute("conseiller") == null) {
 						request.getRequestDispatcher("connexion").forward(request, response);
-					}*/
-					Date date = new Date();
+					}
 					
+					//retourne le compte à cloturer
+					Compte compte_cloturer = new Compte();
+					compte_cloturer=compteService.getCompteAvecId(id_compte_cloturer);
+					
+					//récuperer l'id du compte courant du client
+					Compte compte_courant = new Compte();
+					compte_courant=compteService.getCompteIdCompteCourant(client);
+					int id_compte_courant=compte_courant.getId();
+					
+					
+					
+					// opération sur le compte à cloturer=opération du montant du solde
 					Operation op=new Operation();
-					op.setIdCompte(id);
-					op.setMontant(montant_solde);
-					op.setType("Cloture du compte "+type_compte);
-					op.setDate(date);
+					op.setIdCompte(id_compte_cloturer);
+					op.setMontant(0-montant_solde);
+					op.setType("Virement vers compte Courant ");
+					op.setDate(Date.valueOf(LocalDate.now()));
 					operationService. ajouterOperation(op);
 					
-			        return "compteBancaire/cloture";
+					//opération sur le compte destinataire lors de la cloture= compte courant par défaut
+					Operation op_dest=new Operation();
+					op_dest.setDate(Date.valueOf(LocalDate.now()));
+					op_dest.setMontant(montant_solde);
+					op_dest.setType("Clôture du compte "+type_compte);
+					op_dest.setIdCompte(id_compte_courant);
+					operationService. ajouterOperation(op_dest);
+					
+					// Mise Ã  jour du solde pour le compte à cloturer
+					compte_cloturer.setSolde(compte_cloturer.getSolde()-montant_solde);
+					compteService.modifierCompte(compte_cloturer);
+					
+					// Mise Ã  jour du solde pour le compte à destinataire = compte courant
+					compte_courant.setSolde(compte_courant.getSolde()+montant_solde);
+					compteService.modifierCompte(compte_courant);
+					
+					//cloture du compte
+					compte_cloturer.setActif(false);
+					compteService.modifierCompte(compte_cloturer);
+			        return "compteBancaire/clotureok";
 				}
 }
