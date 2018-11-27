@@ -53,7 +53,7 @@ public class FicheClientController {
 					pModel.addAttribute("prenom", prenom);
 					pModel.addAttribute("num_contrat", num_contrat);
 					
-					final List<Compte> lCcompte = compteService.listeComptesparclient(id_client);
+					final List<Compte> lCcompte = compteService.listeComptesOuvertparclient(id_client);
 			        pModel.addAttribute("comptes", lCcompte);
 					
 					
