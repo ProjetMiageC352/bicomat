@@ -97,7 +97,7 @@ public class OperationService implements IOperationService {
         o.setDate(nDate);
         o.setMontant(nMontant);
         o.setType(nType);
-        o.setIdOperation(nIdOperation);
+        //o.setIdOperation(nIdOperation);
         o.setIdCompte(nIdCompte);
 
         this.operationDAO.ajouterOperation(o);
