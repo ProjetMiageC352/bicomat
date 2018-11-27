@@ -61,6 +61,13 @@ public class CompteDAO implements ICompteDAO {
         }
 	}
 	/**
+	 * Cloturer un compte.
+	 *
+	 * @param c Compte à modifier
+	 */
+	
+	
+	/**
 	 * Supprime un compte.
 	 *
 	 * @param id Id du compte à supprimer
@@ -108,6 +115,32 @@ public class CompteDAO implements ICompteDAO {
         return compte;
 	}
 	/**
+	 * Retourne un compte courant pour un id_client.
+	 * 
+	 * @param id_client
+	 * @return le compte_courant
+	 */
+	public Compte getCompteIdCompteCourant(int id_client) {
+		Compte compte_courant = new Compte();
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaQuery<Compte> lCriteriaQuery = lCriteriaBuilder.createQuery(Compte.class);
+        final Root<Compte> lRoot = lCriteriaQuery.from(Compte.class);
+        lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.where(lCriteriaBuilder.and(
+        		lCriteriaBuilder.equal(lRoot.get("idClient"), id_client),
+        		lCriteriaBuilder.equal(lRoot.get("type"), "Courant")
+        		));
+
+        TypedQuery<Compte> query = entityManager.createQuery(lCriteriaQuery);
+        List<Compte> ListeComptes = query.getResultList();
+        
+        if (!ListeComptes.isEmpty()) {
+        	compte_courant = ListeComptes.get(0);
+        }
+        return compte_courant;
+	}
+	/**
 	 * Retourne la liste des comptes en fonction de l'id.
 	 *
 	 * @return la liste des comptes de la table
@@ -120,6 +153,25 @@ public class CompteDAO implements ICompteDAO {
         lCriteriaQuery.select(lRoot);
         lCriteriaQuery.where(lCriteriaBuilder.and(
         		lCriteriaBuilder.equal(lRoot.get("idClient"), id)
+        		));
+        final TypedQuery<Compte> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
+        return lTypedQuery.getResultList();
+	}
+	
+	/**
+	 *Retourne la liste des comptes ouverts en fonction de l'id.
+	 *
+	 * @return la liste des comptes de la table
+	 */
+	public List<Compte> listeComptesOuvertparclient(int id) {
+		final CriteriaBuilder lCriteriaBuilder = entityManager.getCriteriaBuilder();
+
+        final CriteriaQuery<Compte> lCriteriaQuery = lCriteriaBuilder.createQuery(Compte.class);
+        final Root<Compte> lRoot = lCriteriaQuery.from(Compte.class);
+        lCriteriaQuery.select(lRoot);
+        lCriteriaQuery.where(lCriteriaBuilder.and(
+        		lCriteriaBuilder.equal(lRoot.get("idClient"), id),
+        		lCriteriaBuilder.equal(lRoot.get("actif"), true)
         		));
         final TypedQuery<Compte> lTypedQuery = entityManager.createQuery(lCriteriaQuery);
         return lTypedQuery.getResultList();
