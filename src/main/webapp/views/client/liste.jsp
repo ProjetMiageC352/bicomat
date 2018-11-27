@@ -17,7 +17,7 @@
                     <th scope="col" ><spring:message code="client.colonne.contrat"/></th>
                     <th scope="col"><spring:message code="client.colonne.conseiller"/></th>
                     <th scope="col"><spring:message code="client.colonne.login"/></th>
-                    <th scope="col"><spring:message code="client.colonne.password"/></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -30,8 +30,8 @@
                         <td><c:out value="${client.tel_client}"/></td>
                         <td><c:out value="${client.num_contrat}"/></td>
                         <td><c:out value="${client.id_conseiller}"/></td>
-                        <td><c:out value="${client.login}"/></td>
-                        <td><c:out value="${client.password}"/></td>
+                        <td><c:out value="${client.login!='' ? 'Oui': 'Non'}"/></td>
+                        
                         <td><a href="./client/fiche/<c:out value="${client.nom}"/>/<c:out value="${client.prenom}"/>/<c:out value="${client.num_contrat}"/>/<c:out value="${client.id}"/>">Ouvrir</a></td>
                         
                     </tr>
