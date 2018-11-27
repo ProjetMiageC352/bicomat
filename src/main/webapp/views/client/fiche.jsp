@@ -4,7 +4,12 @@
 <%@ include file="../_shared/menu.jsp" %>
 
 <legend><div class="col-sm-1"></div><h3><c:if test = "${nom != ''}"><c:out value="${nom}"/> </c:if><c:if test = "${prenom != ''}"><c:out value="${prenom}"/> </c:if></h3>
-<div class="col-sm-1"></div><h4>Numéro de contrat: <c:if test = "${num_contrat != ''}"><c:out value="${num_contrat}"/> </c:if></h4></legend>
+<div class="col-sm-1"></div><h4>Numéro de contrat: <c:if test = "${num_contrat != ''}"><c:out value="${num_contrat}"/> </c:if></h4>
+<div class="col-sm-1"></div><h4>Mail :<a href="mailto:${mail}" ><c:if test = "${mail != ''}"><c:out value="${mail}"/> </c:if></a></h4>
+<div class="col-sm-1"></div><h4>Téléphone :<c:if test = "${tel != ''}"><c:out value="${tel}"/> </c:if></h4>
+<div class="col-sm-1"></div><h4>Compte Agency : ${login!='' ? 'Oui': 'Non'}</h4>
+
+</legend>
 
  
  <div class="col-sm-1"></div><h5 >Liste des comptes</h5>
@@ -38,4 +43,5 @@
                 </c:forEach>
             </tbody>
 </table>
+ <div class="col-sm-1"></div><h5 ><a href="#">Creer un compte</a></h5>
 <%@ include file="../_shared/footer.jsp" %>
