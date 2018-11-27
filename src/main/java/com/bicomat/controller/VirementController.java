@@ -1,6 +1,8 @@
 package com.bicomat.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -18,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bicomat.bean.Client;
 import com.bicomat.bean.Compte;
+import com.bicomat.bean.Operation;
 import com.bicomat.bean.Tiers;
 import com.bicomat.service.IClientService;
 import com.bicomat.service.ICompteService;
+import com.bicomat.service.IOperationService;
 import com.bicomat.service.ITiersService;
 
 @Controller
@@ -52,6 +56,15 @@ public class VirementController {
 	@Qualifier(value="tiersService")
 	public void setTiersService(ITiersService ts){
 		this.tiersService = ts;
+	}
+	
+	@Autowired
+	private IOperationService operationService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="operationService")
+	public void setOperationService(IOperationService os){
+		this.operationService = os;
 	}
 	
 	
@@ -107,12 +120,6 @@ public class VirementController {
 			request.getRequestDispatcher("connexion").forward(request, response);
 		}
 		
-		pModel.addAttribute("id", id);
-		final List<Compte> lComptes = compteService.listeComptesparclient(Integer.parseInt(id));
-        pModel.addAttribute("comptes", lComptes);
-        final List<Tiers> lTiers = tiersService.listeTiersActifsPourClient(Integer.parseInt(id));
-        pModel.addAttribute("tiers", lTiers);
-		
 		// Virement interne
 		if (request.getParameter("virementInterne") != null) {
 			Compte compteSource = compteService.getCompteAvecId(Integer.parseInt(request.getParameter("cpteSource")));
@@ -144,9 +151,24 @@ public class VirementController {
 				pModel.addAttribute("erreur", "Virement non effectué. Le solde est insuffisant.");
 			}
 			else {
-				// TODO création de l'opération
+				// Enregistrement de l'opération
+				Operation o = new Operation();
+				o.setDate(Date.valueOf(LocalDate.now()));
+				o.setMontant(0-montantT);
+				o.setType("Virement vers un tiers (" + request.getParameter("cpteDestinationTiers") + ")");
+				o.setIdCompte(compteSourceT.getId());
+				
+				operationService.ajouterOperation(o);
+				
+				// Mise à jour du solde
 			}
 		}
+		
+		pModel.addAttribute("id", id);
+		final List<Compte> lComptes = compteService.listeComptesparclient(Integer.parseInt(id));
+        pModel.addAttribute("comptes", lComptes);
+        final List<Tiers> lTiers = tiersService.listeTiersActifsPourClient(Integer.parseInt(id));
+        pModel.addAttribute("tiers", lTiers);
 		
 		return "virement/virement";
 	}

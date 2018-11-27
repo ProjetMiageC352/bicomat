@@ -22,7 +22,7 @@
         		<a class="dropdown-toggle" data-toggle="dropdown" >Comptes<span class="caret"></span></a>
         		<ul class="dropdown-menu">
         			<li><a href="/bicomat/listeclients" >Liste des clients</a></li>
-          			<li><a href="#">Action2</a></li>
+          			<li><a href="/bicomat/virement">Virements</a></li>
         		</ul>
         	</li>
         	<li class="dropdown">
