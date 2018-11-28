@@ -12,7 +12,7 @@
             
                 <legend><h1> <div class="col-sm-1"></div>Créer un tiers</h1></legend>
                 <c:if test = "${not empty etatTiers}">
-	<p class="alert alert-danger"><c:out value="${etatTiers}"/></p>
+	<p class="alert alert-success"><c:out value="${etatTiers}"/></p>
 </c:if>
                   
                 <div class="col-sm-1"></div>
