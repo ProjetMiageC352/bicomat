@@ -1,11 +1,8 @@
 package com.bicomat.controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.sql.Date;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,20 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.bicomat.bean.Client;
 import com.bicomat.bean.Compte;
 import com.bicomat.bean.Operation;
-import com.bicomat.service.IClientService;
 import com.bicomat.service.ICompteService;
 import com.bicomat.service.IOperationService;
 
 @Controller
 @RequestMapping(value="/compteBancaire")
 public class ClotureCompteController {
-	
-	
-	
-	
 	
 	@Autowired
 	private IOperationService operationService;
@@ -49,7 +40,7 @@ public class ClotureCompteController {
 		this.compteService = cs;
 	}
 	
-	// Affichage du formulaire de création de compte Agency pour un client
+	// Affichage la page pour la cloture du compte
 				@RequestMapping(value="/cloture/{id}&{solde}&{type}&{idclient}&{nom}&{prenom}&{num_contrat}", method = RequestMethod.GET)
 				public String affichepagecloture(ModelMap pModel,
 						@PathVariable(value="id") final int id_compte,
@@ -62,11 +53,11 @@ public class ClotureCompteController {
 						HttpServletRequest request,
 						HttpServletResponse response) throws ServletException, IOException {
 					
-					/*// Redirection si le conseiller n'est pas connecté
+					// Redirection si le conseiller n'est pas connecté
 					HttpSession session = request.getSession();
 					if (session.getAttribute("conseiller") == null) {
 						request.getRequestDispatcher("connexion").forward(request, response);
-					}*/
+					}
 					pModel.addAttribute("id", id_compte);
 					pModel.addAttribute("solde", solde);
 					pModel.addAttribute("type", type_compte);
@@ -78,7 +69,7 @@ public class ClotureCompteController {
 			        return "/compteBancaire/cloture";
 				}
 				
-				// Affichage du formulaire de création de compte Agency pour un client
+				// cloture du compte
 				@RequestMapping(value="/cloture", method = RequestMethod.POST)
 				public String cloturecompte(ModelMap pModel,
 						@RequestParam("id_compte") int id_compte_cloturer,
