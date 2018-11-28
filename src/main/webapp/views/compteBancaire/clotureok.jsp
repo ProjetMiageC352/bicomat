@@ -4,7 +4,7 @@
 <%@ include file="../_shared/menu.jsp" %>
 
 <legend>
-<p class="alert alert-danger">Le compte bancaire a bien été cloturé</p>
+<p class="alert alert-success">Le compte bancaire a bien été cloturé</p>
 
 </legend>
 
