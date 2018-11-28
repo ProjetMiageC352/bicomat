@@ -45,9 +45,9 @@
                 </div>
                 <div class="form-group row">
                 <div class="col-sm-1"></div>
-           		 <label class="col-sm-1 col-form-label" >Id du client</label>
+           		 <label class="col-sm-1 col-form-label" >Client</label>
            		 <div class="col-sm-5">
-           		   <select required class="form-control" placeholder="Id du client" aria-describedby="basic-addon1"  name="id_client" id="id_client">
+           		   <select required class="form-control" placeholder="Client" aria-describedby="basic-addon1"  name="id_client" id="id_client">
            		   <option disabled selected >Choisir</option>
            		 <c:forEach items="${clients}" var="client">
            		 	<option value="${client.id}">${client.nom} ${client.prenom}</option>
