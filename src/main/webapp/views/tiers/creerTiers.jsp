@@ -6,11 +6,15 @@
 <%@ include file="../_shared/header.jsp" %>
 <%@ include file="../_shared/menu.jsp" %>
  
-        <form method="post" action="creertiers">
+        <form method="post" action="">
         
             
             
                 <legend><h1> <div class="col-sm-1"></div>Créer un tiers</h1></legend>
+                <c:if test = "${not empty etatTiers}">
+	<p class="alert alert-danger"><c:out value="${etatTiers}"/></p>
+</c:if>
+                  
                 <div class="col-sm-1"></div>
                 <p class="badge badge-secondary" >Renseigner les champs suivants</p>
                <fieldset> 
@@ -43,8 +47,12 @@
                 <div class="col-sm-1"></div>
            		 <label class="col-sm-1 col-form-label" >Id du client</label>
            		 <div class="col-sm-5">
-	            <input required class="form-control" placeholder="Id du client" aria-describedby="basic-addon1" type="text" name="id_client" id="id_client" />
-	        	
+           		   <select required class="form-control" placeholder="Id du client" aria-describedby="basic-addon1"  name="id_client" id="id_client">
+           		   <option disabled selected >Choisir</option>
+           		 <c:forEach items="${clients}" var="client">
+           		 	<option value="${client.id}">${client.nom} ${client.prenom}</option>
+	          	</c:forEach>
+	        	</select>
 	        	</div>
                 </div>
                 
@@ -58,6 +66,5 @@
             </fieldset>
         </form>
         
-        <p><c:out value="${etatTiers}"/></p>
 
 <%@ include file="../_shared/footer.jsp" %>
