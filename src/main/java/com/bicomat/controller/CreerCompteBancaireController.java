@@ -1,8 +1,6 @@
 package com.bicomat.controller;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,10 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.bicomat.bean.Client;
+import com.bicomat.bean.Banque;
 import com.bicomat.bean.Compte;
-import com.bicomat.bean.Operation;
-import com.bicomat.service.IClientService;
+import com.bicomat.service.IBanqueService;
 import com.bicomat.service.ICompteService;
 
 @Controller
@@ -37,15 +34,16 @@ public class CreerCompteBancaireController {
 	public void setCompteService(ICompteService cs){
 		this.compteService = cs;
 	}
-	
 	@Autowired
-	private IClientService clientService;
+	private IBanqueService banqueService;
 	
 	@Autowired(required=true)
-	@Qualifier(value="clientService")
-	public void setclientService(IClientService cs){
-		this.clientService = cs;
+	@Qualifier(value="banqueService")
+	public void setBanqueService(IBanqueService cs){
+		this.banqueService = cs;
 	}
+
+	
 	
 	@RequestMapping(value="/creercompteBancaire/{nom}&{prenom}&{num}&{idclient}",method = RequestMethod.GET)
 	public String afficherFormulaire(ModelMap pModel,
@@ -61,6 +59,11 @@ public class CreerCompteBancaireController {
 				if (session.getAttribute("conseiller") == null) {
 					request.getRequestDispatcher("connexion").forward(request, response);
 				}
+				
+				// renvoie la liste des banques		
+				final List<Banque> lBanques = banqueService.listeBanques();
+				
+		        pModel.addAttribute("Banques", lBanques);
 				pModel.addAttribute("nom", nom);
 				pModel.addAttribute("prenom", prenom);
 				pModel.addAttribute("num_contrat", num_contrat);		
@@ -78,6 +81,7 @@ public class CreerCompteBancaireController {
 			@RequestParam("prenom") String prenom,
 			@RequestParam("num") int num_contrat,
 			@RequestParam("decouvert") boolean decouvert,
+			@RequestParam("banque") int idbanque,
 			HttpServletRequest request,
 			HttpServletResponse response
 			) throws ServletException, IOException {
@@ -95,8 +99,10 @@ public class CreerCompteBancaireController {
 		c.setType(type_compte);
 		c.setDecouvert(decouvert);
 		c.setActif(true);
-		c.setIdBanque(1);
+		c.setIdBanque(idbanque);
 		compteService.ajouterCompte(c);
+		String etatCompte="Le compte a bien été créé";
+		pModel.addAttribute("etatCompte", etatCompte);
         return "compteBancaire/creercompte";
 	}
 }
