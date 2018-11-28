@@ -10,7 +10,7 @@
                 	<th scope="col"><spring:message code="tiers.colonne.nom"/></th>
                     <th scope="col"><spring:message code="tiers.colonne.prenom"/></th>
                     <th scope="col"><spring:message code="tiers.colonne.compte"/></th>
-                    <th scope="col"><spring:message code="tiers.colonne.idclient"/></th>
+                    <th scope="col"><spring:message code="tiers.colonne.nomclient"/></th>
                     
             
                 </tr>
@@ -21,9 +21,11 @@
                     	<th scope="row"><c:out value="${tiers.nom}"/></th>
                        	<td><c:out value="${tiers.prenom}"/></td>
                         <td><c:out value="${tiers.numCompte}"/></td>
-                         <td><c:out value="${tiers.idclientT}"/></td>
-                       
-                        
+                        <c:forEach items="${clients}" var="client">
+                        	<c:if test = "${tiers.idclientT == client.id}">
+                         <td><c:out value="${client.nom} ${client.prenom}"/></td>
+                       </c:if>
+                        </c:forEach>
                     </tr>
                 </c:forEach>
             </tbody>
