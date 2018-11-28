@@ -9,6 +9,9 @@
 
 <body>               
 	<legend><h1> <div class="col-sm-1"></div>Créér un compte</h1></legend>
+	
+	 <c:if test = "${not empty etatCompte}">
+	<p class="alert alert-danger"><c:out value="${etatCompte}"/></p></c:if>
 	<div class="col-sm-1"></div>
 		<p class="badge badge-secondary" >Renseigner les champs suivants</p>
 		<form method="post" action="/bicomat/compteBancaire/creercompteBancaire">
@@ -17,22 +20,34 @@
 			<div class="col-sm-1"></div>
 				<label class="col-sm-1 col-form-label" >Nom</label>
 			<div class="col-sm-5">
-				<input  required id="nom" name="nom" type="text" class="form-control" placeholder="Nom" aria-describedby="basic-addon1" value="${nom}"/>
+				<input   required id="nom" name="nom" type="text" class="form-control" placeholder="Nom" aria-describedby="basic-addon1" value="${nom}"/>
 			</div>
 			</div>
 			<div class="form-group row">
 			<div class="col-sm-1"></div>
 				<label class="col-sm-1 col-form-label" >Prenom</label>
        		<div class="col-sm-5">
-            	<input required class="form-control" placeholder="Prenom" aria-describedby="basic-addon1" id="prenom" name="prenom"  value="${prenom}"/>
+            	<input  required class="form-control" placeholder="Prenom" aria-describedby="basic-addon1" id="prenom" name="prenom"  value="${prenom}"/>
             </div>
             </div>
             <div class="form-group row">
             <div class="col-sm-1"></div>
        		 	<label class="col-sm-1 col-form-label" >Numéro du contrat</label>
        		<div class="col-sm-5">
-            	<input required class="form-control" placeholder="Numéro du contrat" aria-describedby="basic-addon1" id="num" name="num" value="${num_contrat}" />
+            	<input  required class="form-control" placeholder="Numéro du contrat" aria-describedby="basic-addon1" id="num" name="num" value="${num_contrat}" />
 			</div>
+            </div>
+             <div class="form-group row">
+            <div class="col-sm-1"></div>
+       		 	<label class="col-sm-1 col-form-label" >Banque</label>
+       		<div class="col-sm-5">
+				<select required class="form-control" name="banque" id="banque">
+  					<option selected disabled >Choisir</option>
+	      			<c:forEach items="${Banques}" var="banque">
+           		 	<option value="${banque.id}">${banque.nom}</option>
+	          	</c:forEach>
+				</select>
+     		</div>
             </div>
             <div class="form-group row">
             <div class="col-sm-1"></div>
