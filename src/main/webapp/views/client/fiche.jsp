@@ -31,9 +31,9 @@
                         <td><c:out value="${comptes.decouvert==true ? 'Oui': 'Non'}"/></td>
                         <td><c:out value="${comptes.solde}"/> €</td>
                         <td><c:out value="${comptes.actif==true ? 'Oui': 'Non'}"/></td>
-                        <td width="80px"><a href="/bicomat/client/operation/<c:out value="${nom}"/>/<c:out value="${prenom}"/>/<c:out value="${comptes.type}"/>/<c:out value="${comptes.id}"/>/<c:out value="${comptes.solde}"/>"">Opérations</a></td>
+                        <td width="80px"><a href="/bicomat/client/operation/<c:out value="${nom}"/>/<c:out value="${prenom}"/>/<c:out value="${comptes.id}"/>"">Opérations</a></td>
                         <td width="80px">
-                        <a href="/bicomat/compteBancaire/cloture/<c:out value="${comptes.id}"/>&<c:out value="${comptes.solde}"/>&<c:out value="${comptes.type}"/>&<c:out value="${comptes.idClient}"/>&<c:out value="${nom}"/>&<c:out value="${prenom}"/>&<c:out value="${num_contrat}"/>">
+                        <a href="/bicomat/compteBancaire/cloture/<c:out value="${comptes.id}"/>&<c:out value="${comptes.idClient}"/>&<c:out value="${nom}"/>&<c:out value="${prenom}"/>&<c:out value="${num_contrat}"/>">
                         <c:if test = "${comptes.type != 'Courant'}">
 				    	Cloturer
 				    	</c:if>
