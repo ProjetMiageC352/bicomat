@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" isELIgnored="false"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ include file="../_shared/header.jsp" %>
 <%@ include file="../_shared/menu.jsp" %>
 
@@ -19,9 +21,10 @@
                 </tr>
             </thead>
 			<tbody>
+				
                 <c:forEach items="${operations}" var="operations">
                     <tr>      
-                        <td><c:out value="${operations.date}"/></td>                        
+                        <td class="col-sm-2"><fmt:formatDate value="${operations.date}" pattern="dd/MM/yyyy" /></td>                        
                         <td><c:out value="${operations.type}"/></td>
                         <td><c:out value="${operations.montant}"/> €</td>                    
                     </tr>
