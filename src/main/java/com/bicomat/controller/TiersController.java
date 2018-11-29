@@ -95,7 +95,7 @@ public class TiersController {
 					request.getRequestDispatcher("connexion").forward(request, response);
 				}
 				
-		//récupération de la liste de client pour formulaire		
+		//rï¿½cupï¿½ration de la liste de client pour formulaire		
 		final List<Client> lClients = clientService.listeClients();
 		pModel.addAttribute("clients", lClients);	
 				
@@ -111,14 +111,14 @@ public class TiersController {
 			
 			){
 		
-		// on vérifie si le tiers n'est pas déjà rattaché au client
+		// on vï¿½rifie si le tiers n'est pas dï¿½jï¿½ rattachï¿½ au client
 		if (tiersService.existeAvecNomPrenomNumCompte(nomT, prenomT,numT,Integer.parseInt(idClient))) {
-			String etatTiers="Ce tiers est déjà rattaché à votre compte";
+			String etatTiers="Ce tiers est dÃ©jÃ  rattachÃ© Ã  votre compte";
 			pModel.addAttribute("etatTiers",etatTiers);
 			return "tiers/creerTiers";
 		}else {
 		
-		// sinon on créé un nouveau tiers	
+		// sinon on crï¿½ï¿½ un nouveau tiers	
 		Tiers tiers=new Tiers();
 		tiers.setNom(nomT);
 		tiers.setPrenom(prenomT);
@@ -126,7 +126,7 @@ public class TiersController {
 		tiers.setIdclientT(Integer.parseInt(idClient));
 	    tiers.setDate_creation(Date.valueOf(LocalDate.now()));
 		tiersService.creerTiers(tiers);
-		String etatTiers="Le tiers a bien été créé";
+		String etatTiers="Le tiers a bien Ã©tÃ© crÃ©Ã©";
 		pModel.addAttribute("etatTiers", etatTiers);
 		return "tiers/creerTiers";
 		}

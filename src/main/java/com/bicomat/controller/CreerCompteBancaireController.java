@@ -86,7 +86,7 @@ public class CreerCompteBancaireController {
 			HttpServletResponse response
 			) throws ServletException, IOException {
 		
-		// Redirection si le conseiller n'est pas connecté
+		// Redirection si le conseiller n'est pas connectï¿½
 		HttpSession session = request.getSession();
 		if (session.getAttribute("conseiller") == null) {
 			request.getRequestDispatcher("connexion").forward(request, response);
@@ -101,8 +101,12 @@ public class CreerCompteBancaireController {
 		c.setActif(true);
 		c.setIdBanque(idbanque);
 		compteService.ajouterCompte(c);
-		String etatCompte="Le compte a bien été créé";
+		String etatCompte="Le compte a bien Ã©tÃ© crÃ©Ã©";
 		pModel.addAttribute("etatCompte", etatCompte);
+		
+		final List<Banque> lBanques = banqueService.listeBanques();
+		pModel.addAttribute("Banques", lBanques);
+		
         return "compteBancaire/creercompte";
 	}
 }
