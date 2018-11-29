@@ -95,7 +95,7 @@ public class TiersController {
 					request.getRequestDispatcher("connexion").forward(request, response);
 				}
 				
-		//r�cup�ration de la liste de client pour formulaire		
+		//Récupération de la liste des clients pour le formulaire		
 		final List<Client> lClients = clientService.listeClients();
 		pModel.addAttribute("clients", lClients);	
 				
@@ -118,7 +118,7 @@ public class TiersController {
 			return "tiers/creerTiers";
 		}else {
 		
-		// sinon on cr�� un nouveau tiers	
+		// sinon on créé un nouveau tiers	
 		Tiers tiers=new Tiers();
 		tiers.setNom(nomT);
 		tiers.setPrenom(prenomT);
@@ -128,6 +128,11 @@ public class TiersController {
 		tiersService.creerTiers(tiers);
 		String etatTiers="Le tiers a bien été créé";
 		pModel.addAttribute("etatTiers", etatTiers);
+		
+		//Récupération de la liste des clients pour le formulaire		
+		final List<Client> lClients = clientService.listeClients();
+		pModel.addAttribute("clients", lClients);
+		
 		return "tiers/creerTiers";
 		}
 	}
