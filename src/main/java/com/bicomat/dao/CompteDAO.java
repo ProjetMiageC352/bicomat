@@ -46,7 +46,7 @@ public class CompteDAO implements ICompteDAO {
         lCriteriaUpdate.where(lExpression);
         lCriteriaUpdate.set("type", c.getType());
         lCriteriaUpdate.set("decouvert", c.getDecouvert());
-        lCriteriaUpdate.set("solde", c.getSolde());
+        lCriteriaUpdate.set("solde", (double)Math.round(c.getSolde() * 100) / 100);
         lCriteriaUpdate.set("actif", c.getActif());
         lCriteriaUpdate.set("idBanque", c.getIdBanque());
         lCriteriaUpdate.set("idClient", c.getIdClient());
