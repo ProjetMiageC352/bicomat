@@ -168,23 +168,29 @@ public class VirementController {
 			Compte compteSourceT = compteService.getCompteAvecId(Integer.parseInt(request.getParameter("cpteSourceTiers")));
 			int montantT = Integer.parseInt(request.getParameter("montantTiers"));
 			
-			// Si solde insuffisant
-			if (compteSourceT.getSolde() < montantT) {
-				pModel.addAttribute("erreur", "Virement non effectué. Le solde est insuffisant.");
+			// Si compte tiers non vide
+			if (request.getParameter("cpteDestinationTiers") != null) {
+				// Si solde insuffisant
+				if (compteSourceT.getSolde() < montantT) {
+					pModel.addAttribute("erreur", "Virement non effectué. Le solde est insuffisant.");
+				}
+				else {
+					// Enregistrement de l'opération
+					Operation o = new Operation();
+					o.setDate(Date.valueOf(LocalDate.now()));
+					o.setMontant(0-montantT);
+					o.setType("Virement vers un tiers (" + request.getParameter("cpteDestinationTiers") + ")");
+					o.setIdCompte(compteSourceT.getId());
+					
+					operationService.ajouterOperation(o);
+					
+					// Mise à jour du solde
+					compteSourceT.setSolde(compteSourceT.getSolde()-montantT);
+					compteService.modifierCompte(compteSourceT);
+				}
 			}
 			else {
-				// Enregistrement de l'opération
-				Operation o = new Operation();
-				o.setDate(Date.valueOf(LocalDate.now()));
-				o.setMontant(0-montantT);
-				o.setType("Virement vers un tiers (" + request.getParameter("cpteDestinationTiers") + ")");
-				o.setIdCompte(compteSourceT.getId());
-				
-				operationService.ajouterOperation(o);
-				
-				// Mise à jour du solde
-				compteSourceT.setSolde(compteSourceT.getSolde()-montantT);
-				compteService.modifierCompte(compteSourceT);
+				pModel.addAttribute("erreur", "Virement non effectué. Vous n'avez pas de compte tiers.");
 			}
 		}
 		
