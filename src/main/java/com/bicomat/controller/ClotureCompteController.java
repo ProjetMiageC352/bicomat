@@ -41,11 +41,10 @@ public class ClotureCompteController {
 	}
 	
 	// Affichage la page pour la cloture du compte
-				@RequestMapping(value="/cloture/{id}&{solde}&{type}&{idclient}&{nom}&{prenom}&{num_contrat}", method = RequestMethod.GET)
+				@RequestMapping(value="/cloture/{id}&{idclient}&{nom}&{prenom}&{num_contrat}", method = RequestMethod.GET)
 				public String affichepagecloture(ModelMap pModel,
 						@PathVariable(value="id") final int id_compte,
-						@PathVariable(value="solde") final double solde,
-						@PathVariable(value="type") final String type_compte,
+						
 						@PathVariable(value="idclient") final int id_client,
 						@PathVariable(value="nom") final String nom_client,
 						@PathVariable(value="prenom") final String prenom_client,
@@ -58,6 +57,11 @@ public class ClotureCompteController {
 					if (session.getAttribute("conseiller") == null) {
 						request.getRequestDispatcher("connexion").forward(request, response);
 					}
+					
+					Compte compte=compteService.getCompteAvecId(id_compte);
+					double solde=compte.getSolde();
+					String type_compte=compte.getType();
+					
 					pModel.addAttribute("id", id_compte);
 					pModel.addAttribute("solde", solde);
 					pModel.addAttribute("type", type_compte);
