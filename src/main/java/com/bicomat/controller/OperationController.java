@@ -20,6 +20,7 @@ import com.bicomat.bean.Client;
 import com.bicomat.bean.Compte;
 import com.bicomat.bean.Operation;
 import com.bicomat.service.IClientService;
+import com.bicomat.service.ICompteService;
 import com.bicomat.service.IOperationService;
 
 @Controller
@@ -34,15 +35,22 @@ public class OperationController {
 	public void setOperationService(IOperationService cs){
 		this.operationService = cs;
 	}
+	@Autowired
+	private ICompteService compteService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="compteService")
+	public void setCompteService(ICompteService cs){
+		this.compteService = cs;
+	}
 	
 	// Affichage du formulaire de création de compte Agency pour un client
-				@RequestMapping(value="/client/operation/{nom}/{prenom}/{type}/{id}/{solde}", method = RequestMethod.GET)
+				@RequestMapping(value="/client/operation/{nom}/{prenom}/{id}", method = RequestMethod.GET)
 				public String affichelistecompteparclient(ModelMap pModel,
 						@PathVariable(value="nom") final String nom,
 						@PathVariable(value="prenom") final String prenom,
-						@PathVariable(value="type") final String type_compte,
 						@PathVariable(value="id") final int id_compte,
-						@PathVariable(value="solde") final double solde_compte,
+						
 						HttpServletRequest request,
 						HttpServletResponse response) throws ServletException, IOException {
 					
@@ -51,7 +59,9 @@ public class OperationController {
 					if (session.getAttribute("conseiller") == null) {
 						request.getRequestDispatcher("connexion").forward(request, response);
 					}
-					
+					Compte compte=compteService.getCompteAvecId(id_compte);
+					double solde_compte=compte.getSolde();
+					String type_compte=compte.getType();
 					final List<Operation> lOperation = operationService.listeOperationsParCompte(id_compte);
 					pModel.addAttribute("nom", nom);
 					pModel.addAttribute("prenom", prenom);
